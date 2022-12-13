@@ -1,0 +1,22 @@
+{
+ "vetur.format.defaultFormatter.html": "none", // 禁用vetur html格式化
+  "vetur.format.defaultFormatter.js": "none", // 禁用vetur js格式化
+  "vetur.format.defaultFormatter.ts": "none", // 禁用vetur ts格式化
+  "eslint.format.enable": true, // eslint作为format工具
+  "eslint.run": "onType", // eslint在每次按键的时候检测
+  "eslint.codeActionsOnSave.mode": "all", // 修复全部问题
+  "editor.formatOnSave": false, // 关闭这个，因为和codeActionsOnSave冲突了
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true // 保存时自动修复
+  },
+  "[javascript]": { // vue文件默认格式化设置
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescript]": { // js文件默认格式化设置
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascriptreact]": { // react文件默认格式化设置
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "stylelint.validate": ["css", "less", "postcss", "scss", "vue" ]
+}
