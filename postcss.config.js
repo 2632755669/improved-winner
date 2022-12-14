@@ -1,14 +1,12 @@
-
-module.exports = ({ file }) => {
+module.exports = () => {
   const plugins = [
     require('autoprefixer'),
     require('cssnano')({
-      safe: true
-    })
+      safe: true,
+    }),
   ];
 
-
   return {
-    plugins
+    plugins,
   };
 };

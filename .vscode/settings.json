@@ -18,5 +18,6 @@
   "[javascriptreact]": { // react文件默认格式化设置
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
-  "stylelint.validate": ["css", "less", "postcss", "scss", "vue" ]
+  "stylelint.validate": ["css", "less", "postcss", "scss", "vue" ],
+  "css.lint.unknownAtRules": "ignore"
 }
