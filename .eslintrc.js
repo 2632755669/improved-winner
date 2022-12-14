@@ -7,6 +7,7 @@ module.exports = {
     'react/require-default-props': 'off',
     'no-restricted-syntax': 'off',
     'react/destructuring-assignment': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
 };
 

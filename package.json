@@ -56,6 +56,9 @@
     "lint-staged": ">=10",
     "prettier": "2.8.1"
   },
+  "resolutions": { 
+    "@types/react": "17.0.44" 
+  }, 
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
