@@ -1,4 +1,3 @@
-import React from 'react';
 import './logo.less';
 
 // 美团logo
