@@ -1,12 +1,12 @@
 /** axios封装
  * 请求拦截、相应拦截、错误统一处理
  */
-import { notification } from 'antd';
 import axios from 'axios';
+import { message } from '@ss/mtd-react';
 
 function messageShow(description: string) {
-  notification.error({
-    description
+  message.error({
+    message: description,
   });
 }
 
@@ -47,22 +47,20 @@ axios.interceptors.response.use(
       case 401:
         messageShow('未登录');
         break;
-        // 403 token过期
-        // 登录过期对用户进行提示
-        // 清除本地token和清空vuex中token对象
-        // 跳转登录页面
+      // 403 token过期
+      // 登录过期对用户进行提示
+      // 清除本地token和清空vuex中token对象
+      // 跳转登录页面
       case 403:
         messageShow('登录过期，请重新登录');
         break;
-        // 404请求不存在
+      // 404请求不存在
       case 404:
         messageShow('网络发生异常(404)');
         break;
-        // 其他错误，直接抛出错误提示
+      // 其他错误，直接抛出错误提示
       default:
-        messageShow(
-          error.responese.data.message || ErrMsg,
-        );
+        messageShow(error.responese.data.message || ErrMsg);
     }
     return Promise.reject(error.response);
   },
@@ -75,7 +73,7 @@ axios.interceptors.response.use(
  */
 export function get<Response = any>(url: string, params?: Record<string, any>) {
   return axios.get<any, Response>(url, {
-    params: (params || {}),
+    params: params || {},
   });
 }
 

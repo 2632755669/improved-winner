@@ -14,6 +14,7 @@
     "lint": "yarn run lint:script && yarn run lint:style && yarn run prettier",
     "lint:script": "eslint --ext .js,.jsx,.ts,.tsx,.vue .",
     "lint:style": "stylelint **/*.{less,vue}",
+    "lint-fix": "yarn run lint-fix:script && yarn run lint-fix:style && yarn run prettier:fix",
     "lint-fix:script": "npm run lint:script -- --fix",
     "lint-fix:style": "npm run lint:style -- --fix",
     "prettier": "prettier -c \"./src/**/*\"",
@@ -22,7 +23,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@cap/mtv-fetch": "0.1.1",
     "@craco/craco": "6.4.0",
+    "@mtfe/sso-client": "2.4.1",
+    "@ss/mtd-react": "1.1.15",
     "axios": "0.24.0",
     "classnames": "2.3.1",
     "craco-less": "1.20.0",

@@ -1,4 +1,19 @@
 const CracoLessPlugin = require('craco-less');
+const path = require('path');
+
+// const NODE_ENV = ['staging, production'].includes(process.env.AWP_DEPLOY_ENV) ? 'production' : 'test';
+
+// const ssoConfig = {
+//   production: {
+//     clientId: '028999243f',
+//     // TODO：暂时没有换上正确的secret
+//     secret: 'f352ceed984048719f69fa5d814befff',
+//   },
+//   test: {
+//     clientId: '1a5c3e71bd',
+//     secret: '360f43414e91433e81d8bd7779022588',
+//   },
+// };
 
 module.exports = {
   devServer: {
@@ -15,6 +30,14 @@ module.exports = {
         },
       },
     },
+    // onBeforeSetupMiddleware: (devServer) => {
+    //   const { ExpressSSO } = require('@mtfe/sso-client');
+    //   const ssoAuthMiddleware = ExpressSSO({
+    //     clientId: ssoConfig[NODE_ENV].clientId,
+    //     secret: ssoConfig[NODE_ENV].secret,
+    //   });
+    //   devServer.app.use(ssoAuthMiddleware);
+    // },
   },
   style: {
     postcss: {
