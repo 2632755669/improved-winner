@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Layout } from './layout';
 import './App.less';
+import './styles/index.css';
 
 function App() {
   return (

@@ -16,7 +16,7 @@ interface Props {
 export const Header = (props: Props) => {
   const { title, avatarUrl, logout, children, toolBar } = props;
   return (
-    <div className={prefixCls}>
+    <div className={`${prefixCls} justify-between bg-red-500`}>
       <Logo title={title} />
       <div className={`${prefixCls}-child`}>{children}</div>
       <div className={`${prefixCls}-right`}>
