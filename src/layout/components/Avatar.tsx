@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { Dropdown, Menu } from '@ss/mtd-react';
 import './avatar.less';
 
@@ -16,7 +16,7 @@ export const Avatar = (props: Props) => {
   const { avatarURL, logout } = props;
   const menu = useMemo(
     () => (
-      <Menu inlineIndent={18}>
+      <Menu inlineIndent={8}>
         <MenuItem>
           <button className="avatar-logout-btn" onClick={logout}>
             退出
@@ -29,7 +29,7 @@ export const Avatar = (props: Props) => {
   return (
     <div className="avatar">
       <div className="avatar-img">
-        <Dropdown content={menu}>
+        <Dropdown content={menu} placement="bottom">
           <img src={avatarURL || defaultAvatarURL} alt="avatar" />
         </Dropdown>
       </div>

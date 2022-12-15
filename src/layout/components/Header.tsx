@@ -3,7 +3,7 @@ import { Logo } from './Logo';
 import { Avatar } from './Avatar';
 import './header.less';
 
-const prefixCls = 'cap-header';
+const prefixCls = 'header-container';
 
 interface Props {
   title: string;
@@ -16,7 +16,7 @@ interface Props {
 export const Header = (props: Props) => {
   const { title, avatarUrl, logout, children, toolBar } = props;
   return (
-    <div className={`${prefixCls} justify-between bg-red-500`}>
+    <div className={`${prefixCls}`}>
       <Logo title={title} />
       <div className={`${prefixCls}-child`}>{children}</div>
       <div className={`${prefixCls}-right`}>

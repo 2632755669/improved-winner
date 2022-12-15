@@ -5,3 +5,7 @@
 .family-meituan {
   font-family: MEITUANTYPE-REGULAR;
 }
+
+* {
+  box-sizing: border-box;
+}

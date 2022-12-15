@@ -1,4 +1,5 @@
 const CracoLessPlugin = require('craco-less');
+const webpack = require('webpack');
 const path = require('path');
 
 // const NODE_ENV = ['staging, production'].includes(process.env.AWP_DEPLOY_ENV) ? 'production' : 'test';
@@ -50,6 +51,11 @@ module.exports = {
     },
   },
   plugins: [{
+    add: [
+      new webpack.DefinePlugin({
+        process: { env: {} },
+      }),
+    ],
     plugin: CracoLessPlugin,
     options: {
       lessLoaderOptions: {
