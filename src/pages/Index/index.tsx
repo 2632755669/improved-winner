@@ -1,3 +1,11 @@
+import { LastOnlineList } from './components/LastOnlineList';
+import { NavCardList } from './components/NavCardList';
+
 export const Index = () => {
-  return <div>首页</div>;
+  return (
+    <main>
+      <LastOnlineList />
+      <NavCardList />
+    </main>
+  );
 };
