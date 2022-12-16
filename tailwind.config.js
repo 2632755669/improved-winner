@@ -4,12 +4,12 @@ module.exports = {
   theme: {
     // 字体大小
     fontSize: {
-      xs: ['10px', { lineHeight: '12px' }],
-      sm: ['12px', { lineHeight: '14px' }],
+      xs: ['10px'],
+      sm: ['12px'],
       base: ['14px', { lineHeight: '16px' }],
       lg: ['16px', { lineHeight: '18px' }],
       xl: ['18px', { lineHeight: '20px' }],
-      '2xl': ['20px', { lineHeight: '22px' }],
+      '2xl': ['20px', { lineHeight: '24px' }],
       '3xl': ['30px', { lineHeight: '30px' }],
       '4xl': ['40px', { lineHeight: '40px' }],
       '5xl': ['50px', { lineHeight: '1' }],
@@ -37,14 +37,22 @@ module.exports = {
         200: '#2E2E2E',
         300: '#3d3d3d',
       },
+      blue: {
+        300: '#247BFF',
+      },
     },
-    width: {
-      'c-424': '424px',
-      'c-70': '70px',
-    },
-    height: {
-      'c-94': '94px',
-      'c-70': '70px',
+    extend: {
+      width: {
+        '400px': '400px',
+        '424px': '424px',
+        '70px': '70px',
+      },
+      height: {
+        '3px': '3px',
+        '94px': '94px',
+        '70px': '70px',
+        '225px': '225px',
+      },
     },
   },
   plugins: [],

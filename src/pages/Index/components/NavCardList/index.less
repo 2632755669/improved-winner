@@ -1,0 +1,27 @@
+.tabs-item {
+  @apply mr-6 text-2xl text-white-84 cursor-pointer;
+}
+
+.tabs-item-line,
+.tabs-item-name {
+  @apply block;
+}
+
+.tabs-item-line {
+  height: 3px;
+  width: 0;
+  margin-top: 12px;
+
+  @apply transition-all bg-blue-300;
+}
+
+.tabs-item:hover,
+.tabs-item-action {
+  .tabs-item-line {
+    @apply bg-blue-300 w-full;
+  }
+
+  .tabs-item-name {
+    @apply text-blue-300;
+  }
+}

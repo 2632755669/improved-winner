@@ -9,13 +9,13 @@ export const OnlineCard = (props: Props) => {
   const { className } = props;
   return (
     <div
-      className={`${className} flex items-center text-white-42 cursor-pointer px-6 py-3 rounded-xl hover:bg-dark-200 w-c-424 h-c-94`}
+      className={`${className} flex items-center text-white-42 cursor-pointer px-6 py-3 rounded-xl hover:bg-dark-200 w-424px h-94px`}
     >
       <span className="text-xl ">1</span>
       <img
         src={testUrl}
         alt=""
-        className="object-cover mr-3 ml-6 w-70 h-70 rounded-lg"
+        className="object-cover mr-3 ml-6 w-70px h-70px rounded-lg"
       />
       <div>
         <h3 className="text-white-72 text-lg mb-1">介绍公司基本情况</h3>

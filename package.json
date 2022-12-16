@@ -54,11 +54,12 @@
     "env-cmd": "9.0.1",
     "husky": ">=6",
     "lint-staged": ">=10",
-    "prettier": "2.8.1"
+    "prettier": "2.8.1",
+    "stylelint": "^13"
   },
-  "resolutions": { 
-    "@types/react": "17.0.44" 
-  }, 
+  "resolutions": {
+    "@types/react": "17.0.44"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"

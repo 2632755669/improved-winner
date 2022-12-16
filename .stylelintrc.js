@@ -6,5 +6,19 @@ module.exports = {
       "always",
       { except: [ "after-single-line-comment", "first-nested" ] }
   ],
+  'at-rule-no-unknown': [
+    true,
+    {
+      ignoreAtRules: [
+        'tailwind',
+        'apply',
+        'variants',
+        'responsive',
+        'screen',
+      ],
+    },
+  ],
+  'declaration-block-trailing-semicolon': null,
+  'no-descending-specificity': null,
   }
 };
