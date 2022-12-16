@@ -1,10 +1,17 @@
 import testUrl from '../../../../assets/icon/logo_img.jpg';
 
-export const NavCard = () => {
+const imgUrl =
+  'https://p0.meituan.net/smarttestvenus/5451f997aa9c1dee543572b083a8bcbe624884.png';
+interface Props {
+  className?: string;
+}
+
+export const NavCard = (props: Props) => {
+  const { className } = props;
   return (
-    <section className="w-400px mb-12">
+    <section className={`w-400px mb-12 cursor-pointer ${className}`}>
       <div className="w-full h-225px rounded-xl overflow-hidden">
-        <img src={testUrl} className="w-full h-full object-cover" alt="" />
+        <img src={imgUrl} className="w-full h-full object-cover" alt="" />
       </div>
       <div className="flex items-center mt-3 ">
         <img
