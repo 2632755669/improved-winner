@@ -6,13 +6,13 @@ module.exports = {
     fontSize: {
       xs: ['10px'],
       sm: ['12px'],
-      base: ['14px', { lineHeight: '16px' }],
-      lg: ['16px', { lineHeight: '18px' }],
-      xl: ['18px', { lineHeight: '20px' }],
-      '2xl': ['20px', { lineHeight: '24px' }],
-      '3xl': ['30px', { lineHeight: '30px' }],
-      '4xl': ['40px', { lineHeight: '40px' }],
-      '5xl': ['50px', { lineHeight: '1' }],
+      base: ['14px'],
+      lg: ['16px'],
+      xl: ['18px'],
+      '2xl': ['20px'],
+      '3xl': ['30px'],
+      '4xl': ['40px'],
+      '5xl': ['50px'],
       '6xl': ['60px', { lineHeight: '1' }],
       '7xl': ['70px', { lineHeight: '1' }],
       '8xl': ['80px', { lineHeight: '1' }],
@@ -29,8 +29,10 @@ module.exports = {
       white: {
         12: 'rgba(255, 255, 255, 0.12)',
         42: 'rgba(255, 255, 255, 0.42)',
+        60: 'rgba(255, 255, 255, 0.6)',
         72: 'rgba(255, 255, 255, 0.72)',
         84: 'rgba(255, 255, 255, 0.84)',
+        100: 'rgba(255, 255, 255)',
 
       },
       dark: {
@@ -46,15 +48,19 @@ module.exports = {
     extend: {
       width: {
         '70px': '70px',
+        '80px': '80px',
         '320px': '320px',
         '400px': '400px',
         '424px': '424px',
+        '432px': '432px',
       },
       height: {
         '3px': '3px',
-        '94px': '94px',
+        '32px': '32px',
         '70px': '70px',
+        '94px': '94px',
         '225px': '225px',
+        '243px': '243px',
       },
     },
   },
