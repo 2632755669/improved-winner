@@ -13,7 +13,7 @@ export const Anchor = () => {
       <MtdAnchor
         className="anchor-list text-white-84 text-base"
         affix
-        offsetTop={50}
+        offsetTop={5}
         scrollOffset={30}
         getContainer={getTarget}
       >
