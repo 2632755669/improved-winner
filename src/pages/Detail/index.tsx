@@ -13,12 +13,12 @@ export const Detail = () => {
         <Breadcrumb />
       </section>
       <section className="flex w-full mt-6">
-        <section className="flex-1">
+        <section id="detail-left" className="flex-1">
           <Description />
           <DetailContent />
           <Comment />
         </section>
-        <section className="w-320px">
+        <section className="w-320px ml-12">
           <Anchor />
           <MoreService />
         </section>

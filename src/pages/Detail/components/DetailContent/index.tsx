@@ -3,7 +3,7 @@ import './index.less';
 
 export const DetailContent = () => {
   return (
-    <section className="detail-content-container mt-14">
+    <section id="detail-content" className="detail-content-container mt-14">
       <section className="detail-content-text text-white-84">详情内容</section>
       <section className="detail-content-like w-full flex-col-center my-14">
         <div className="text-white-42 flex-col-center text-sm">

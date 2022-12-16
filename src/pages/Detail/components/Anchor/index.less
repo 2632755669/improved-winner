@@ -1,0 +1,20 @@
+.anchor-list {
+  .mtd-anchor {
+    @apply text-base;
+
+    .mtd-anchor-link-title {
+      @apply text-white-84;
+
+      &:hover,
+      &.mtd-anchor-link-title-active {
+        @apply text-blue-300;
+      }
+    }
+
+    .mtd-anchor-ink::before {
+      @apply bg-white-6;
+
+      width: 2px;
+    }
+  }
+}
