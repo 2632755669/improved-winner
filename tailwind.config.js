@@ -27,6 +27,7 @@ module.exports = {
     },
     colors: {
       white: {
+        6: 'rgba(255, 255, 255, 0.06)',
         12: 'rgba(255, 255, 255, 0.12)',
         42: 'rgba(255, 255, 255, 0.42)',
         60: 'rgba(255, 255, 255, 0.6)',
@@ -47,6 +48,7 @@ module.exports = {
     },
     extend: {
       width: {
+        '40px': '40px',
         '70px': '70px',
         '80px': '80px',
         '320px': '320px',
@@ -55,6 +57,7 @@ module.exports = {
         '432px': '432px',
       },
       height: {
+        '40px': '40px',
         '3px': '3px',
         '32px': '32px',
         '70px': '70px',
