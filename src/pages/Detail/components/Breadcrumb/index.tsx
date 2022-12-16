@@ -4,7 +4,7 @@ import './index.less';
 
 export const Breadcrumb = () => {
   return (
-    <div className="text-white-42 text-base">
+    <div className="breadcrumb-container">
       <Link to="/home">
         <span className="breadcrumb-item cursor-pointer">首页</span>
       </Link>
