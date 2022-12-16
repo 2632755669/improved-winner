@@ -9,7 +9,7 @@ export const OnlineCard = (props: Props) => {
   const { className } = props;
   return (
     <div
-      className={`flex items-center text-white-42 cursor-pointer px-6 py-3 rounded-xl hover:bg-dark-200 w-424px h-94px ${className}`}
+      className={`flex items-center text-white-42 transition-all duration-700 cursor-pointer px-6 py-3 rounded-xl bg-dark-200.0 hover:bg-dark-200.1 w-424px h-94px ${className}`}
     >
       <span className="text-xl ">1</span>
       <img
