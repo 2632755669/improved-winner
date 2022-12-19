@@ -1,8 +1,15 @@
+import { useState } from 'react';
 import { Icon } from '@ss/mtd-react';
 import { DescSwiper } from '../DescSwiper';
 import './index.less';
 
 export const Description = () => {
+  const [isSubscribe, setIsSubscribe] = useState(false);
+
+  const handleSubscribe = () => {
+    setIsSubscribe(!isSubscribe);
+  };
+
   return (
     <section className="description-container flex w-full text-base">
       <div className="flex-1 mr-14">
@@ -16,10 +23,22 @@ export const Description = () => {
           </span>
         </div>
         <div className="description-action flex items-center mt-4">
-          <span className="text-white-100 px-4 py-1 bg-blue-300 rounded-md cursor-pointer">
-            <Icon type="add" />
-            <span className="ml-1">订阅</span>
-          </span>
+          {isSubscribe ? (
+            <span
+              onClick={handleSubscribe}
+              className="text-white-100 px-4 py-1 bg-white-30 rounded-md cursor-pointer"
+            >
+              已订阅
+            </span>
+          ) : (
+            <span
+              onClick={handleSubscribe}
+              className="text-white-100 px-4 py-1 bg-blue-300 rounded-md cursor-pointer"
+            >
+              <Icon type="add" />
+              <span className="ml-1">订阅</span>
+            </span>
+          )}
           <span className=" bg-dark-300 px-4 py-1 text-white-60 rounded-md ml-4">
             <Icon type="fabulous" />
             <span className="ml-1">23</span>

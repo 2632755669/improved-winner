@@ -8,7 +8,7 @@ export const NavCardList = () => {
   return (
     <div className="mt-12">
       <Tabs tabs={homeTabs} />
-      <section className="w-full grid gap-4 grid-cols-3">
+      <section className="w-full flex flex-wrap">
         {homeNavList.map((item) => {
           return (
             <Link to="/detail/123">
