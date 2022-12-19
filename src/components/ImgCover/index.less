@@ -1,0 +1,36 @@
+.img-cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .img-cover-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(17, 25, 37, 0.3);
+    backdrop-filter: blur(4.9px);
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      content: '';
+      width: 0;
+      height: 0;
+      border: 7px solid transparent;
+      border-left: 12px solid #fff;
+      border-right: 0;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

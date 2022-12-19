@@ -1,4 +1,5 @@
 import testUrl from '../../../../assets/icon/logo_img.jpg';
+import { ImgCover } from '../../../../components/ImgCover';
 
 const imgUrl =
   'https://p0.meituan.net/smarttestvenus/5451f997aa9c1dee543572b083a8bcbe624884.png';
@@ -11,7 +12,7 @@ export const NavCard = (props: Props) => {
   return (
     <section className={`w-400px mb-12 cursor-pointer ${className}`}>
       <div className="w-full h-225px rounded-xl overflow-hidden">
-        <img src={imgUrl} className="w-full h-full object-cover" alt="" />
+        <ImgCover src={imgUrl} isVideo />
       </div>
       <div className="flex items-center mt-3 ">
         <img

@@ -1,7 +1,8 @@
 import { Icon } from '@ss/mtd-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
 import { Pagination, Navigation } from 'swiper';
+import { ImgCover } from '../../../../components/ImgCover';
+import 'swiper/swiper-bundle.css';
 import './index.less';
 
 const data = [
@@ -55,7 +56,7 @@ export const DescSwiper = () => {
         {data.map((item) => {
           return (
             <SwiperSlide>
-              <img src={item.imgUrl} alt="" />
+              <ImgCover src={item.imgUrl} />
             </SwiperSlide>
           );
         })}
