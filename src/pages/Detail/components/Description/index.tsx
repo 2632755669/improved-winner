@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Icon } from '@ss/mtd-react';
+import classnames from 'classnames';
 import { DescSwiper } from '../DescSwiper';
 import './index.less';
 
@@ -39,12 +40,20 @@ export const Description = () => {
               <span className="ml-1">订阅</span>
             </span>
           )}
-          <span className=" bg-dark-300 px-4 py-1 text-white-60 rounded-md ml-4">
+          <span
+            className={`bg-dark-300 px-4 py-1 text-white-60 rounded-md ml-4 ${classnames(
+              { 'text-blue-300': isSubscribe },
+            )}`}
+          >
             <Icon type="fabulous" />
             <span className="ml-1">23</span>
           </span>
           <span className="description-line" />
-          <span className="text-white-60 ml-6">
+          <span
+            className={`text-white-60 ml-6 ${classnames({
+              'text-blue-300': isSubscribe,
+            })}`}
+          >
             <Icon type="comment" />
             <span className="ml-1">3</span>
           </span>
