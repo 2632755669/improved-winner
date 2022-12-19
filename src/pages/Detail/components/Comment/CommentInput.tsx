@@ -23,7 +23,7 @@ export const CommentInput = () => {
   };
 
   return (
-    <section className="flex w-full mt-6">
+    <section className="comment-container flex w-full mt-6">
       <img
         src={avatarUrl}
         alt="user-avatar"
@@ -41,20 +41,18 @@ export const CommentInput = () => {
           <>
             <Form ref={formRef}>
               <Form.Item formItemKey="content">
-                <Input.TextArea />
+                <Input.TextArea
+                  autosize={{ minRows: 4, maxRows: 4 }}
+                  className="resize-none"
+                />
               </Form.Item>
             </Form>
-            <div className="flex justify-end w-full">
-              <Button onClick={handleToogle} type="normal">
-                取消
+            <div className="flex w-full">
+              <Button loading={submitLoading} onClick={submit} type="primary">
+                发送
               </Button>
-              <Button
-                loading={submitLoading}
-                onClick={submit}
-                className="ml-4"
-                type="primary"
-              >
-                提交
+              <Button onClick={handleToogle} className="ml-3" type="normal">
+                取消
               </Button>
             </div>
           </>

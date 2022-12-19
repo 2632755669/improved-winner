@@ -1,4 +1,5 @@
 import { Icon } from '@ss/mtd-react';
+import { DescSwiper } from '../DescSwiper';
 import './index.less';
 
 export const Description = () => {
@@ -31,7 +32,7 @@ export const Description = () => {
         </div>
       </div>
       <div className="description-swiper w-432px h-243px rounded-xl overflow-hidden bg-white-84">
-        轮播图
+        <DescSwiper />
       </div>
     </section>
   );
