@@ -7,14 +7,7 @@ export const NavCardList = () => {
   return (
     <div className="mt-12">
       <Tabs />
-      <section
-        className="w-full grid gap-4 grid-cols-3"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
-          justifyContent: 'space-between',
-        }}
-      >
+      <section className="w-full grid gap-4 grid-cols-3">
         <Link to="/detail/123">
           <NavCard />
         </Link>

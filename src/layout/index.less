@@ -7,8 +7,14 @@
 }
 
 .layout-content {
+  display: flex;
+  justify-content: center;
   padding: 28px 60px;
   height: calc(100vh - 48px);
-  min-width: 1440px;
   overflow: auto;
+
+  .layout-content-inner {
+    min-width: 1440px;
+    max-width: 1440px;
+  }
 }

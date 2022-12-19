@@ -33,7 +33,9 @@ export const Layout = (props: Props) => {
           </div>
         }
       />
-      <div className="layout-content">{children}</div>
+      <div className="layout-content">
+        <div className="layout-content-inner">{children}</div>
+      </div>
     </div>
   );
 };
