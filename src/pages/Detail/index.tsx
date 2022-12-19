@@ -4,6 +4,7 @@ import { Description } from './components/Description';
 import { DetailContent } from './components/DetailContent';
 import { MoreService } from './components/MoreService';
 import { Comment } from './components/Comment';
+import './index.less';
 
 // 详情页
 export const Detail = () => {
@@ -13,12 +14,12 @@ export const Detail = () => {
         <Breadcrumb />
       </section>
       <section className="flex w-full mt-6">
-        <section id="detail-left" className="flex-1">
+        <section className="detail-left flex-1">
           <Description />
           <DetailContent />
           <Comment />
         </section>
-        <section className="w-320px ml-12">
+        <section className="detail-right w-320px ml-12">
           <Anchor />
           <MoreService />
         </section>

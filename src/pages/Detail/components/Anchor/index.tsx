@@ -4,18 +4,12 @@ import './index.less';
 const { Link } = MtdAnchor;
 
 export const Anchor = () => {
-  const getTarget = (): HTMLElement => {
-    return document.querySelector('#detail-left') || document.body;
-  };
-
   return (
     <div className="anchor-container">
+      <h3 className="text-white-84 text-2xl mb-4">目录</h3>
       <MtdAnchor
         className="anchor-list text-white-84 text-base"
-        affix
-        offsetTop={5}
         scrollOffset={30}
-        getContainer={getTarget}
       >
         <Link href="#demo-fixed-anchor-1" title="业务介绍" />
         <Link href="#demo-fixed-anchor-2" title="本书使用场景" />
