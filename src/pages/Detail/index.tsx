@@ -14,7 +14,7 @@ export const Detail = () => {
         <Breadcrumb />
       </section>
       <section className="flex flex-wrap w-full mt-6">
-        <section className="detail-left flex-1">
+        <section id="detail-left" className="detail-left flex-1">
           <Description />
           <DetailContent />
           <Comment />

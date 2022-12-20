@@ -8,7 +8,7 @@ const { Link } = MtdAnchor;
 
 export const Anchor = () => {
   const getTarget = () => {
-    return document.querySelector('#anchor-containter') as HTMLElement;
+    return document.querySelector('#detail-left') as HTMLElement;
   };
 
   return (
@@ -16,7 +16,7 @@ export const Anchor = () => {
       <h3 className="text-white-84 text-2xl mb-4">目录</h3>
       <MtdAnchor
         className="anchor-list text-white-84 text-base"
-        scrollOffset={30}
+        scrollOffset={100}
         getContainer={getTarget}
         affix={false}
       >
