@@ -6,7 +6,7 @@ import './styles/index.css';
 
 function App() {
   return (
-    <Router basename="/soa/pc">
+    <Router basename="/soa/v2">
       <Layout>
         <Switch>
           {routes.map((item) => {

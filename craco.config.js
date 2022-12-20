@@ -70,8 +70,8 @@ module.exports = {
     configure: (webpackConfig, { paths }) => {
       if (process.env.NODE_ENV !== 'development') {
         // eslint-disable-next-line no-multi-assign
-        paths.appBuild = webpackConfig.output.path = path.resolve('build/', 'pc');
-        const publicUrl = `${process.env.PUBLIC_URL || process.env.PUBLIC_PATH}/pc/`;
+        paths.appBuild = webpackConfig.output.path = path.resolve('build/', 'v2');
+        const publicUrl = `${process.env.PUBLIC_URL || process.env.PUBLIC_PATH}/v2/`;
         paths.publicUrlOrPath = publicUrl;
         webpackConfig.output.publicPath = publicUrl;
       }
