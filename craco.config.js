@@ -1,4 +1,5 @@
 const CracoLessPlugin = require('craco-less');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
@@ -65,4 +66,18 @@ module.exports = {
       },
     },
   }],
+  webpack: {
+    configure: (webpackConfig, { paths }) => {
+      if (process.env.NODE_ENV !== 'development') {
+        // eslint-disable-next-line no-multi-assign
+        paths.appBuild = webpackConfig.output.path = path.resolve('build/', 'pc');
+        const publicUrl = `${process.env.PUBLIC_URL || process.env.PUBLIC_PATH}/pc/`;
+        paths.publicUrlOrPath = publicUrl;
+        webpackConfig.output.publicPath = publicUrl;
+      }
+
+      return webpackConfig;
+    },
+    plugins: [new NodePolyfillPlugin({ excludeAliases: ['console'] })],
+  },
 };
