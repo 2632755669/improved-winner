@@ -5,6 +5,10 @@ module.exports = () => {
     require('cssnano')({
       safe: true,
     }),
+    require('postcss-px2rem')({
+      remUnit: 16,
+      remPrecision: 9,
+    }),
   ];
 
   return {
