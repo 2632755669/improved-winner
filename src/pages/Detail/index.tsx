@@ -13,7 +13,7 @@ export const Detail = () => {
       <section>
         <Breadcrumb />
       </section>
-      <section className="flex w-full mt-6">
+      <section className="flex flex-wrap w-full mt-6">
         <section className="detail-left flex-1">
           <Description />
           <DetailContent />

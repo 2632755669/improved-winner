@@ -17,8 +17,8 @@ const ENV_LOWERCASE =
   process.env.REACT_APP_ENV?.toLowerCase() || RUNTIME_ENV.TEST;
 
 const logoutUrlMap = {
-  [RUNTIME_ENV.LOCAL]: '/api/carrier/sso/logout1989',
-  [RUNTIME_ENV.TEST]: '/api/carrier/sso/logout1989',
+  [RUNTIME_ENV.LOCAL]: '/api/carrier/sso/logout2181',
+  [RUNTIME_ENV.TEST]: '/api/carrier/sso/logout2181',
   [RUNTIME_ENV.STAGING]: '/api/carrier/sso/logout822',
   [RUNTIME_ENV.ST]: '/api/carrier/sso/logout822',
   [RUNTIME_ENV.PROD]: '/api/carrier/sso/logout1646',
