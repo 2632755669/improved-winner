@@ -1,6 +1,11 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import { Layout } from './layout';
-import { routes } from './router';
+import { routes, redirectRoutes } from './router';
 import './App.less';
 import './styles/index.css';
 
@@ -17,6 +22,9 @@ function App() {
                 component={item.component}
               />
             );
+          })}
+          {redirectRoutes.map((item) => {
+            return <Redirect path={item.path} to={item.to} key={item.key} />;
           })}
         </Switch>
       </Layout>

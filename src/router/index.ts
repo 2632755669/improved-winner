@@ -7,6 +7,11 @@ interface RoutesType {
   path: string;
   component: React.ComponentType;
 }
+interface RedirectRoutesType {
+  key: string;
+  path: string;
+  to: string;
+}
 
 export const routes: RoutesType[] = [
   {
@@ -18,5 +23,13 @@ export const routes: RoutesType[] = [
     key: 'detail',
     path: '/detail/:id',
     component: Detail,
+  },
+];
+
+export const redirectRoutes: RedirectRoutesType[] = [
+  {
+    key: '/',
+    path: '/',
+    to: '/home',
   },
 ];
