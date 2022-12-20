@@ -1,8 +1,11 @@
+/* eslint-disable react/no-danger */
 import { useState } from 'react';
 import { Icon } from '@ss/mtd-react';
 import classnames from 'classnames';
-import { detailData } from '../../../../mockData';
+import { getDetailConent } from '../../../../mockData';
 import './index.less';
+
+const detailData = getDetailConent();
 
 export const DetailContent = () => {
   const [isLike, setIsLike] = useState(false);
@@ -27,9 +30,10 @@ export const DetailContent = () => {
               >
                 {item.title}
               </div>
-              <div className="detail-content-desc text-white-60 text-base ">
-                {item.desc}
-              </div>
+              <div
+                dangerouslySetInnerHTML={{ __html: item.content }}
+                className="detail-content-desc text-white-60 text-base "
+              />
             </>
           );
         })}

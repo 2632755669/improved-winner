@@ -1,6 +1,8 @@
 import { Anchor as MtdAnchor } from '@ss/mtd-react';
-import { detailData } from '../../../../mockData';
+import { getDetailConent } from '../../../../mockData';
 import './index.less';
+
+const detailData = getDetailConent();
 
 const { Link } = MtdAnchor;
 
