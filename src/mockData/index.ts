@@ -113,7 +113,7 @@ export const detailData = [
   },
 ];
 
-const detailContent = {
+export const detailContent = {
   title: '政府媒体数据报送',
   headInfo: [
     {
@@ -121,7 +121,18 @@ const detailContent = {
       name: '',
       videoId: null,
       url: 'http://p1.meituan.net/portalweb/c958a9c933b27ee7517be6b4f33ddbf91423098.jpg',
-      videoPicture: null,
+      videoPicture:
+        'http://p0.meituan.net/portalweb/5daf2007023e0d8dea6ec2071ece61e7284637.jpg',
+      videoPictureName: null,
+      newVideoId: null,
+    },
+    {
+      type: 1,
+      name: '',
+      videoId: '387702307630970913',
+      url: null,
+      videoPicture:
+        'http://p0.meituan.net/portalweb/5daf2007023e0d8dea6ec2071ece61e7284637.jpg',
       videoPictureName: null,
       newVideoId: null,
     },
