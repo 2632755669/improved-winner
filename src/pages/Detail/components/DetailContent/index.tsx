@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Icon } from '@ss/mtd-react';
 import classnames from 'classnames';
+import { detailData } from '../../../../mockData';
 import './index.less';
 
 export const DetailContent = () => {
@@ -12,7 +13,27 @@ export const DetailContent = () => {
 
   return (
     <section id="detail-content" className="detail-content-container mt-14">
-      <section className="detail-content-text text-white-84">详情内容</section>
+      <section
+        className="detail-content-text text-white-84"
+        id="anchor-containter"
+      >
+        {detailData.map((item) => {
+          return (
+            <>
+              <div
+                id={item.id}
+                key={item.id}
+                className="detail-content-title text-white-84 text-2xl my-4"
+              >
+                {item.title}
+              </div>
+              <div className="detail-content-desc text-white-60 text-base ">
+                {item.desc}
+              </div>
+            </>
+          );
+        })}
+      </section>
       <section className="detail-content-like w-full flex-col-center my-14">
         <div
           className={`text-white-42 flex-col-center text-sm ${classnames({

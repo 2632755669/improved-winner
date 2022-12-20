@@ -1,22 +1,26 @@
 import { Anchor as MtdAnchor } from '@ss/mtd-react';
+import { detailData } from '../../../../mockData';
 import './index.less';
 
 const { Link } = MtdAnchor;
 
 export const Anchor = () => {
+  const getTarget = () => {
+    return document.querySelector('#anchor-containter') as HTMLElement;
+  };
+
   return (
     <div className="anchor-container">
       <h3 className="text-white-84 text-2xl mb-4">目录</h3>
       <MtdAnchor
         className="anchor-list text-white-84 text-base"
         scrollOffset={30}
+        getContainer={getTarget}
+        affix={false}
       >
-        <Link href="#demo-fixed-anchor-1" title="业务介绍" />
-        <Link href="#demo-fixed-anchor-2" title="本书使用场景" />
-        <Link href="#demo-fixed-anchor-3" title="如何获取本书" />
-        <Link href="#demo-fixed-anchor-4" title="服务团队" />
-        <Link href="#demo-fixed-anchor-5" title="常见问题" />
-        <Link href="#demo-fixed-anchor-6" title="评价" />
+        {detailData.map((item) => {
+          return <Link href={`#${item.id}`} key={item.id} title={item.title} />;
+        })}
       </MtdAnchor>
     </div>
   );
