@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "PUBLIC_URL=build/v2/ PUBLIC_PATH=build node ./bin/talos_build",
+    "build": "craco build",
     "build:code": "craco build",
     "commit": "git cz",
     "cov": "echo missing coverage",
