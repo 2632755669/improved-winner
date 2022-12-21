@@ -21,7 +21,7 @@ export const NavCard = (props: Props) => {
     >
       <section className="w-400px cursor-pointer">
         <div className="w-full h-225px rounded-lg overflow-hidden img-border">
-          <ImgCover src={data.coverUrl} isVideo />
+          <ImgCover src={data.coverUrl} />
         </div>
         <div className="flex items-center mt-3 ">
           <img

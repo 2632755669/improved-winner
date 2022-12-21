@@ -49,7 +49,7 @@ export const DescSwiper = () => {
           return (
             <SwiperSlide>
               <ImgCover
-                isVideo={isVideo}
+                isVideo={false}
                 videoId={item.videoId as string}
                 src={imgUrl as string}
               />
