@@ -2,21 +2,11 @@ import { Icon } from '@ss/mtd-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper';
 import { ImgCover } from '../../../../components/ImgCover';
+import { detailContent } from '../../../../mockData';
 import 'swiper/swiper-bundle.css';
 import './index.less';
 
-const data = [
-  {
-    imgUrl:
-      'https://p0.meituan.net/smarttestvenus/5451f997aa9c1dee543572b083a8bcbe624884.png',
-    navUrl: '',
-  },
-  {
-    imgUrl:
-      'https://s3plus.sankuai.com/v1/mss_f5ecef526b384cbaa1117230d53b4bd6/smart/%E5%90%89%E7%A5%A5%E7%89%A9_g4wdwt.jpg',
-    navUrl: '',
-  },
-];
+const { headInfo } = detailContent;
 
 // 轮播图
 export const DescSwiper = () => {
@@ -53,10 +43,16 @@ export const DescSwiper = () => {
         onSwiper={(swiper) => console.log(swiper)}
         modules={[Pagination, Navigation]}
       >
-        {data.map((item) => {
+        {headInfo.map((item) => {
+          const isVideo = item.type === 1;
+          const imgUrl = isVideo ? item.videoPicture : item.url;
           return (
             <SwiperSlide>
-              <ImgCover src={item.imgUrl} />
+              <ImgCover
+                isVideo={isVideo}
+                videoId={item.videoId as string}
+                src={imgUrl as string}
+              />
             </SwiperSlide>
           );
         })}

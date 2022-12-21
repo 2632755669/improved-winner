@@ -5,12 +5,13 @@ interface Props {
   src: string;
   isVideo?: boolean;
   canPlay?: boolean;
+  videoId?: string;
 }
 
 export const ImgCover = (props: Props) => {
-  const { src, isVideo, canPlay } = props;
+  const { src, isVideo, canPlay, videoId } = props;
 
-  console.log(canPlay);
+  console.log(canPlay, videoId);
 
   const srcMemo = useMemo(() => {
     return isVideo ? src : src;
