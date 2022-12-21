@@ -22,3 +22,8 @@ a:hover {
     background-color: '';
   }
 }
+
+/* 图片边框 */
+.img-border {
+  @apply border	border-solid border-white-6;
+}

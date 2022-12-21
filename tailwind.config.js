@@ -72,6 +72,10 @@ module.exports = {
         '225px': '225px',
         '243px': '243px',
         '256px': '256px',
+        '353px': '353px',
+      },
+      lineHeight: {
+        'leading-4.5': '1.125rem',
       },
     },
   },

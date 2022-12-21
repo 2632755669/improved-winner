@@ -5,12 +5,12 @@ import { homeLastOnlineList } from '../../../../mockData';
 export const LastOnlineList = () => {
   return (
     <div>
-      <h3 className="text-2xl text-white-84 mb-7">最新上线</h3>
-      <section className="flex justify-between flex-wrap">
+      <h3 className="text-2xl text-white-84 font-bold mb-7">最新上线</h3>
+      <section className="flex flex-wrap">
         {homeLastOnlineList?.map((item) => {
           return (
             <Link to="/detail/123">
-              <OnlineCard data={item} />
+              <OnlineCard data={item} className="mr-6 mb-6" />
             </Link>
           );
         })}

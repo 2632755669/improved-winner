@@ -16,26 +16,28 @@ interface Props {
 export const NavCard = (props: Props) => {
   const { className, data } = props;
   return (
-    <section className="flex items-center justify-center rounded-xl p-4 bg-dark-200.0 hover:bg-dark-200.1">
-      <section className={`w-400px mb-12 cursor-pointer ${className}`}>
-        <div className="w-full h-225px rounded-xl overflow-hidden">
+    <section
+      className={`flex justify-center rounded-lg py-3 w-424px h-353px bg-dark-200.0 hover:bg-dark-200.1 ${className}`}
+    >
+      <section className="w-400px cursor-pointer">
+        <div className="w-full h-225px rounded-lg overflow-hidden img-border">
           <ImgCover src={data.coverUrl} isVideo />
         </div>
         <div className="flex items-center mt-3 ">
           <img
             src={data.titleImg}
             alt=""
-            className="object-cover mr-3 w-70px h-70px rounded-lg"
+            className="object-cover mr-3 w-70px h-70px rounded-lg img-border"
           />
           <div className="text-white-72">
-            <h3 className="text-lg">{data.title}</h3>
+            <h3 className="text-lg font-bold">{data.title}</h3>
             <p className="text-sm leading-5 my-1">{data.desc}</p>
-            <div>
+            <div className="flex">
               {data?.tags?.map((item, index) => {
                 return (
                   <span
                     key={index}
-                    className="text-xs bg-dark-300 p-1 rounded-md mr-1"
+                    className="bg-dark-300 leading-4.5 text-xs px-1 rounded-md mr-1"
                   >
                     {item}
                   </span>

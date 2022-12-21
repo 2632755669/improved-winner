@@ -25,11 +25,13 @@ export const Layout = (props: Props) => {
         logout={logout}
         toolBar={
           <div className="header-toolbar">
-            <Icon
-              onClick={service}
-              className="header-toolbar-connect"
-              type="customer-o"
-            />
+            <div className="header-toobar-bg">
+              <Icon
+                onClick={service}
+                className="header-toolbar-connect"
+                type="customer-o"
+              />
+            </div>
           </div>
         }
       />

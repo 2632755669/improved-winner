@@ -12,7 +12,7 @@ export const NavCardList = () => {
         {homeNavList.map((item) => {
           return (
             <Link to="/detail/123">
-              <NavCard data={item} />
+              <NavCard data={item} className="mr-6 mb-6" />
             </Link>
           );
         })}
