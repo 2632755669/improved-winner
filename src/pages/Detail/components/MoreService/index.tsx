@@ -15,9 +15,6 @@ export const MoreService = () => {
         <Link to="/detail/234">
           <ServiceCard />
         </Link>
-        <Link to="/detail/234">
-          <ServiceCard />
-        </Link>
       </section>
     </section>
   );

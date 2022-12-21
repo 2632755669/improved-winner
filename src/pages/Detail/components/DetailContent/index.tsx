@@ -1,18 +1,15 @@
 /* eslint-disable react/no-danger */
-import { useState } from 'react';
+import { useContext } from 'react';
 import { Icon } from '@ss/mtd-react';
 import classnames from 'classnames';
 import { getDetailConent } from '../../../../mockData';
+import { LikeContext } from '../../context/LikeContext';
 import './index.less';
 
 const detailData = getDetailConent();
 
 export const DetailContent = () => {
-  const [isLike, setIsLike] = useState(false);
-
-  const handleLike = () => {
-    setIsLike(!isLike);
-  };
+  const { isLike, likeAction } = useContext(LikeContext);
 
   return (
     <section id="detail-content" className="detail-content-container mt-14">
@@ -45,13 +42,13 @@ export const DetailContent = () => {
           })}`}
         >
           <span
-            onClick={handleLike}
+            onClick={likeAction}
             className="text-center leading-10 border-solid-round cursor-pointer w-40px h-40px text-24"
           >
             <Icon type="fabulous" />
           </span>
           {isLike ? (
-            <span className="my-2">24人赞赏</span>
+            <span className="my-2">24人觉得很赞</span>
           ) : (
             <>
               <span className="my-2">信息有用，点赞</span>

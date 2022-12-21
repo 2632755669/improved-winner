@@ -4,7 +4,7 @@ import './index.less';
 
 export const Comment = () => {
   return (
-    <section className="pb-24">
+    <section id="detail-comment" className="pb-24">
       <h3 className="text-white-84 text-2xl">评价（3）</h3>
       <section className="mt-4">
         <CommentItem />

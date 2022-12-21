@@ -27,13 +27,16 @@ export const NavCard = (props: Props) => {
             alt=""
             className="object-cover mr-3 w-70px h-70px rounded-lg"
           />
-          <div className="text-white-72 h-70px">
+          <div className="text-white-72">
             <h3 className="text-lg">{data.title}</h3>
             <p className="text-sm leading-5 my-1">{data.desc}</p>
-            <div className="text-xs">
+            <div>
               {data?.tags?.map((item, index) => {
                 return (
-                  <span key={index} className="bg-dark-300 p-1 rounded-md mr-1">
+                  <span
+                    key={index}
+                    className="text-xs bg-dark-300 p-1 rounded-md mr-1"
+                  >
                     {item}
                   </span>
                 );

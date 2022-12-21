@@ -1,15 +1,27 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Icon } from '@ss/mtd-react';
 import classnames from 'classnames';
 import { DescSwiper } from '../DescSwiper';
 import { detailContent } from '../../../../mockData';
+import { LikeContext } from '../../context/LikeContext';
 import './index.less';
 
 export const Description = () => {
+  // 订阅
   const [isSubscribe, setIsSubscribe] = useState(false);
+  // 点赞
+  const { isLike, likeAction } = useContext(LikeContext);
 
+  // 订阅
   const handleSubscribe = () => {
     setIsSubscribe(!isSubscribe);
+  };
+
+  // 跳到评论区
+  const handleScrollComment = () => {
+    document
+      .querySelector('#detail-comment')
+      ?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -46,18 +58,20 @@ export const Description = () => {
             </span>
           )}
           <span
-            className={`bg-dark-300 px-4 py-1 text-white-60 rounded-md ml-4 ${classnames(
-              { 'text-blue-300': isSubscribe },
+            className={`bg-dark-300 px-4 py-1 cursor-pointer text-white-60 hover:text-blue-300 rounded-md ml-4 ${classnames(
+              {
+                'text-blue-300': isLike,
+              },
             )}`}
+            onClick={likeAction}
           >
             <Icon type="fabulous" />
             <span className="ml-1">23</span>
           </span>
           <span className="description-line" />
           <span
-            className={`text-white-60 ml-6 ${classnames({
-              'text-blue-300': isSubscribe,
-            })}`}
+            className="text-white-60 ml-6 cursor-pointer hover:text-blue-300"
+            onClick={handleScrollComment}
           >
             <Icon type="comment" />
             <span className="ml-1">3</span>

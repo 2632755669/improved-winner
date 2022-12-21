@@ -16,13 +16,14 @@ export const Anchor = () => {
       <h3 className="text-white-84 text-2xl mb-4">目录</h3>
       <MtdAnchor
         className="anchor-list text-white-84 text-base"
-        scrollOffset={100}
+        scrollOffset={150}
         getContainer={getTarget}
         affix={false}
       >
         {detailData.map((item) => {
           return <Link href={`#${item.id}`} key={item.id} title={item.title} />;
         })}
+        <Link href="#detail-comment" title="评价" />
       </MtdAnchor>
     </div>
   );
