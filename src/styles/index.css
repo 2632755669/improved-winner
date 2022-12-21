@@ -16,3 +16,9 @@
 a:hover {
   text-decoration: none !important;
 }
+
+@layer base {
+  [type='button'] {
+    background-color: '';
+  }
+}
