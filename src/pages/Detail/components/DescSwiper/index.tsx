@@ -58,10 +58,10 @@ export const DescSwiper = () => {
         })}
       </Swiper>
       <div className="desc-swiper-button" id="swiper-pre">
-        <Icon type="left-thick" />
+        <Icon type="left" />
       </div>
       <div className="desc-swiper-button" id="swiper-next">
-        <Icon type="right-thick" />
+        <Icon type="right" />
       </div>
       <div className="desc-swiper-pagination" />
     </section>

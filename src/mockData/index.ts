@@ -23,6 +23,57 @@ export const homeTabs = [
   },
 ];
 
+export const homeLastOnlineList = [
+  {
+    index: 1,
+    title: '介绍公司基本情况',
+    tags: ['内容全面', '随时报更新'],
+    likeCount: 23,
+    titleImg:
+      'https://p0.meituan.net/smarttestvenus/5451f997aa9c1dee543572b083a8bcbe624884.png',
+  },
+  {
+    index: 2,
+    title: '介绍公司基本情况',
+    tags: ['内容全面', '随时报更新'],
+    likeCount: 23,
+    titleImg:
+      'https://p0.meituan.net/smarttestvenus/5451f997aa9c1dee543572b083a8bcbe624884.png',
+  },
+  {
+    index: 3,
+    title: '介绍公司基本情况',
+    tags: ['内容全面', '随时报更新'],
+    likeCount: 23,
+    titleImg:
+      'https://p0.meituan.net/smarttestvenus/5451f997aa9c1dee543572b083a8bcbe624884.png',
+  },
+  {
+    index: 4,
+    title: '介绍公司基本情况',
+    tags: ['内容全面', '随时报更新'],
+    likeCount: 23,
+    titleImg:
+      'https://p0.meituan.net/smarttestvenus/5451f997aa9c1dee543572b083a8bcbe624884.png',
+  },
+  {
+    index: 5,
+    title: '介绍公司基本情况',
+    tags: ['内容全面', '随时报更新'],
+    likeCount: 23,
+    titleImg:
+      'https://p0.meituan.net/smarttestvenus/5451f997aa9c1dee543572b083a8bcbe624884.png',
+  },
+  {
+    index: 6,
+    title: '介绍公司基本情况',
+    tags: ['内容全面', '随时报更新'],
+    likeCount: 23,
+    titleImg:
+      'https://p0.meituan.net/smarttestvenus/5451f997aa9c1dee543572b083a8bcbe624884.png',
+  },
+];
+
 export const homeNavList = [
   {
     coverUrl:
