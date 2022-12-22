@@ -33,7 +33,6 @@ module.exports = {
       },
     },
     before: (app) => {
-      console.log(app, '--------');
       const { ExpressSSO } = require('@mtfe/sso-client');
       const ssoAuthMiddleware = ExpressSSO({
         clientId: ssoConfig[NODE_ENV].clientId,
