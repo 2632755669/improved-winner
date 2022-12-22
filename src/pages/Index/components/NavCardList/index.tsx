@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Affix } from '@ss/mtd-react';
@@ -23,9 +24,9 @@ export const NavCardList = () => {
         <Tabs tabs={homeTabs} />
       </Affix>
       <section className="w-full flex flex-wrap">
-        {homeNavList.map((item) => {
+        {homeNavList.map((item, index) => {
           return (
-            <Link key={item.title} to="/detail/123">
+            <Link key={index} to="/detail/123">
               <NavCard data={item} className="mr-6 mb-6" />
             </Link>
           );

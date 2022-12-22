@@ -26,7 +26,7 @@ registerInterceptor('request', (config) => {
 });
 registerInterceptor('response', (status, response) => {
   if (status === 200) {
-    if (response.data.status.code !== 0) {
+    if (response.status.code !== 0) {
       messageShow(response.status.message);
       return Promise.reject(response);
     }

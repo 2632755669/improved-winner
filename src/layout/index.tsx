@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Icon } from '@ss/mtd-react';
 import { Header } from './components/Header';
-import { getUserInfo } from '../apis/common';
 import './index.less';
 
 interface Props {
@@ -18,10 +17,6 @@ export const Layout = (props: Props) => {
   const service = () => {
     console.log('跳转到大象');
   };
-
-  useEffect(() => {
-    getUserInfo();
-  }, []);
 
   return (
     <div>

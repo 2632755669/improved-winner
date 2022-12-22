@@ -30,7 +30,7 @@ export const Tabs = (props: Props) => {
           'tabs-item-active': item.key === activeKey,
         });
         return (
-          <span className={`tabs-item ${activeClass}`}>
+          <span key={item.key} className={`tabs-item ${activeClass}`}>
             <span className="tabs-item-name" onClick={() => toggle(item.key)}>
               {item.title}
             </span>
