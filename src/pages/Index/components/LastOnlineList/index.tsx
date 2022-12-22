@@ -9,7 +9,7 @@ export const LastOnlineList = () => {
       <section className="flex flex-wrap">
         {homeLastOnlineList?.map((item) => {
           return (
-            <Link to="/detail/123">
+            <Link key={item.index} to="/detail/123">
               <OnlineCard data={item} className="mr-6 mb-6" />
             </Link>
           );

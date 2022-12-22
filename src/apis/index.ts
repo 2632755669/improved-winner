@@ -1,7 +1,16 @@
 import { get, post, registerInterceptor } from '@cap/mtv-fetch';
 import { message } from '@ss/mtd-react';
 
-export type { HttpResponse } from '@cap/mtv-fetch/src/fetch';
+export interface HttpResponse<T = any> {
+  data: T;
+  status: {
+    code: number;
+    message: string;
+    subCode: string;
+    subMessage: string;
+  };
+  success: boolean;
+}
 
 function messageShow(description: string) {
   message.error({
@@ -15,20 +24,20 @@ const ErrMsg = '网络错误';
 registerInterceptor('request', (config) => {
   return config;
 });
-registerInterceptor('response', (response) => {
-  if (response.status === 200) {
-    if (response.data.code !== 0) {
-      messageShow(response.data.message);
-      return Promise.reject(response.data);
+registerInterceptor('response', (status, response) => {
+  if (status === 200) {
+    if (response.data.status.code !== 0) {
+      messageShow(response.status.message);
+      return Promise.reject(response);
     }
 
-    return Promise.resolve(response.data);
+    return Promise.resolve(response);
   }
 
   // TODO 交互待优化
   // return Promise.reject(response.data);
   // 服务器状态码不是200的情况
-  switch (response.status) {
+  switch (status) {
     // 401: 未登录
     // 未登录则跳转登录页面，并携带当前页面的路径
     // 在登录成功后返回当前页面，这一步需要在登录页操作。
@@ -48,13 +57,9 @@ registerInterceptor('response', (response) => {
       break;
     // 其他错误，直接抛出错误提示
     default:
-      messageShow(response.data.message || ErrMsg);
+      messageShow(response.message || ErrMsg);
   }
   return Promise.reject(response);
 });
-
-export const getData = () => {
-  return get('url');
-};
 
 export { get, post };
