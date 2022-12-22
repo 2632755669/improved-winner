@@ -12,8 +12,8 @@ export const NavCardList = () => {
   };
 
   return (
-    <div className="mt-12">
-      <Affix offsetTop={0} getTarget={getTarget}>
+    <div className="mt-2">
+      <Affix offsetTop={-3} getTarget={getTarget}>
         <Tabs tabs={homeTabs} />
       </Affix>
       <section className="w-full flex flex-wrap">
