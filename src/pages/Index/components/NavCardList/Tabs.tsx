@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classnames from 'classnames';
 
 export interface TabItem {
@@ -16,12 +16,18 @@ interface Props {
 
 export const Tabs = (props: Props) => {
   const { tabs, onChange } = props;
-  const [activeKey, setActiveKey] = useState(tabs?.[0]?.key);
+  const [activeKey, setActiveKey] = useState('');
 
   const toggle = (key: string) => {
     onChange?.(activeKey);
     setActiveKey(key);
   };
+
+  useEffect(() => {
+    setActiveKey(tabs[0]?.key);
+    onChange?.(activeKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tabs]);
 
   return (
     <section id="tabs" className="flex pt-7 pb-6 bg-dark-100">

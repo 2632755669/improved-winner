@@ -6,12 +6,19 @@ import { DetailContent } from './components/DetailContent';
 import { MoreService } from './components/MoreService';
 import { Comment } from './components/Comment';
 import { LikeContext } from './context/LikeContext';
+import { useDetailData } from './hooks/useDetailData';
 import './index.less';
 
 // 详情页
 export const Detail = () => {
   const [isLike, setIsLike] = useState(false);
-
+  const {
+    anchorData,
+    descData,
+    descSwiperData,
+    detailContentData,
+    commentData,
+  } = useDetailData();
   // 点赞
   const likeAction = () => {
     setIsLike(!isLike);
@@ -25,12 +32,12 @@ export const Detail = () => {
         </section>
         <section className="flex flex-wrap w-full mt-6">
           <section id="detail-left" className="detail-left flex-1">
-            <Description />
-            <DetailContent />
-            <Comment />
+            <Description descData={descData} descSwiperData={descSwiperData} />
+            <DetailContent data={detailContentData} />
+            <Comment commentData={commentData} />
           </section>
           <section className="detail-right w-320px ml-12">
-            <Anchor />
+            <Anchor data={anchorData} />
             <MoreService />
           </section>
         </section>

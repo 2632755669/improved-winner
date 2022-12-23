@@ -1,4 +1,8 @@
 import { get, post, HttpResponse } from './index';
+import { homeTabs, homeNavList } from '../mockData';
+
+const imgUrl =
+  'https://p0.meituan.net/smarttestvenus/5451f997aa9c1dee543572b083a8bcbe624884.png';
 
 /**
  * 获取模块
@@ -49,12 +53,24 @@ export const getModuleMenus = () => {
     moduleMenuCode: 'menu_strategy',
     type: 1,
   };
+  const result = homeTabs.map((item) => {
+    return {
+      key: String(item.id),
+      title: item.moduleDisplayTitle,
+    };
+  });
   return post<ModuleMenusParams, HttpResponse<ModuleMenusItem[]>>(
     '/sapi/client/v1/tmcmoduleconfigclientservice_homepagemodules',
     params,
-  ).then(({ data }) => {
-    console.log(data);
-  });
+  ).then(
+    ({ data }) => {
+      console.log(data);
+      return result;
+    },
+    () => {
+      return result;
+    },
+  );
 };
 
 /**
@@ -62,17 +78,19 @@ export const getModuleMenus = () => {
  */
 
 interface MenuServiceParams {
-  moduleId: number;
+  moduleId: string;
   pageNo: number;
   pageSize: number;
 }
 
 interface MenuServiceItem {
-  id: number;
+  id: string;
   title: string;
   imageUrl: string;
+  secImageUrl: string;
   moduleCode: string;
   moduleId: number;
+  label: string[];
   remark: string;
 }
 
@@ -86,16 +104,91 @@ interface MenuServiceList extends HttpResponse {
   };
 }
 
-export const getMenuServiceList = (id: number) => {
+export const getMenuServiceList = (id: string) => {
   const params = {
     moduleId: id,
     pageNo: 1,
     pageSize: 200,
   };
-  return get<MenuServiceParams, HttpResponse<MenuServiceList>>(
+
+  const result = homeNavList.map((item) => {
+    return {
+      id: item.id,
+      title: item.title,
+      desc: item.remark,
+      coverImg: item.imageUrl || imgUrl,
+      titleImg: item.secImageUrl || imgUrl,
+      tags: ['自动获取', '支持定制', '多主题'] || item.label,
+    };
+  });
+
+  return get<MenuServiceParams, MenuServiceList>(
     '/sapi/client/v1/tmcmoduleconfigclientservice_modulecontent',
     params,
-  ).then(({ data }) => {
-    console.log(data);
+  ).then(
+    ({ data }) => {
+      console.log(data);
+      return result;
+    },
+    () => result,
+  );
+};
+
+/**
+ * 获取最新上线服务列表
+ */
+
+interface LastServiceParams {
+  pageNo: number;
+  pageSize: number;
+}
+
+interface LastServiceItem {
+  id: string;
+  title: string;
+  imageUrl: string;
+  secImageUrl: string;
+  moduleCode: string;
+  moduleId: number;
+  label: string[];
+  remark: string;
+}
+
+interface LastServiceList extends HttpResponse {
+  data: LastServiceItem[];
+  page: {
+    pageNo: number;
+    pageSize: number;
+    totalCount: number;
+    totalPageCount: number;
+  };
+}
+
+export const getLastServiceList = () => {
+  const params = {
+    pageNo: 1,
+    pageSize: 200,
+  };
+
+  const result = homeNavList.map((item, index) => {
+    return {
+      id: item.id,
+      title: item.title,
+      index: index + 1,
+      likeCount: item.weight,
+      titleImg: item.secImageUrl || imgUrl,
+      tags: ['自动获取', '支持定制', '多主题'] || item.label,
+    };
   });
+
+  return get<LastServiceParams, LastServiceList>(
+    '/sapi/client/v1/tmcmoduleconfigclientservice_modulecontent',
+    params,
+  ).then(
+    ({ data }) => {
+      console.log(data);
+      return result;
+    },
+    () => result,
+  );
 };

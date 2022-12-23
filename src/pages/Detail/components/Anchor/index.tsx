@@ -1,12 +1,15 @@
 import { Anchor as MtdAnchor } from '@ss/mtd-react';
-import { getDetailConent } from '../../../../mockData';
+import { AnchorDataItem } from '../../hooks/useDetailData';
 import './index.less';
-
-const detailData = getDetailConent();
 
 const { Link } = MtdAnchor;
 
-export const Anchor = () => {
+interface Props {
+  data: AnchorDataItem[];
+}
+
+export const Anchor = (props: Props) => {
+  const { data } = props;
   const getTarget = () => {
     return document.querySelector('#detail-left') as HTMLElement;
   };
@@ -20,7 +23,7 @@ export const Anchor = () => {
         getContainer={getTarget}
         affix={false}
       >
-        {detailData.map((item) => {
+        {data.map((item) => {
           return <Link href={`#${item.id}`} key={item.id} title={item.title} />;
         })}
         <Link href="#detail-comment" title="评价" />

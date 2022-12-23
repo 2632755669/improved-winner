@@ -2,14 +2,17 @@ import { Icon } from '@ss/mtd-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper';
 import { ImgCover } from '../../../../components/ImgCover';
-import { detailContent } from '../../../../mockData';
+import { DescSwiperDataItem } from '../../hooks/useDetailData';
 import 'swiper/swiper-bundle.css';
 import './index.less';
 
-const { headInfo } = detailContent;
+interface Props {
+  descSwiperData: DescSwiperDataItem[];
+}
 
 // 轮播图
-export const DescSwiper = () => {
+export const DescSwiper = (props: Props) => {
+  const { descSwiperData } = props;
   return (
     <section className="desc-swiper-container">
       <Swiper
@@ -25,7 +28,6 @@ export const DescSwiper = () => {
           type: 'custom',
           el: '.desc-swiper-pagination',
           renderCustom(swiper, current, total) {
-            console.log(swiper);
             let customPaginationHtml = '';
             for (let i = 0; i < total; i++) {
               // 判断哪个分页器此刻应该被激活
@@ -40,12 +42,10 @@ export const DescSwiper = () => {
             return customPaginationHtml;
           },
         }}
-        onSwiper={(swiper) => console.log(swiper)}
         modules={[Pagination, Navigation]}
       >
-        {headInfo.map((item) => {
-          const isVideo = item.type === 1;
-          const imgUrl = isVideo ? item.videoPicture : item.url;
+        {descSwiperData.map((item) => {
+          const imgUrl = item.isVideo ? item.videoCoverUrl : item.imgUrl;
           return (
             <SwiperSlide>
               <ImgCover

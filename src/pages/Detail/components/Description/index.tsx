@@ -2,11 +2,18 @@ import { useState, useContext } from 'react';
 import { Icon } from '@ss/mtd-react';
 import classnames from 'classnames';
 import { DescSwiper } from '../DescSwiper';
-import { detailContent } from '../../../../mockData';
 import { LikeContext } from '../../context/LikeContext';
+import { DescData, DescSwiperDataItem } from '../../hooks/useDetailData';
 import './index.less';
 
-export const Description = () => {
+interface Props {
+  descData: Partial<DescData>;
+  descSwiperData: DescSwiperDataItem[];
+}
+
+export const Description = (props: Props) => {
+  const { descData, descSwiperData } = props;
+
   // 订阅
   const [isSubscribe, setIsSubscribe] = useState(false);
   // 点赞
@@ -27,12 +34,10 @@ export const Description = () => {
   return (
     <section className="description-container flex w-full text-base">
       <div className="flex-1 mr-14">
-        <h1 className="text-white-84 text-3xl">{detailContent.title}</h1>
-        <p className="mt-1 text-white-60 leading-snug">
-          {detailContent.bizIntroduction}
-        </p>
+        <h1 className="text-white-84 text-3xl">{descData.title}</h1>
+        <p className="mt-1 text-white-60 leading-snug">{descData.intro}</p>
         <div className="mt-3">
-          {detailContent.label?.map((item) => {
+          {descData.tags?.map((item) => {
             return (
               <span className="bg-dark-300 p-1 rounded-md mr-2 mb-2 text-white-60">
                 {item}
@@ -66,7 +71,7 @@ export const Description = () => {
             onClick={likeAction}
           >
             <Icon type="fabulous" />
-            <span className="ml-1">23</span>
+            <span className="ml-1">{descData.likeCount}</span>
           </span>
           <span className="description-line" />
           <span
@@ -79,7 +84,7 @@ export const Description = () => {
         </div>
       </div>
       <div className="description-swiper w-432px h-243px rounded-xl overflow-hidden bg-white-84">
-        <DescSwiper />
+        <DescSwiper descSwiperData={descSwiperData} />
       </div>
     </section>
   );

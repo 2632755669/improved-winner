@@ -1,15 +1,17 @@
 /* eslint-disable react/no-array-index-key */
 import { Icon } from '@ss/mtd-react';
 
+export interface OnlineCardItem {
+  index: number;
+  title: string;
+  titleImg: string;
+  tags: string[];
+  likeCount: number;
+}
+
 interface Props {
   className?: string;
-  data: {
-    index: number;
-    title: string;
-    titleImg: string;
-    tags: string[];
-    likeCount: number;
-  };
+  data: OnlineCardItem;
 }
 
 export const OnlineCard = (props: Props) => {

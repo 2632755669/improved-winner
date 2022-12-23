@@ -2,13 +2,16 @@
 import { useContext } from 'react';
 import { Icon } from '@ss/mtd-react';
 import classnames from 'classnames';
-import { getDetailConent } from '../../../../mockData';
 import { LikeContext } from '../../context/LikeContext';
+import { ContentDetailItem } from '../../hooks/useDetailData';
 import './index.less';
 
-const detailData = getDetailConent();
+interface Props {
+  data: ContentDetailItem[];
+}
 
-export const DetailContent = () => {
+export const DetailContent = (props: Props) => {
+  const { data } = props;
   const { isLike, likeAction } = useContext(LikeContext);
 
   return (
@@ -17,7 +20,7 @@ export const DetailContent = () => {
         className="detail-content-text text-white-84"
         id="anchor-containter"
       >
-        {detailData.map((item) => {
+        {data.map((item) => {
           return (
             <>
               <div

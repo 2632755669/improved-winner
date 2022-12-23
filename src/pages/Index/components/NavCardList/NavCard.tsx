@@ -1,11 +1,12 @@
 /* eslint-disable react/no-array-index-key */
 import { ImgCover } from '../../../../components/ImgCover';
 
-interface NavData {
-  coverUrl: string;
-  titleImg: string;
+export interface NavData {
+  id: number;
   title: string;
   desc: string;
+  coverImg: string;
+  titleImg: string;
   tags: string[];
 }
 interface Props {
@@ -21,7 +22,7 @@ export const NavCard = (props: Props) => {
     >
       <section className="w-400px cursor-pointer">
         <div className="w-full h-225px rounded-lg overflow-hidden img-border">
-          <ImgCover src={data.coverUrl} />
+          <ImgCover src={data.coverImg} />
         </div>
         <div className="flex items-center mt-3 ">
           <img

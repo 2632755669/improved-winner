@@ -1,4 +1,5 @@
 import { post, HttpResponse } from './index';
+import { detailContent } from '../mockData';
 
 /**
  * 获取服务详情
@@ -23,7 +24,7 @@ interface HeadInfoItem {
   videoPictureName: string;
 }
 
-interface ServiceDetail {
+export interface ServiceDetail {
   title: string;
   type: string;
   usefulCount: number;
@@ -44,11 +45,16 @@ interface ServiceDetail {
   isUseful: boolean;
 }
 
-export const getServiceDetail = (params: ServiceDetailParams) => {
+export const getServiceDetail = (id: number) => {
+  const params = { serviceId: id };
   return post<ServiceDetailParams, HttpResponse<ServiceDetail>>(
     '/sapi/client/v1/tmcmoduleconfigclientservice_getservicedetail',
     params,
-  ).then((data) => {
-    return data;
-  });
+  ).then(
+    (data) => {
+      console.log(data);
+      return detailContent;
+    },
+    () => detailContent,
+  );
 };
