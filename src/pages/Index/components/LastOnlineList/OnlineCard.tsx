@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import { Icon } from '@ss/mtd-react';
+import like42Svg from '../../../../assets/icon/like42.svg';
 
 export interface OnlineCardItem {
   index: number;
@@ -37,8 +37,8 @@ export const OnlineCard = (props: Props) => {
             );
           })}
         </div>
-        <div className="text-base">
-          <Icon type="fabulous" />
+        <div className="flex items-center text-base">
+          <img className="w-14px h-14px" src={like42Svg} alt="" />
           <span className="ml-1">{data.likeCount}</span>
         </div>
       </div>

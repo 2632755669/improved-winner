@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import classnames from 'classnames';
 import { LikeContext } from '../../context/LikeContext';
 import { ContentDetailItem } from '../../hooks/useDetailData';
-import likePng from '../../../../assets/icon/like.png';
+import like42Svg from '../../../../assets/icon/like42.svg';
 import likeLightSvg from '../../../../assets/icon/like-light.svg';
 import './index.less';
 
@@ -51,7 +51,7 @@ export const DetailContent = (props: Props) => {
           >
             <img
               className="w-24px h-24px"
-              src={isLike ? likeLightSvg : likePng}
+              src={isLike ? likeLightSvg : like42Svg}
               alt=""
             />
           </span>
