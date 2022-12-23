@@ -77,8 +77,19 @@ module.exports = {
         '256px': '256px',
         '353px': '353px',
       },
+      minWidth: {
+        0: '0',
+        '1/4': '25%',
+        '1/2': '50%',
+        '3/4': '75%',
+        full: '100%',
+      },
       lineHeight: {
         'leading-4.5': '1.125rem',
+      },
+      screens: {
+        desktop1440: '1440px',
+        // => @media (min-width: 1280px) { ... }
       },
     },
   },

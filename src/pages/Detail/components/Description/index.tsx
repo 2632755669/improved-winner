@@ -31,9 +31,11 @@ export const Description = (props: Props) => {
       ?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  if (!descData.title) return null;
+
   return (
     <section className="description-container flex w-full text-base">
-      <div className="flex-1 mr-14">
+      <div className="flex-1 desktop1440: mr-14">
         <h1 className="text-white-84 text-3xl">{descData.title}</h1>
         <p className="mt-1 text-white-60 leading-snug">{descData.intro}</p>
         <div className="mt-3">
@@ -83,7 +85,7 @@ export const Description = (props: Props) => {
           </span>
         </div>
       </div>
-      <div className="description-swiper w-432px h-243px rounded-xl overflow-hidden bg-white-84">
+      <div className="description-swiper w-432px h-243px rounded-xl overflow-hidden">
         <DescSwiper descSwiperData={descSwiperData} />
       </div>
     </section>

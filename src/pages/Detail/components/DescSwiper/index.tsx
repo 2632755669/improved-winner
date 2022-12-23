@@ -13,6 +13,8 @@ interface Props {
 // 轮播图
 export const DescSwiper = (props: Props) => {
   const { descSwiperData } = props;
+
+  if (!descSwiperData?.length) return null;
   return (
     <section className="desc-swiper-container">
       <Swiper

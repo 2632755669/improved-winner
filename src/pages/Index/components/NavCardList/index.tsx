@@ -35,11 +35,11 @@ export const NavCardList = () => {
       <Affix offsetTop={-3} getTarget={getTarget}>
         <Tabs tabs={tabData} onChange={fetchNavCardList} />
       </Affix>
-      <section className="w-full flex flex-wrap">
+      <section className="w-full grid grid-cols-1 lg:grid-cols-2 desktop1440:grid-cols-3 gap-6">
         {navCardList.map((item, index) => {
           return (
             <Link key={index} to={`/detail/${item.id}`}>
-              <NavCard data={item} className="mr-6 mb-6" />
+              <NavCard data={item} />
             </Link>
           );
         })}
