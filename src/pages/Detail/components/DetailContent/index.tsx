@@ -1,9 +1,10 @@
 /* eslint-disable react/no-danger */
 import { useContext } from 'react';
-import { Icon } from '@ss/mtd-react';
 import classnames from 'classnames';
 import { LikeContext } from '../../context/LikeContext';
 import { ContentDetailItem } from '../../hooks/useDetailData';
+import likePng from '../../../../assets/icon/like.png';
+import likeLightSvg from '../../../../assets/icon/like-light.svg';
 import './index.less';
 
 interface Props {
@@ -48,7 +49,11 @@ export const DetailContent = (props: Props) => {
             onClick={likeAction}
             className="text-center leading-10 border-solid-round cursor-pointer w-40px h-40px text-24"
           >
-            <Icon type="fabulous" />
+            <img
+              className="w-24px h-24px"
+              src={isLike ? likeLightSvg : likePng}
+              alt=""
+            />
           </span>
           {isLike ? (
             <span className="my-2">24人觉得很赞</span>

@@ -53,6 +53,7 @@ module.exports = {
     },
     extend: {
       width: {
+        '24px': '24px',
         '28px': '28px',
         '40px': '40px',
         '70px': '70px',
@@ -65,6 +66,7 @@ module.exports = {
         '432px': '432px',
       },
       height: {
+        '24px': '24px',
         '28px': '28px',
         '40px': '40px',
         '3px': '3px',

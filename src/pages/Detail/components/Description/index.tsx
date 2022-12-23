@@ -5,6 +5,9 @@ import { DescSwiper } from '../DescSwiper';
 import { LikeContext } from '../../context/LikeContext';
 import { DescData, DescSwiperDataItem } from '../../hooks/useDetailData';
 import './index.less';
+import likePng from '../../../../assets/icon/like.png';
+import likeLightSvg from '../../../../assets/icon/like-light.svg';
+import commentSvg from '../../../../assets/icon/comment.svg';
 
 interface Props {
   descData: Partial<DescData>;
@@ -65,22 +68,22 @@ export const Description = (props: Props) => {
             </span>
           )}
           <span
-            className={`bg-dark-300 px-4 py-1 cursor-pointer text-white-60 hover:text-blue-300 rounded-md ml-4 ${classnames(
+            className={` flex items-center hover:bg-dark-300 px-4 py-1 cursor-pointer text-white-60 rounded-md ml-4 ${classnames(
               {
                 'text-blue-300': isLike,
               },
             )}`}
             onClick={likeAction}
           >
-            <Icon type="fabulous" />
+            <img src={isLike ? likeLightSvg : likePng} alt="" />
             <span className="ml-1">{descData.likeCount}</span>
           </span>
           <span className="description-line" />
           <span
-            className="text-white-60 ml-6 cursor-pointer hover:text-blue-300"
+            className="flex items-center hover:bg-dark-300 px-4 py-1 rounded-md text-white-60 ml-6 cursor-pointer"
             onClick={handleScrollComment}
           >
-            <Icon type="comment" />
+            <img src={commentSvg} alt="" />
             <span className="ml-1">3</span>
           </span>
         </div>

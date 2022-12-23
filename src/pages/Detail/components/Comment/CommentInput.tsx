@@ -43,7 +43,7 @@ export const CommentInput = () => {
               <Form.Item formItemKey="content">
                 <Input.TextArea
                   autosize={{ minRows: 4, maxRows: 4 }}
-                  className="resize-none"
+                  className="comment-text-area"
                 />
               </Form.Item>
             </Form>
