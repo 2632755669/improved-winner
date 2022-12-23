@@ -7,7 +7,7 @@ interface Props {
   isVideo?: boolean;
   canPlay?: boolean;
   videoId?: string;
-  ref: RefObject<HTMLVideoElement>;
+  ref?: RefObject<HTMLVideoElement>;
 }
 
 export const ImgCover = (props: Props) => {
