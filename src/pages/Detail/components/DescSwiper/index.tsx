@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { Icon } from '@ss/mtd-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper';
@@ -13,6 +14,12 @@ interface Props {
 // 轮播图
 export const DescSwiper = (props: Props) => {
   const { descSwiperData } = props;
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePauseVideo = () => {
+    if (!videoRef.current) return;
+    videoRef.current.pause();
+  };
 
   if (!descSwiperData?.length) return null;
   return (
@@ -25,6 +32,7 @@ export const DescSwiper = (props: Props) => {
           nextEl: '#swiper-next',
         }}
         loop
+        onSwiper={handlePauseVideo}
         pagination={{
           clickable: true,
           type: 'custom',
@@ -51,9 +59,11 @@ export const DescSwiper = (props: Props) => {
           return (
             <SwiperSlide>
               <ImgCover
-                isVideo={false}
+                isVideo={item.isVideo}
+                canPlay
                 videoId={item.videoId as string}
                 src={imgUrl as string}
+                ref={videoRef}
               />
             </SwiperSlide>
           );

@@ -1,15 +1,17 @@
-import { useMemo } from 'react';
+import { RefObject, useMemo } from 'react';
 import './index.less';
+import { XVideo } from '../XVideo';
 
 interface Props {
   src: string;
   isVideo?: boolean;
   canPlay?: boolean;
   videoId?: string;
+  ref: RefObject<HTMLVideoElement>;
 }
 
 export const ImgCover = (props: Props) => {
-  const { src, isVideo, canPlay, videoId } = props;
+  const { src, isVideo, canPlay, videoId, ref } = props;
 
   console.log(canPlay, videoId);
 
@@ -19,8 +21,8 @@ export const ImgCover = (props: Props) => {
 
   return (
     <div className="img-cover">
-      <img src={srcMemo} alt="" />
-      {isVideo ? <div className="img-cover-play" /> : null}
+      {isVideo && canPlay ? <XVideo ref={ref} /> : <img src={srcMemo} alt="" />}
+      {isVideo && !canPlay ? <div className="img-cover-play" /> : null}
     </div>
   );
 };
