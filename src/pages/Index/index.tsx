@@ -3,7 +3,7 @@ import { NavCardList } from './components/NavCardList';
 
 export const Index = () => {
   return (
-    <main>
+    <main className="pb-24">
       <LastOnlineList />
       <NavCardList />
     </main>
