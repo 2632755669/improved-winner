@@ -37,7 +37,7 @@ export const Description = (props: Props) => {
   if (!descData.title) return null;
 
   return (
-    <section className="description-container flex w-full text-base">
+    <section className="description-container flex flex-col md:flex-row w-full text-base">
       <div className="flex-1 desktop1440: mr-14">
         <h1 className="text-white-84 text-3xl font-bold leading-none">
           {descData.title}
@@ -90,7 +90,7 @@ export const Description = (props: Props) => {
           </span>
         </div>
       </div>
-      <div className="description-swiper w-432px h-243px rounded-lg overflow-hidden">
+      <div className="description-swiper w-432px h-243px rounded-lg overflow-hidden mt-4 md:mt-0">
         <DescSwiper descSwiperData={descSwiperData} />
       </div>
     </section>

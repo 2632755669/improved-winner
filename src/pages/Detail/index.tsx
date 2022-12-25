@@ -36,7 +36,7 @@ export const Detail = () => {
             <DetailContent data={detailContentData} />
             <Comment commentData={commentData} />
           </section>
-          <section className="detail-right w-320px ml-12">
+          <section className="detail-right hidden xl:block w-320px ml-12">
             <Anchor data={anchorData} />
             <MoreService />
           </section>
