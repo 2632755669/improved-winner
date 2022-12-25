@@ -90,6 +90,9 @@ module.exports = {
         '3/4': '75%',
         full: '100%',
       },
+      maxWidth: {
+        '1440px': '1440px',
+      },
       lineHeight: {
         'leading-4.5': '1.125rem',
       },
