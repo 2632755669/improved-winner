@@ -28,17 +28,17 @@ export const NavCard = (props: Props) => {
           <img
             src={data.titleImg}
             alt=""
-            className="object-cover mr-3 w-70px h-70px rounded-lg img-border"
+            className="object-cover mr-3 w-72px h-72px rounded-lg img-border"
           />
           <div className="text-white-72">
             <h3 className="text-lg font-bold">{data.title}</h3>
-            <p className="text-sm leading-5 my-1">{data.desc}</p>
+            <p className="text-base leading-5 my-1">{data.desc}</p>
             <div className="flex">
               {data?.tags?.map((item, index) => {
                 return (
                   <span
                     key={index}
-                    className="bg-dark-300 leading-4.5 text-xs px-1 rounded-md mr-1"
+                    className="bg-dark-300 leading-5 text-sm px-1 rounded-md mr-1"
                   >
                     {item}
                   </span>
