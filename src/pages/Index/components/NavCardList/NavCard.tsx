@@ -38,7 +38,7 @@ export const NavCard = (props: Props) => {
                 return (
                   <span
                     key={index}
-                    className="bg-dark-300 leading-5 text-sm px-1 rounded-md mr-1"
+                    className="bg-dark-300 leading-5 text-sm px-1 rounded mr-1"
                   >
                     {item}
                   </span>

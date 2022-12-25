@@ -41,10 +41,10 @@ export const Description = (props: Props) => {
       <div className="flex-1 desktop1440: mr-14">
         <h1 className="text-white-84 text-3xl">{descData.title}</h1>
         <p className="mt-1 text-white-60 leading-snug">{descData.intro}</p>
-        <div className="mt-3">
+        <div className="mt-3 flex flex-wrap">
           {descData.tags?.map((item) => {
             return (
-              <span className="bg-dark-300 p-1 rounded-md mr-2 mb-2 text-white-60">
+              <span className="bg-dark-300 px-1 leading-5 rounded mr-2 mb-2 text-white-60">
                 {item}
               </span>
             );
