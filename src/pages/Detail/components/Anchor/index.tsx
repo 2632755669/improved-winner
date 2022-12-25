@@ -16,7 +16,7 @@ export const Anchor = (props: Props) => {
 
   return (
     <div className="anchor-container">
-      <h3 className="text-white-84 text-2xl mb-4">目录</h3>
+      <h3 className="text-white-84 text-2xl font-bold mb-4">目录</h3>
       <MtdAnchor
         className="anchor-list text-white-84 text-base"
         scrollOffset={150}

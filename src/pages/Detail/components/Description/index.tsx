@@ -39,18 +39,20 @@ export const Description = (props: Props) => {
   return (
     <section className="description-container flex w-full text-base">
       <div className="flex-1 desktop1440: mr-14">
-        <h1 className="text-white-84 text-3xl">{descData.title}</h1>
-        <p className="mt-1 text-white-60 leading-snug">{descData.intro}</p>
+        <h1 className="text-white-84 text-3xl font-bold leading-none">
+          {descData.title}
+        </h1>
+        <p className="mt-4 text-white-60 leading-snug">{descData.intro}</p>
         <div className="mt-3 flex flex-wrap">
           {descData.tags?.map((item) => {
             return (
-              <span className="bg-dark-300 px-1 leading-5 rounded mr-2 mb-2 text-white-60">
+              <span className="bg-dark-300 px-1 leading-6 rounded mr-2 mb-2 text-white-60">
                 {item}
               </span>
             );
           })}
         </div>
-        <div className="description-action flex items-center mt-4">
+        <div className="description-action flex items-center mt-3.5">
           {isSubscribe ? (
             <span
               onClick={handleSubscribe}
@@ -88,7 +90,7 @@ export const Description = (props: Props) => {
           </span>
         </div>
       </div>
-      <div className="description-swiper w-432px h-243px rounded-xl overflow-hidden">
+      <div className="description-swiper w-432px h-243px rounded-lg overflow-hidden">
         <DescSwiper descSwiperData={descSwiperData} />
       </div>
     </section>

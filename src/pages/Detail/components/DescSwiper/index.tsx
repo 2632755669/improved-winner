@@ -1,9 +1,10 @@
 import { useRef } from 'react';
-import { Icon } from '@ss/mtd-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper';
 import { ImgCover } from '../../../../components/ImgCover';
 import { DescSwiperDataItem } from '../../hooks/useDetailData';
+import rightSvg from '../../../../assets/icon/right-thick.svg';
+import leftSvg from '../../../../assets/icon/left-thick.svg';
 import 'swiper/swiper-bundle.css';
 import './index.less';
 
@@ -70,10 +71,10 @@ export const DescSwiper = (props: Props) => {
         })}
       </Swiper>
       <div className="desc-swiper-button" id="swiper-pre">
-        <Icon type="left" />
+        <img className="w-24px h-24px" src={leftSvg} alt="" />
       </div>
       <div className="desc-swiper-button" id="swiper-next">
-        <Icon type="right" />
+        <img className="w-24px h-24px" src={rightSvg} alt="" />
       </div>
       <div className="desc-swiper-pagination" />
     </section>

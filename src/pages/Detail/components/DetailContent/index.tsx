@@ -27,7 +27,7 @@ export const DetailContent = (props: Props) => {
               <div
                 id={item.id}
                 key={item.id}
-                className="detail-content-title text-white-84 text-2xl my-4"
+                className="text-white-84 text-2xl font-bold mb-4 mt-9 detail-content-title"
               >
                 {item.title}
               </div>

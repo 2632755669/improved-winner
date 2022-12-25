@@ -1,12 +1,28 @@
+.comment-item-container {
+  @apply border-0;
+}
+
 .border-top-gray {
-  @apply border-r-0 border-l-0 border-t-white-6 border-solid border-t;
+  @apply border-t-white-6 border-solid border-t;
 }
 
 .border-bottom-gray {
   @apply border-b-white-6 border-solid border-b;
 }
 
-.comment-text-area {
-  background: transparent;
-  color: rgba(255, 255, 255, 0.84) !important;
+.comment-item-container:first-of-type {
+  @apply border-t-white-6 border-solid border-t;
+}
+
+.comment-container {
+  .comment-text-area {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.84) !important;
+    border: 1px solid #247bff !important;
+  }
+
+  .comment-btn-cancel {
+    background: #3d3d3d;
+    color: #fff;
+  }
 }

@@ -27,7 +27,7 @@ export const CommentInput = () => {
       <img
         src={avatarUrl}
         alt="user-avatar"
-        className="w-28px h-28px rounded-full object-cover"
+        className="w-28px h-28px rounded-full object-cover img-border"
       />
       <section className="ml-2 flex-1 text-base">
         {!isInputing ? (
@@ -48,10 +48,19 @@ export const CommentInput = () => {
               </Form.Item>
             </Form>
             <div className="flex w-full">
-              <Button loading={submitLoading} onClick={submit} type="primary">
+              <Button
+                loading={submitLoading}
+                className="comment-btn-confirm"
+                onClick={submit}
+                type="primary"
+              >
                 发送
               </Button>
-              <Button onClick={handleToogle} className="ml-3" type="normal">
+              <Button
+                onClick={handleToogle}
+                className="ml-3 comment-btn-cancel"
+                type="normal"
+              >
                 取消
               </Button>
             </div>

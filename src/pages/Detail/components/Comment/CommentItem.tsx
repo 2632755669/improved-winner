@@ -15,11 +15,11 @@ export const CommentItem = (props: Props) => {
   const { data } = props;
 
   return (
-    <section className="flex text-white-84 text-base py-6 border-top-gray border-bottom-gray">
+    <section className="flex text-white-84 text-base py-6 border-bottom-gray comment-item-container">
       <img
         src={data.avatar}
         alt="user-avatar"
-        className="w-28px h-28px rounded-full object-cover"
+        className="w-28px h-28px rounded-full object-cover img-border"
       />
       <section className="ml-2">
         <div>
