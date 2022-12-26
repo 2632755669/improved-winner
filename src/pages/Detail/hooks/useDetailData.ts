@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getServiceDetail } from '../../../apis/detail';
 import { detailContentKeys } from '../../../constants';
-import {} from '../../../apis/comment';
-import { commentList } from '../../../mockData';
 
 export const getDetailConent = (data: any) => {
   const detailList = Object.entries(data).filter(
@@ -45,15 +43,6 @@ export interface DescSwiperDataItem {
   videoId: string;
 }
 
-export interface CommentItem {
-  avatar: string;
-  name: string;
-  creatTime: string;
-  commentId: string;
-  isMyComment: boolean;
-  content: string;
-}
-
 export const useDetailData = () => {
   const { id } = useParams<{ id: string }>();
   const [loading, setLoading] = useState(false);
@@ -66,7 +55,6 @@ export const useDetailData = () => {
   const detailContentDataState = useState<ContentDetailItem[]>([]);
   const [detailContentData, setDetailContentData] = detailContentDataState;
   const [moreServiceData, setMoreServiceData] = useState<string[]>([]);
-  const [commentData, setCommentData] = useState<CommentItem[]>([]);
 
   const fetchServiceDetail = () => {
     setLoading(true);
@@ -97,7 +85,6 @@ export const useDetailData = () => {
         setDetailContentData(contentDetail);
         setDescData(descResult);
         setDescSwiperData(descSwiperResult);
-        setCommentData(commentList);
         setCrumbData(['首页']);
         setMoreServiceData([]);
       })
@@ -116,7 +103,6 @@ export const useDetailData = () => {
     descSwiperData,
     detailContentData,
     moreServiceData,
-    commentData,
     loading,
   };
 };

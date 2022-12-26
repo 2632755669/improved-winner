@@ -4,6 +4,7 @@ import { Icon, message } from '@ss/mtd-react';
 import classnames from 'classnames';
 import { DescSwiper } from '../DescSwiper';
 import { LikeContext } from '../../context/LikeContext';
+import { CommentContext } from '../../context/CommentContext';
 import { DescData, DescSwiperDataItem } from '../../hooks/useDetailData';
 import {
   getSubscribeStatusApi,
@@ -28,6 +29,7 @@ export const Description = (props: Props) => {
   const [isSubscribe, setIsSubscribe] = useState(false);
   // 点赞
   const { isLike, likeAction, likeCount } = useContext(LikeContext);
+  const { comments } = useContext(CommentContext);
   // 获取订阅状态
   const fetchSubscribe = () => {
     getSubscribeStatusApi(id).then((data) => setIsSubscribe(!!data));
@@ -126,7 +128,7 @@ export const Description = (props: Props) => {
             onClick={handleScrollComment}
           >
             <img src={commentSvg} alt="" />
-            <span className="ml-1">3</span>
+            <span className="ml-1">{comments?.length || 0}</span>
           </span>
         </div>
       </div>

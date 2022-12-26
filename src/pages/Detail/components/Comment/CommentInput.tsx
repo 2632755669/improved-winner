@@ -1,5 +1,6 @@
-import { useState, useRef } from 'react';
-import { Form, Input, Button } from '@ss/mtd-react';
+import { useState, useRef, useContext } from 'react';
+import { Form, Input, Button, message } from '@ss/mtd-react';
+import { CommentContext } from '../../context/CommentContext';
 
 const avatarUrl =
   'https://p0.meituan.net/smarttestvenus/5d52f8079871447d464f82c75e0cc1dc44568.jpg';
@@ -8,18 +9,24 @@ export const CommentInput = () => {
   const formRef = useRef<any>({});
   const [isInputing, setIsInputing] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
+  const { publishComment } = useContext(CommentContext);
 
   const handleToogle = () => {
     setIsInputing((val) => !val);
   };
 
   const submit = () => {
-    setSubmitLoading(true);
-    if (formRef?.current?.validateFields()) {
-      console.log('提交');
-      handleToogle();
+    const { content } = formRef.current?.getFieldsValue();
+    if (content && content.trim() !== '') {
+      setSubmitLoading(true);
+      publishComment(content)
+        .then(() => {
+          handleToogle();
+        })
+        .finally(() => setSubmitLoading(false));
+    } else {
+      message.error({ message: '请填写评论内容再提交' });
     }
-    setSubmitLoading(false);
   };
 
   return (
@@ -42,6 +49,8 @@ export const CommentInput = () => {
             <Form ref={formRef}>
               <Form.Item formItemKey="content">
                 <Input.TextArea
+                  maxLength={1000}
+                  toFormItem
                   autosize={{ minRows: 4, maxRows: 4 }}
                   className="comment-text-area"
                 />

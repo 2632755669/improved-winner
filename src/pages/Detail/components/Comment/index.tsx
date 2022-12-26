@@ -1,21 +1,35 @@
-import { CommentItem, CommentItemType } from './CommentItem';
+import { Modal } from '@ss/mtd-react';
+import { useContext } from 'react';
+import { CommentItem } from './CommentItem';
 import { CommentInput } from './CommentInput';
+import { CommentContext } from '../../context/CommentContext';
 import './index.less';
 
-interface Props {
-  commentData: CommentItemType[];
-}
-
-export const Comment = (props: Props) => {
-  const { commentData } = props;
+export const Comment = () => {
+  const { comments, deleteComment } = useContext(CommentContext);
+  const handleDeleteComment = (commentId: string) => {
+    Modal.confirm({
+      title: '提示',
+      message: '确认删除该条评论吗?',
+      async onOk() {
+        await deleteComment(commentId);
+      },
+    });
+  };
   return (
     <section id="detail-comment" className="pb-24">
       <h3 className="text-white-84 text-2xl font-bold">
-        评价({commentData?.length})
+        评价({comments?.length})
       </h3>
       <section className="mt-4">
-        {commentData?.map((item) => {
-          return <CommentItem key={item.commentId} data={item} />;
+        {comments?.map((item) => {
+          return (
+            <CommentItem
+              onDelete={() => handleDeleteComment(item.commentId)}
+              key={item.commentId}
+              data={item}
+            />
+          );
         })}
       </section>
       <CommentInput />

@@ -1,3 +1,5 @@
+import { Button } from '@ss/mtd-react';
+
 export interface CommentItemType {
   avatar: string;
   name: string;
@@ -9,10 +11,11 @@ export interface CommentItemType {
 
 interface Props {
   data: CommentItemType;
+  onDelete?(): void;
 }
 
 export const CommentItem = (props: Props) => {
-  const { data } = props;
+  const { data, onDelete } = props;
 
   return (
     <section className="flex text-white-84 text-base py-6 border-bottom-gray comment-item-container">
@@ -27,6 +30,14 @@ export const CommentItem = (props: Props) => {
           <span className="text-white-42 text-sm ml-2">{data.creatTime}</span>
         </div>
         <p className="mt-1.5 leading-snug">{data.content}</p>
+        {data.isMyComment ? (
+          <Button
+            className="mt-1.5"
+            onClick={() => onDelete?.()}
+            shape="text"
+            icon="delete-o"
+          />
+        ) : null}
       </section>
     </section>
   );
