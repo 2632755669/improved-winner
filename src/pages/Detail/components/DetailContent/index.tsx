@@ -13,7 +13,7 @@ interface Props {
 
 export const DetailContent = (props: Props) => {
   const { data } = props;
-  const { isLike, likeAction } = useContext(LikeContext);
+  const { isLike, likeAction, likeCount } = useContext(LikeContext);
 
   return (
     <section id="detail-content" className="detail-content-container mt-14">
@@ -56,11 +56,11 @@ export const DetailContent = (props: Props) => {
             />
           </span>
           {isLike ? (
-            <span className="my-2">24人觉得很赞</span>
+            <span className="my-2">{likeCount}人觉得很赞</span>
           ) : (
             <>
               <span className="my-2">信息有用，点赞</span>
-              <span>23人觉得很赞</span>
+              <span>{likeCount}人觉得很赞</span>
             </>
           )}
         </div>

@@ -1,4 +1,4 @@
-import { post, HttpResponse } from './index';
+import { get, post, HttpResponse } from './index';
 
 /**
  * 获取用户信息
@@ -16,4 +16,83 @@ export const getUserInfo = () => {
       return data;
     },
   );
+};
+/**
+ * 获取用户头像
+ */
+
+export const getUserAvatar = () => {
+  return get<UserInfo>('/sapi/client/v1/getpic').then((data) => {
+    console.log(data);
+    return data;
+  });
+};
+
+// 公共接口
+interface LikeCountParams {
+  typeCode: string;
+  objectCode: string;
+}
+
+interface LikeCount<T> {
+  data: T;
+  status: number;
+}
+
+/**
+ * 取消点赞
+ */
+
+export const cancelLikeApi = (id: string) => {
+  const params = {
+    objectCode: id,
+    typeCode: 'soa_common',
+  };
+  return post<LikeCountParams, LikeCount<boolean>>(
+    '/comment/user/unlike',
+    params,
+  ).then(({ data, status }) => {
+    if (status === 0) {
+      return data;
+    }
+    return Promise.reject();
+  });
+};
+/**
+ * 点赞
+ */
+
+export const likeApi = (id: string) => {
+  const params = {
+    objectCode: id,
+    typeCode: 'soa_common',
+  };
+  return post<LikeCountParams, LikeCount<boolean>>(
+    '/comment/user/like',
+    params,
+  ).then(({ data, status }) => {
+    if (status === 0) {
+      return data;
+    }
+    return Promise.reject();
+  });
+};
+/**
+ * 获取点赞数
+ */
+
+export const getLikeCount = (id: string) => {
+  const params = {
+    objectCode: id,
+    typeCode: 'soa_common',
+  };
+  return post<LikeCountParams, LikeCount<number>>(
+    '/comment/likeObject/count',
+    params,
+  ).then(({ data, status }) => {
+    if (status === 0) {
+      return data;
+    }
+    return 0;
+  });
 };

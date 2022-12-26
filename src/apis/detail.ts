@@ -5,7 +5,7 @@ import { detailContent } from '../mockData';
  * 获取服务详情
  */
 interface ServiceDetailParams {
-  serviceId: number;
+  serviceId: string;
 }
 
 interface ServiceContent {
@@ -46,7 +46,7 @@ export interface ServiceDetail {
 }
 
 export const getServiceDetail = (id: number) => {
-  const params = { serviceId: id };
+  const params = { serviceId: String(id) };
   return post<ServiceDetailParams, HttpResponse<ServiceDetail>>(
     '/sapi/client/v1/tmcmoduleconfigclientservice_getservicedetail',
     params,
@@ -57,4 +57,72 @@ export const getServiceDetail = (id: number) => {
     },
     () => detailContent,
   );
+};
+
+/**
+ * 订阅服务
+ */
+
+interface SubscribeParams {
+  serviceId: string;
+}
+
+export const subscribeApi = (id: string) => {
+  const params = { serviceId: id };
+  return post<SubscribeParams, HttpResponse<string>>(
+    '/sapi/client/v1/subscribe',
+    params,
+  ).then(({ data, status }) => {
+    if (status?.code === 0) {
+      return data;
+    }
+    return Promise.reject();
+  });
+};
+/**
+ * 取消订阅
+ */
+
+export const cancelSubscribeApi = (id: string) => {
+  const params = { serviceId: id };
+  return post<SubscribeParams, HttpResponse<string>>(
+    '/sapi/client/v1/cancel_subscribe',
+    params,
+  ).then(({ data, status }) => {
+    if (status?.code === 0) {
+      return data;
+    }
+    return Promise.reject();
+  });
+};
+
+/**
+ * 获取订阅状态
+ */
+
+export const getSubscribeStatusApi = (id: string) => {
+  const params = { serviceId: id };
+  return post<SubscribeParams, HttpResponse<string>>(
+    '/sapi/client/v1/getsubscriber_status',
+    params,
+  ).then(({ data, status }) => {
+    if (status.code === 0) {
+      return data;
+    }
+    return Promise.reject();
+  });
+};
+
+/**
+ * 获取订阅人信息
+ */
+
+export const getSubscriberApi = (id: string) => {
+  const params = { serviceId: id };
+  return post<SubscribeParams, HttpResponse<string>>(
+    '/sapi/client/v1/getSubscriber',
+    params,
+  ).then((data) => {
+    return data;
+  });
 };

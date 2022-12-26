@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from '@ss/mtd-react';
 import { Header } from './components/Header';
+import { logout } from '../utils/login';
 import './index.less';
 
 interface Props {
@@ -10,8 +11,9 @@ interface Props {
 export const Layout = (props: Props) => {
   const { children } = props;
   // 退出登录
-  const logout = () => {
+  const handleLogout = () => {
     console.log('退出登录');
+    logout();
   };
   // 联系客服
   const service = () => {
@@ -22,7 +24,7 @@ export const Layout = (props: Props) => {
     <div>
       <Header
         title="CAP服务"
-        logout={logout}
+        logout={handleLogout}
         toolBar={
           <div className="header-toolbar">
             <div className="header-toobar-bg">

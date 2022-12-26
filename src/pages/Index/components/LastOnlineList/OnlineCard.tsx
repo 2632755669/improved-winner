@@ -2,6 +2,7 @@
 import like42Svg from '../../../../assets/icon/like42.svg';
 
 export interface OnlineCardItem {
+  id: string;
   index: number;
   title: string;
   titleImg: string;

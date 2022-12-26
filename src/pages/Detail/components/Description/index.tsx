@@ -1,11 +1,17 @@
-import { useState, useContext } from 'react';
-import { Icon } from '@ss/mtd-react';
+import { useState, useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { Icon, message } from '@ss/mtd-react';
 import classnames from 'classnames';
 import { DescSwiper } from '../DescSwiper';
 import { LikeContext } from '../../context/LikeContext';
 import { DescData, DescSwiperDataItem } from '../../hooks/useDetailData';
+import {
+  getSubscribeStatusApi,
+  subscribeApi,
+  cancelSubscribeApi,
+} from '../../../../apis/detail';
 import './index.less';
-import likePng from '../../../../assets/icon/like.png';
+import likeSvg from '../../../../assets/icon/like42.svg';
 import likeLightSvg from '../../../../assets/icon/like-light.svg';
 import commentSvg from '../../../../assets/icon/comment.svg';
 
@@ -16,15 +22,40 @@ interface Props {
 
 export const Description = (props: Props) => {
   const { descData, descSwiperData } = props;
+  const { id } = useParams<{ id: string }>();
 
   // 订阅
   const [isSubscribe, setIsSubscribe] = useState(false);
   // 点赞
-  const { isLike, likeAction } = useContext(LikeContext);
-
+  const { isLike, likeAction, likeCount } = useContext(LikeContext);
+  // 获取订阅状态
+  const fetchSubscribe = () => {
+    getSubscribeStatusApi(id).then((data) => setIsSubscribe(!!data));
+  };
   // 订阅
   const handleSubscribe = () => {
-    setIsSubscribe(!isSubscribe);
+    subscribeApi(id).then(
+      () => {
+        message.success({ message: '订阅成功' });
+        setIsSubscribe(true);
+      },
+      (err) => {
+        message.error({ message: err || '服务异常' });
+      },
+    );
+  };
+
+  // 取消订阅
+  const handleCancelSubscribe = () => {
+    cancelSubscribeApi(id).then(
+      () => {
+        message.success({ message: '取消订阅成功' });
+        setIsSubscribe(false);
+      },
+      (err) => {
+        message.error({ message: err || '服务异常' });
+      },
+    );
   };
 
   // 跳到评论区
@@ -33,6 +64,11 @@ export const Description = (props: Props) => {
       .querySelector('#detail-comment')
       ?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    fetchSubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!descData.title) return null;
 
@@ -55,7 +91,7 @@ export const Description = (props: Props) => {
         <div className="description-action flex items-center mt-3.5">
           {isSubscribe ? (
             <span
-              onClick={handleSubscribe}
+              onClick={handleCancelSubscribe}
               className="text-white-100 px-4 py-1 bg-white-30 rounded-md cursor-pointer"
             >
               已订阅
@@ -77,8 +113,12 @@ export const Description = (props: Props) => {
             )}`}
             onClick={likeAction}
           >
-            <img src={isLike ? likeLightSvg : likePng} alt="" />
-            <span className="ml-1">{descData.likeCount}</span>
+            {isLike ? (
+              <img src={likeLightSvg} alt="" />
+            ) : (
+              <img src={likeSvg} alt="" />
+            )}
+            <span className="ml-1">{likeCount}</span>
           </span>
           <span className="description-line" />
           <span

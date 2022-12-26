@@ -26,7 +26,7 @@ export const LastOnlineList = () => {
       <section className="grid grid-cols-1 lg:grid-cols-2 desktop1440:grid-cols-3 gap-6">
         {lastServiceList?.map((item) => {
           return (
-            <Link key={item.index} to="/detail/123">
+            <Link key={item.index} to={`/detail/${item.id}`}>
               <OnlineCard data={item} />
             </Link>
           );

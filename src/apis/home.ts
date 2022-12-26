@@ -152,6 +152,7 @@ interface LastServiceItem {
   moduleId: number;
   label: string[];
   remark: string;
+  usefulCount: number;
 }
 
 interface LastServiceList extends HttpResponse {
@@ -167,12 +168,12 @@ interface LastServiceList extends HttpResponse {
 export const getLastServiceList = () => {
   const params = {
     pageNo: 1,
-    pageSize: 200,
+    pageSize: 6,
   };
 
-  const result = homeNavList.map((item, index) => {
+  let result = homeNavList.map((item, index) => {
     return {
-      id: item.id,
+      id: String(item.id),
       title: item.title,
       index: index + 1,
       likeCount: item.weight,
@@ -182,11 +183,21 @@ export const getLastServiceList = () => {
   });
 
   return get<LastServiceParams, LastServiceList>(
-    '/sapi/client/v1/tmcmoduleconfigclientservice_modulecontent',
+    '/sapi/client/v1/getoldestcontent',
     params,
   ).then(
     ({ data }) => {
       console.log(data);
+      result = data?.map((item, index) => {
+        return {
+          id: item.id,
+          title: item.title,
+          index: index + 1,
+          likeCount: item.usefulCount,
+          titleImg: item.secImageUrl || imgUrl,
+          tags: item.label || [],
+        };
+      });
       return result;
     },
     () => result,

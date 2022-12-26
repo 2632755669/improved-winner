@@ -22,16 +22,19 @@ function messageShow(description: string) {
 const ErrMsg = '网络错误';
 
 registerInterceptor('request', (config) => {
+  config.headers['X-Tenant'] = 'soa';
+  config.headers.LoginType = 'sso';
+  config.headers.LoginKey = '1a5c3e71bd_ssoid';
   return config;
 });
 registerInterceptor('response', (status, response) => {
   if (status === 200) {
-    if (response.status.code !== 0) {
-      messageShow(response.status.message);
-      return Promise.reject(response);
+    const { code, success, status: statusCode } = response;
+    if (success === true || code === 0 || statusCode === 0) {
+      return Promise.resolve(response);
     }
-
-    return Promise.resolve(response);
+    messageShow(response?.status?.message || response?.data?.message);
+    return Promise.reject(response);
   }
 
   // TODO 交互待优化

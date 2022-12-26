@@ -35,6 +35,7 @@ export interface DescData {
   intro: string;
   tags: string[];
   likeCount: number;
+  isUseful?: boolean;
 }
 
 export interface DescSwiperDataItem {

@@ -24,8 +24,10 @@ export const Tabs = (props: Props) => {
   };
 
   useEffect(() => {
-    setActiveKey(tabs[0]?.key);
-    onChange?.(activeKey);
+    if (tabs?.[0]?.key) {
+      setActiveKey(tabs[0]?.key);
+      onChange?.(tabs[0]?.key);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tabs]);
 

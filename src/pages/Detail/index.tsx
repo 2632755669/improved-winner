@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Anchor } from './components/Anchor';
 import { Breadcrumb } from './components/Breadcrumb';
 import { Description } from './components/Description';
@@ -7,11 +8,14 @@ import { MoreService } from './components/MoreService';
 import { Comment } from './components/Comment';
 import { LikeContext } from './context/LikeContext';
 import { useDetailData } from './hooks/useDetailData';
+import { likeApi, cancelLikeApi } from '../../apis/common';
 import './index.less';
 
 // 详情页
 export const Detail = () => {
   const [isLike, setIsLike] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
+  const { id } = useParams<{ id: string }>();
   const {
     anchorData,
     descData,
@@ -20,15 +24,30 @@ export const Detail = () => {
     commentData,
     loading,
   } = useDetailData();
-  // 点赞
+  // 点赞和取消点赞
   const likeAction = () => {
-    setIsLike(!isLike);
+    if (!isLike) {
+      likeApi(id).then(() => {
+        setIsLike(true);
+        setLikeCount((value) => value + 1);
+      });
+    } else {
+      cancelLikeApi(id).then(() => {
+        setIsLike(false);
+        setLikeCount((value) => value - 1);
+      });
+    }
   };
+
+  useEffect(() => {
+    setLikeCount(descData?.likeCount || 0);
+    setIsLike(descData?.isUseful || false);
+  }, [descData]);
 
   if (loading) return null;
 
   return (
-    <LikeContext.Provider value={{ isLike, likeAction }}>
+    <LikeContext.Provider value={{ isLike, likeAction, likeCount }}>
       <main>
         <section>
           <Breadcrumb />
