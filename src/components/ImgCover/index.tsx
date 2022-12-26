@@ -1,4 +1,4 @@
-import { RefObject, useMemo } from 'react';
+import { useMemo, useRef, useImperativeHandle, forwardRef } from 'react';
 import './index.less';
 import { XVideo } from '../XVideo';
 
@@ -7,11 +7,11 @@ interface Props {
   isVideo?: boolean;
   canPlay?: boolean;
   videoId?: string;
-  ref?: RefObject<HTMLVideoElement>;
 }
 
-export const ImgCover = (props: Props) => {
-  const { src, isVideo, canPlay, videoId, ref } = props;
+export const ImgCover = forwardRef((props: Props, ref) => {
+  const { src, isVideo, canPlay, videoId } = props;
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   console.log(canPlay, videoId);
 
@@ -19,10 +19,21 @@ export const ImgCover = (props: Props) => {
     return isVideo ? src : src;
   }, [isVideo, src]);
 
+  useImperativeHandle(ref, () => {
+    if (!videoRef.current) return null;
+    return {
+      pause: videoRef.current?.pause,
+    };
+  });
+
   return (
     <div className="img-cover">
-      {isVideo && canPlay ? <XVideo ref={ref} /> : <img src={srcMemo} alt="" />}
+      {isVideo && canPlay ? (
+        <XVideo ref={videoRef} />
+      ) : (
+        <img src={srcMemo} alt="" />
+      )}
       {isVideo && !canPlay ? <div className="img-cover-play" /> : null}
     </div>
   );
-};
+});

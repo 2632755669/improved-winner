@@ -19,7 +19,12 @@ export const XVideo = forwardRef((props: Props, ref) => {
     videoRef.current.play();
   };
 
-  useImperativeHandle(ref, () => videoRef);
+  useImperativeHandle(ref, () => {
+    if (!videoRef?.current) return null;
+    return {
+      pause: videoRef.current.pause.bind(videoRef.current),
+    };
+  });
 
   return (
     <div className="w-full h-full xvideo-container">

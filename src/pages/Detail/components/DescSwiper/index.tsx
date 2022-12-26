@@ -15,11 +15,12 @@ interface Props {
 // 轮播图
 export const DescSwiper = (props: Props) => {
   const { descSwiperData } = props;
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRefList = useRef<HTMLVideoElement[]>([]);
 
   const handlePauseVideo = () => {
-    if (!videoRef.current) return;
-    videoRef.current.pause();
+    if (!videoRefList.current?.length) return;
+    const videoRefs = videoRefList.current;
+    videoRefs.forEach((item) => item.pause());
   };
 
   if (!descSwiperData?.length) return null;
@@ -33,7 +34,7 @@ export const DescSwiper = (props: Props) => {
           nextEl: '#swiper-next',
         }}
         loop
-        onSwiper={handlePauseVideo}
+        onSlideChange={handlePauseVideo}
         pagination={{
           clickable: true,
           type: 'custom',
@@ -64,7 +65,10 @@ export const DescSwiper = (props: Props) => {
                 canPlay
                 videoId={item.videoId as string}
                 src={imgUrl as string}
-                ref={videoRef}
+                ref={(ref: HTMLVideoElement) => {
+                  if (!ref) return;
+                  videoRefList.current.push(ref);
+                }}
               />
             </SwiperSlide>
           );
