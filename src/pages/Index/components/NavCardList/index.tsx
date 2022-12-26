@@ -12,6 +12,7 @@ import './index.less';
 export const NavCardList = () => {
   const [tabData, setTabData] = useState<TabItem[]>([]);
   const [navCardList, setNavCardList] = useState<NavData[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const getTarget = () => {
     return (document.querySelector('#layout-content') ||
@@ -19,7 +20,10 @@ export const NavCardList = () => {
   };
 
   const fetchTabData = () => {
-    getModuleMenus().then(setTabData);
+    setLoading(true);
+    getModuleMenus()
+      .then(setTabData)
+      .finally(() => setLoading(false));
   };
 
   const fetchNavCardList = (id: string) => {
@@ -29,6 +33,8 @@ export const NavCardList = () => {
   useEffect(() => {
     fetchTabData();
   }, []);
+
+  if (loading) return null;
 
   return (
     <div className="mt-2">

@@ -6,14 +6,19 @@ import { getLastServiceList } from '../../../../apis/home';
 
 export const LastOnlineList = () => {
   const [lastServiceList, setLastServiceList] = useState<OnlineCardItem[]>([]);
-
+  const [loading, setLoading] = useState(false);
   const fetchLastServiceList = () => {
-    getLastServiceList().then(setLastServiceList);
+    setLoading(true);
+    getLastServiceList()
+      .then(setLastServiceList)
+      .finally(() => setLoading(false));
   };
 
   useEffect(() => {
     fetchLastServiceList();
   }, []);
+
+  if (loading) return null;
 
   return (
     <div className="mb-5">

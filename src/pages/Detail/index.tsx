@@ -18,11 +18,14 @@ export const Detail = () => {
     descSwiperData,
     detailContentData,
     commentData,
+    loading,
   } = useDetailData();
   // 点赞
   const likeAction = () => {
     setIsLike(!isLike);
   };
+
+  if (loading) return null;
 
   return (
     <LikeContext.Provider value={{ isLike, likeAction }}>

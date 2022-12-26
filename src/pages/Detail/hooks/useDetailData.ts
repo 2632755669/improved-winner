@@ -55,6 +55,7 @@ export interface CommentItem {
 
 export const useDetailData = () => {
   const { id } = useParams<{ id: string }>();
+  const [loading, setLoading] = useState(false);
   const [anchorData, setAnchorData] = useState<AnchorDataItem[]>([]);
   const [breadcrumbData, setCrumbData] = useState<string[]>([]);
   const [descData, setDescData] = useState<Partial<DescData>>({});
@@ -67,36 +68,39 @@ export const useDetailData = () => {
   const [commentData, setCommentData] = useState<CommentItem[]>([]);
 
   const fetchServiceDetail = () => {
-    getServiceDetail(Number(id)).then((data) => {
-      const contentDetail = getDetailConent(data);
-      const anchorResult = contentDetail.map((item) => {
-        return {
-          id: item.id,
-          title: item.title,
+    setLoading(true);
+    getServiceDetail(Number(id))
+      .then((data) => {
+        const contentDetail = getDetailConent(data);
+        const anchorResult = contentDetail.map((item) => {
+          return {
+            id: item.id,
+            title: item.title,
+          };
+        });
+        const descResult = {
+          title: data.title,
+          intro: data.bizIntroduction,
+          tags: data.label,
+          likeCount: data.usefulCount,
         };
-      });
-      const descResult = {
-        title: data.title,
-        intro: data.bizIntroduction,
-        tags: data.label,
-        likeCount: data.usefulCount,
-      };
-      const descSwiperResult = data.headInfo.map((item) => {
-        return {
-          imgUrl: item.url as string,
-          videoCoverUrl: item.videoPicture as string,
-          isVideo: item.type === 1,
-          videoId: item.videoId as string,
-        };
-      });
-      setAnchorData(anchorResult);
-      setDetailContentData(contentDetail);
-      setDescData(descResult);
-      setDescSwiperData(descSwiperResult);
-      setCommentData(commentList);
-      setCrumbData(['首页']);
-      setMoreServiceData([]);
-    });
+        const descSwiperResult = data.headInfo.map((item) => {
+          return {
+            imgUrl: item.url as string,
+            videoCoverUrl: item.videoPicture as string,
+            isVideo: item.type === 1,
+            videoId: item.videoId as string,
+          };
+        });
+        setAnchorData(anchorResult);
+        setDetailContentData(contentDetail);
+        setDescData(descResult);
+        setDescSwiperData(descSwiperResult);
+        setCommentData(commentList);
+        setCrumbData(['首页']);
+        setMoreServiceData([]);
+      })
+      .finally(() => setLoading(false));
   };
 
   useEffect(() => {
@@ -112,5 +116,6 @@ export const useDetailData = () => {
     detailContentData,
     moreServiceData,
     commentData,
+    loading,
   };
 };
