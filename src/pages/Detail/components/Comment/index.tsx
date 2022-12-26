@@ -1,4 +1,4 @@
-import { Modal } from '@ss/mtd-react';
+import { Modal, message } from '@ss/mtd-react';
 import { useContext } from 'react';
 import { CommentItem } from './CommentItem';
 import { CommentInput } from './CommentInput';
@@ -13,6 +13,7 @@ export const Comment = () => {
       message: '确认删除该条评论吗?',
       async onOk() {
         await deleteComment(commentId);
+        message.success({ message: '删除成功' });
       },
     });
   };

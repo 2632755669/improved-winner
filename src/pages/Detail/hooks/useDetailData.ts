@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getServiceDetail } from '../../../apis/detail';
 import { detailContentKeys } from '../../../constants';
+import { getMenuServiceList } from '../../../apis/home';
 
 export const getDetailConent = (data: any) => {
   const detailList = Object.entries(data).filter(
@@ -43,6 +44,15 @@ export interface DescSwiperDataItem {
   videoId: string;
 }
 
+export interface MoreServiceDataItem {
+  id: number;
+  title: string;
+  desc: string;
+  coverImg: string;
+  titleImg: string;
+  tags: string[];
+}
+
 export const useDetailData = () => {
   const { id } = useParams<{ id: string }>();
   const [loading, setLoading] = useState(false);
@@ -54,7 +64,9 @@ export const useDetailData = () => {
   );
   const detailContentDataState = useState<ContentDetailItem[]>([]);
   const [detailContentData, setDetailContentData] = detailContentDataState;
-  const [moreServiceData, setMoreServiceData] = useState<string[]>([]);
+  const [moreServiceData, setMoreServiceData] = useState<MoreServiceDataItem[]>(
+    [],
+  );
 
   const fetchServiceDetail = () => {
     setLoading(true);
@@ -86,9 +98,11 @@ export const useDetailData = () => {
         setDescData(descResult);
         setDescSwiperData(descSwiperResult);
         setCrumbData(['首页']);
-        setMoreServiceData([]);
       })
       .finally(() => setLoading(false));
+    getMenuServiceList(id).then((data) => {
+      setMoreServiceData(data?.slice(3));
+    });
   };
 
   useEffect(() => {

@@ -19,8 +19,14 @@ export const Detail = () => {
   const [likeCount, setLikeCount] = useState(0);
   const { id } = useParams<{ id: string }>();
   const { comments, deleteComment, publishComment } = useComment(id);
-  const { anchorData, descData, descSwiperData, detailContentData, loading } =
-    useDetailData();
+  const {
+    anchorData,
+    descData,
+    descSwiperData,
+    detailContentData,
+    moreServiceData,
+    loading,
+  } = useDetailData();
   // 点赞和取消点赞
   const likeAction = () => {
     if (!isLike) {
@@ -63,7 +69,7 @@ export const Detail = () => {
             </section>
             <section className="detail-right hidden xl:block w-320px ml-12">
               <Anchor data={anchorData} />
-              <MoreService />
+              <MoreService data={moreServiceData} />
             </section>
           </section>
         </main>
