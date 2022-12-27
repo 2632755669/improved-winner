@@ -24,7 +24,7 @@ export const NavCard = (props: Props) => {
         <div className="w-full h-225px rounded-lg overflow-hidden img-border">
           <ImgCover src={data.coverImg} />
         </div>
-        <div className="flex items-center mt-3 ">
+        <div className="flex mt-3 ">
           <img
             src={data.titleImg}
             alt=""
