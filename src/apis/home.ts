@@ -1,5 +1,6 @@
 import { get, post, HttpResponse } from './index';
 import { homeTabs, homeNavList } from '../mockData';
+import titleImg from '../assets/icon/logo_svg.svg';
 
 const imgUrl =
   'https://p0.meituan.net/smarttestvenus/5451f997aa9c1dee543572b083a8bcbe624884.png';
@@ -117,8 +118,10 @@ export const getMenuServiceList = (id: string) => {
       title: item.title,
       desc: item.remark,
       coverImg: item.imageUrl || imgUrl,
-      titleImg: item.secImageUrl || imgUrl,
-      tags: ['自动获取', '支持定制', '多主题'] || item.label,
+      titleImg: item.secImageUrl || titleImg,
+      tags:
+        ['自动获取测试测试', '支持定制测试测试', '多主题测试测试'] ||
+        item.label?.slice(3),
     };
   });
 
@@ -194,8 +197,9 @@ export const getLastServiceList = () => {
           title: item.title,
           index: index + 1,
           likeCount: item.usefulCount,
-          titleImg: item.secImageUrl || imgUrl,
-          tags: item.label || [],
+          titleImg: item.secImageUrl || titleImg,
+          // tags: item.label?.slice(2) || ['自动获取测试测试', '支持定制测试测试'],
+          tags: ['自动获取测试测试', '支持定制测试测试'],
         };
       });
       return result;

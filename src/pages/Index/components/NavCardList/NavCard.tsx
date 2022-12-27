@@ -32,7 +32,7 @@ export const NavCard = (props: Props) => {
           />
           <div className="text-white-72">
             <h3 className="text-lg font-bold">{data.title}</h3>
-            <p className="text-base leading-5 my-1">{data.desc}</p>
+            <p className="text-base leading-5 my-1 ellipsis">{data.desc}</p>
             <div className="flex">
               {data?.tags?.map((item, index) => {
                 return (

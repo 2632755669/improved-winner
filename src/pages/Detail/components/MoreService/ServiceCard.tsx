@@ -24,7 +24,7 @@ export const ServiceCard = (props: Props) => {
         <h3 className="wtext-lg text-white-72 font-bold mt-2 mb-1">
           {data.title}
         </h3>
-        <p className="text-sm text-white-42">{data.desc}</p>
+        <p className="text-sm text-white-42 ellipsis">{data.desc}</p>
       </div>
     </section>
   );

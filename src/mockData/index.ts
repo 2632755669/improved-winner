@@ -278,7 +278,8 @@ export const homeNavList = [
     url: '',
     title: '政府媒体数据报送',
     description: '',
-    imageUrl: '',
+    imageUrl:
+      'http://p1.meituan.net/portalweb/6ffdbaf2f32ade3dc8355cc0aaaf96f9197306.jpg',
     secImageUrl: '',
     weight: 7,
     serviceUnitClientDto: {
@@ -300,7 +301,8 @@ export const homeNavList = [
     },
     mcNewsDto: null,
     label: [],
-    remark: '闪电报告、定制报告服务',
+    remark:
+      '数据大屏开发服务数据大屏开发服务数据大屏开发服务数据大屏开发服务数据大屏开发服务数据大屏开发服务',
     mcCourseDetailDto: null,
   },
   {
@@ -312,7 +314,8 @@ export const homeNavList = [
     url: '',
     title: '政府协会大屏合作',
     description: '',
-    imageUrl: '',
+    imageUrl:
+      'http://p0.meituan.net/portalweb/56c8403f738b25c253b5448aba3cf46f171167.jpg',
     secImageUrl: '',
     weight: 6,
     serviceUnitClientDto: {
@@ -334,7 +337,8 @@ export const homeNavList = [
     },
     mcNewsDto: null,
     label: [],
-    remark: '数据大屏开发服务',
+    remark:
+      '数据大屏开发服务数据大屏开发服务数据大屏开发服务数据大屏开发服务数据大屏开发服务数据大屏开发服务',
     mcCourseDetailDto: null,
   },
   {
@@ -346,7 +350,8 @@ export const homeNavList = [
     url: '',
     title: '国家行业协会合作',
     description: '',
-    imageUrl: '',
+    imageUrl:
+      'http://p1.meituan.net/portalweb/e757d442f3f24000a9827977fe8e8b6e178916.jpg',
     secImageUrl: '',
     weight: 5,
     serviceUnitClientDto: {
@@ -380,7 +385,8 @@ export const homeNavList = [
     url: '',
     title: '美团礼品采购',
     description: '',
-    imageUrl: '',
+    imageUrl:
+      'http://p1.meituan.net/portalweb/c958a9c933b27ee7517be6b4f33ddbf91423098.jpg',
     secImageUrl: '',
     weight: 3,
     serviceUnitClientDto: {
@@ -414,7 +420,8 @@ export const homeNavList = [
     url: '',
     title: '支持展览策划',
     description: '',
-    imageUrl: '',
+    imageUrl:
+      'http://p0.meituan.net/portalweb/bf4372e7e9f808b556b9ab1331cb9459520612.png',
     secImageUrl: '',
     weight: 1,
     serviceUnitClientDto: {
@@ -448,7 +455,8 @@ export const homeNavList = [
     url: '',
     title: '美团吉祥物周边礼品',
     description: '',
-    imageUrl: '',
+    imageUrl:
+      'http://p0.meituan.net/portalweb/0ac887656bbcb404070db52d3fb8adc01001639.png',
     secImageUrl: '',
     weight: 1,
     serviceUnitClientDto: {
@@ -536,7 +544,12 @@ export const detailContent = {
   bizIntroduction:
     '季末年初、消费旺季结束的时候，政府部门、主流媒体通常都需要一些消费市场大数据，你可以通过“闪电报告”自助一键获取，快速报送对方。如果有定制化需求，我们也可以快速响应，提供咨询和支持服务。',
   accumulated: null,
-  label: ['自助获取', '支持定制', '多主题', '各地域'],
+  label: [
+    '自助获取自助获取',
+    '支持定制自助获取',
+    '多主题自助获取',
+    '各地域自助获取',
+  ],
   type: 1,
   cooperationAdvantage: {
     id: null,
