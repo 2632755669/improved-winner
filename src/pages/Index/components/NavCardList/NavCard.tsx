@@ -3,6 +3,7 @@ import { ImgCover } from '../../../../components/ImgCover';
 
 export interface NavData {
   id: number;
+  moduleId: string;
   title: string;
   desc: string;
   coverImg: string;

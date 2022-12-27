@@ -25,6 +25,7 @@ export const Detail = () => {
     descSwiperData,
     detailContentData,
     moreServiceData,
+    breadcrumbData,
     loading,
   } = useDetailData();
   // 点赞和取消点赞
@@ -56,7 +57,7 @@ export const Detail = () => {
       <LikeContext.Provider value={{ isLike, likeAction, likeCount }}>
         <main>
           <section>
-            <Breadcrumb />
+            <Breadcrumb data={breadcrumbData} />
           </section>
           <section className="flex flex-wrap w-full mt-6">
             <section id="detail-left" className="detail-left flex-1">

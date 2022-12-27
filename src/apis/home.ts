@@ -90,7 +90,7 @@ interface MenuServiceItem {
   imageUrl: string;
   secImageUrl: string;
   moduleCode: string;
-  moduleId: number;
+  moduleId: string;
   label: string[];
   remark: string;
 }
@@ -115,6 +115,7 @@ export const getMenuServiceList = (id: string) => {
   const result = homeNavList.map((item) => {
     return {
       id: item.id,
+      moduleId: `${item.moduleId}`,
       title: item.title,
       desc: item.remark,
       coverImg: item.imageUrl || imgUrl,

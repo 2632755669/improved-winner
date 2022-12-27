@@ -44,7 +44,10 @@ export const NavCardList = () => {
       <section className="w-full -ml-3 grid grid-cols-1 lg:grid-cols-2 desktop1440:grid-cols-3 gap-6">
         {navCardList.map((item, index) => {
           return (
-            <Link key={index} to={`/detail/${item.id}`}>
+            <Link
+              key={index}
+              to={`/detail/${item.id}?moduleId=${item.moduleId}`}
+            >
               <NavCard data={item} />
             </Link>
           );

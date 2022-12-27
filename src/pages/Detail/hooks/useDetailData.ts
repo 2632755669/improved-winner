@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSearchParam } from 'react-use';
 import { getServiceDetail } from '../../../apis/detail';
 import { detailContentKeys } from '../../../constants';
-import { getMenuServiceList } from '../../../apis/home';
+import { getModuleMenus, getMenuServiceList } from '../../../apis/home';
 
 export const getDetailConent = (data: any) => {
   const detailList = Object.entries(data).filter(
@@ -53,11 +54,23 @@ export interface MoreServiceDataItem {
   tags: string[];
 }
 
+export interface BreadcrumbDataItem {
+  title: string;
+  path: string;
+}
+
 export const useDetailData = () => {
   const { id } = useParams<{ id: string }>();
+  const moduleId = useSearchParam('moduleId') || '';
+  const moduleName = useSearchParam('moduleName') || '';
   const [loading, setLoading] = useState(false);
   const [anchorData, setAnchorData] = useState<AnchorDataItem[]>([]);
-  const [breadcrumbData, setCrumbData] = useState<string[]>([]);
+  const [breadcrumbData, setCrumbData] = useState<BreadcrumbDataItem[]>([
+    {
+      title: '首页',
+      path: '/home',
+    },
+  ]);
   const [descData, setDescData] = useState<Partial<DescData>>({});
   const [descSwiperData, setDescSwiperData] = useState<DescSwiperDataItem[]>(
     [],
@@ -93,14 +106,49 @@ export const useDetailData = () => {
             videoId: item.videoId as string,
           };
         });
+        if (moduleId) {
+          getModuleMenus().then((tabData) => {
+            const apiModuleName = tabData?.find(
+              (item) => item.key === moduleId,
+            )?.title;
+            setCrumbData([
+              {
+                title: '首页',
+                path: '/home',
+              },
+              {
+                title: apiModuleName || moduleName || '测试',
+                path: `/home?moduleId=${moduleId}`,
+              },
+              {
+                title: descResult.title,
+                path: '',
+              },
+            ]);
+          });
+        } else {
+          setCrumbData([
+            {
+              title: '首页',
+              path: '/home',
+            },
+            {
+              title: moduleName || '测试',
+              path: '/home',
+            },
+            {
+              title: descResult.title,
+              path: '',
+            },
+          ]);
+        }
         setAnchorData(anchorResult);
         setDetailContentData(contentDetail);
         setDescData(descResult);
         setDescSwiperData(descSwiperResult);
-        setCrumbData(['首页']);
       })
       .finally(() => setLoading(false));
-    getMenuServiceList(id).then((data) => {
+    getMenuServiceList(moduleId).then((data) => {
       setMoreServiceData(data?.slice(3));
     });
   };
