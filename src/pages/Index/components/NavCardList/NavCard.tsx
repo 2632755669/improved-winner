@@ -19,7 +19,7 @@ export const NavCard = (props: Props) => {
   const { className, data } = props;
   return (
     <section
-      className={`flex justify-center rounded-lg py-3 w-424px h-353px bg-dark-200.0 hover:bg-dark-200.1 ${className}`}
+      className={`flex justify-center rounded-xl py-3 w-424px h-353px bg-dark-200.0 hover:bg-dark-200.1 ${className}`}
     >
       <section className="w-400px cursor-pointer">
         <div className="w-full h-225px rounded-lg overflow-hidden img-border">

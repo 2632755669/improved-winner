@@ -27,7 +27,7 @@ export const getUserInfo = () => {
 
 export const getUserAvatar = () => {
   return get<HttpResponse<string>>('/sapi/client/v1/getpic').then((data) => {
-    if (data?.status.code === 0) {
+    if (data?.status?.code === 0) {
       return data;
     }
     return Promise.reject();

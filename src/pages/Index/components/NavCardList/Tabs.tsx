@@ -32,7 +32,7 @@ export const Tabs = (props: Props) => {
   }, [tabs]);
 
   return (
-    <section id="tabs" className="flex pt-7 pb-6 mt bg-dark-100">
+    <section id="tabs" className="flex items-center pt-7 pb-6 mt bg-dark-100">
       {tabs?.map((item) => {
         const activeClass = classnames({
           'tabs-item-active': item.key === activeKey,

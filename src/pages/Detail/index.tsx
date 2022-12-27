@@ -68,7 +68,7 @@ export const Detail = () => {
               <DetailContent data={detailContentData} />
               <Comment />
             </section>
-            <section className="detail-right hidden xl:block w-320px ml-12">
+            <section className="detail-right hidden xl:block w-332px pl-12">
               <Anchor data={anchorData} />
               <MoreService data={moreServiceData} />
             </section>

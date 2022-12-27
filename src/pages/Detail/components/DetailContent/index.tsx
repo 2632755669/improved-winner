@@ -47,7 +47,11 @@ export const DetailContent = (props: Props) => {
         >
           <span
             onClick={likeAction}
-            className="text-center leading-10 border-solid-round cursor-pointer w-40px h-40px text-24"
+            className={`text-center leading-10 border-solid-round cursor-pointer w-40px h-40px text-24 hover:bg-dark-300 ${classnames(
+              {
+                'bg-dark-300': isLike,
+              },
+            )}`}
           >
             <img
               className="w-24px h-24px"
