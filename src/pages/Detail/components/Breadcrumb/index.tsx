@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import './index.less';
@@ -20,6 +22,7 @@ export const Breadcrumb = (props: Props) => {
         if (index + 1 === data?.length) {
           return (
             <span
+              key={index}
               className={`${classnames({
                 'text-white-84': true,
               })} breadcrumb-border cursor-pointer`}
@@ -29,14 +32,14 @@ export const Breadcrumb = (props: Props) => {
           );
         }
         return (
-          <>
-            <Link to={item.path} key={item.path}>
+          <Fragment key={index}>
+            <Link to={item.path}>
               <span className="breadcrumb-item cursor-pointer">
                 {item.title}
               </span>
             </Link>
             <span className="breadcrumb-icon">/</span>
-          </>
+          </Fragment>
         );
       })}
     </div>

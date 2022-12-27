@@ -56,10 +56,11 @@ export const DescSwiper = (props: Props) => {
         }}
         modules={[Pagination, Navigation]}
       >
-        {descSwiperData.map((item) => {
+        {descSwiperData.map((item, index) => {
           const imgUrl = item.isVideo ? item.videoCoverUrl : item.imgUrl;
           return (
-            <SwiperSlide>
+            // eslint-disable-next-line react/no-array-index-key
+            <SwiperSlide key={index}>
               <ImgCover
                 isVideo={item.isVideo}
                 canPlay

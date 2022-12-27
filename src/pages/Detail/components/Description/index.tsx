@@ -82,9 +82,13 @@ export const Description = (props: Props) => {
         </h1>
         <p className="mt-4 text-white-60 leading-snug">{descData.intro}</p>
         <div className="mt-3 flex flex-wrap">
-          {descData.tags?.map((item) => {
+          {descData.tags?.map((item, index) => {
             return (
-              <span className="bg-dark-300 px-1 leading-6 rounded mr-2 mb-2 text-white-60">
+              // eslint-disable-next-line react/no-array-index-key
+              <span
+                key={index}
+                className="bg-dark-300 px-1 leading-6 rounded mr-2 mb-2 text-white-60"
+              >
                 {item}
               </span>
             );

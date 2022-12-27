@@ -14,7 +14,7 @@ export const MoreService = (props: Props) => {
       <section className="more-service-cards -ml-3">
         {data?.map((item) => {
           return (
-            <Link to={`/detail/${item.id}`}>
+            <Link key={item.id} to={`/detail/${item.id}`}>
               <ServiceCard data={item} />
             </Link>
           );

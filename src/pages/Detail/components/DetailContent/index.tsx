@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import { useContext } from 'react';
+import { useContext, Fragment } from 'react';
 import classnames from 'classnames';
 import { LikeContext } from '../../context/LikeContext';
 import { ContentDetailItem } from '../../hooks/useDetailData';
@@ -23,10 +23,9 @@ export const DetailContent = (props: Props) => {
       >
         {data.map((item) => {
           return (
-            <>
+            <Fragment key={item.id}>
               <div
                 id={item.id}
-                key={item.id}
                 className="text-white-84 text-2xl font-bold mb-4 mt-9 detail-content-title"
               >
                 {item.title}
@@ -35,7 +34,7 @@ export const DetailContent = (props: Props) => {
                 dangerouslySetInnerHTML={{ __html: item.content }}
                 className="detail-content-desc text-white-60 text-base "
               />
-            </>
+            </Fragment>
           );
         })}
       </section>
