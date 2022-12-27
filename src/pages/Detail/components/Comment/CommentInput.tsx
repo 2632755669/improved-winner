@@ -1,15 +1,15 @@
 import { useState, useRef, useContext } from 'react';
 import { Form, Input, Button, message } from '@ss/mtd-react';
 import { CommentContext } from '../../context/CommentContext';
-
-const avatarUrl =
-  'https://p0.meituan.net/smarttestvenus/5d52f8079871447d464f82c75e0cc1dc44568.jpg';
+import { UserInfoContext } from '../../../../context/UserInfoContext';
+import defaultAvatar from '../../../../assets/images/defaultAvatar.png';
 
 export const CommentInput = () => {
   const formRef = useRef<any>({});
   const [isInputing, setIsInputing] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
   const { publishComment } = useContext(CommentContext);
+  const { avatar } = useContext(UserInfoContext);
 
   const handleToogle = () => {
     setIsInputing((val) => !val);
@@ -32,7 +32,7 @@ export const CommentInput = () => {
   return (
     <section className="comment-container flex w-full mt-6">
       <img
-        src={avatarUrl}
+        src={avatar || defaultAvatar}
         alt="user-avatar"
         className="w-28px h-28px rounded-full object-cover img-border"
       />

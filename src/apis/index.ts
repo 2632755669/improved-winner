@@ -30,7 +30,12 @@ registerInterceptor('request', (config) => {
 registerInterceptor('response', (status, response) => {
   if (status === 200) {
     const { code, success, status: statusCode } = response;
-    if (success === true || code === 0 || statusCode === 0) {
+    if (
+      success === true ||
+      code === 0 ||
+      statusCode === 0 ||
+      statusCode?.code === 0
+    ) {
       return Promise.resolve(response);
     }
     messageShow(response?.status?.message || response?.data?.message);

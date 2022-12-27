@@ -4,16 +4,20 @@ import { get, post, HttpResponse } from './index';
  * 获取用户信息
  */
 interface UserInfo extends HttpResponse<null> {
-  name: string;
-  userId: string;
-  mis: string;
+  users: Array<{
+    name: string;
+    userId: string;
+    mis: string;
+  }>;
 }
 
 export const getUserInfo = () => {
   return post<UserInfo>('/sapi/client/v1/tmcadminservice_getssoinfo').then(
     (data) => {
-      console.log(data);
-      return data;
+      if (data?.status.code === 0) {
+        return data;
+      }
+      return Promise.reject();
     },
   );
 };
@@ -22,10 +26,22 @@ export const getUserInfo = () => {
  */
 
 export const getUserAvatar = () => {
-  return get<UserInfo>('/sapi/client/v1/getpic').then((data) => {
-    console.log(data);
-    return data;
+  return get<HttpResponse<string>>('/sapi/client/v1/getpic').then((data) => {
+    if (data?.status.code === 0) {
+      return data;
+    }
+    return Promise.reject();
   });
+};
+
+export const getUserInfoWithAvatar = async () => {
+  const userInfo = await getUserInfo();
+  const avatar = await getUserAvatar();
+  return {
+    username: userInfo?.users[0].name,
+    mis: userInfo?.users[0].mis,
+    avatar: avatar.data,
+  };
 };
 
 // 公共接口

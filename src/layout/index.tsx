@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Icon } from '@ss/mtd-react';
 import { Header } from './components/Header';
 import { logout } from '../utils/login';
 import { useSerivcer } from '../hooks/useServicer';
+import { UserInfoContext } from '../context/UserInfoContext';
 import './index.less';
 
 interface Props {
@@ -11,7 +12,8 @@ interface Props {
 
 export const Layout = (props: Props) => {
   const { children } = props;
-  const onFeedback = useSerivcer({ misId: '1953' });
+  const onFeedback = useSerivcer({ misId: '6962724' });
+  const { avatar } = useContext(UserInfoContext);
   // 退出登录
   const handleLogout = () => {
     console.log('退出登录');
@@ -28,6 +30,7 @@ export const Layout = (props: Props) => {
       <Header
         title="CAP服务"
         logout={handleLogout}
+        avatarUrl={avatar}
         toolBar={
           <div className="header-toolbar">
             <div className="header-toobar-bg">
