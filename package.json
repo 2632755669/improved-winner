@@ -65,7 +65,8 @@
     "stylelint": "^13"
   },
   "resolutions": {
-    "@types/react": "17.0.44"
+    "@types/react": "17.0.44",
+    "react-error-overlay": "6.0.9"
   },
   "husky": {
     "hooks": {
