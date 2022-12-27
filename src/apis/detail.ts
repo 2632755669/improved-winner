@@ -107,7 +107,7 @@ export const getSubscribeStatusApi = (id: string) => {
     params,
   ).then(({ data, status }) => {
     if (status.code === 0) {
-      return data;
+      return data === '1';
     }
     return Promise.reject();
   });
