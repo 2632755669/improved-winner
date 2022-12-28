@@ -15,7 +15,6 @@ interface Props {
 
 export const Breadcrumb = (props: Props) => {
   const { data } = props;
-  console.log(data);
   return (
     <div className="breadcrumb-container">
       {data?.map((item, index) => {

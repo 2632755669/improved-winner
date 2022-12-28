@@ -40,7 +40,6 @@ export const getMediaSource = async (id: string) => {
       isAdaptive: false,
       coverImageUrl: result.coverImageUrl,
     };
-    // console.log(source)
     return source;
   }
   return Promise.reject(new Error('无权访问此视频资源'));

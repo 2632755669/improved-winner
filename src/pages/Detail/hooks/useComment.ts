@@ -33,7 +33,6 @@ export const useComment = (id: string) => {
   const deleteComment = useCallback(
     (commentId: string) => {
       return deleteCommentApi(id, commentId).then(() => {
-        message.success({ message: '删除成功' });
         getComments();
       });
     },

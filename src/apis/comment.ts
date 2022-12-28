@@ -1,7 +1,6 @@
 import { format } from 'date-fns';
 import { post, HttpResponse } from './index';
 import { Page } from './type';
-// import { commentList } from '../mockData';
 
 // 1、提交留言
 interface SubmitCommentParams {
@@ -57,6 +56,7 @@ export interface MyCommentItem {
   label: labelEnum;
   userId: string;
   userName: string;
+  userMis: string;
   userPic: string;
 }
 
@@ -65,7 +65,6 @@ interface MyCommentList extends HttpResponse<MyCommentItem[]> {
 }
 
 // 2、获取我的留言
-// label:NON_FEATURED
 export const getMyComment = (id: string) => {
   const params = {
     objectCode: id,
@@ -82,7 +81,7 @@ export const getMyComment = (id: string) => {
     if (status.code === 0) {
       return data?.map((item) => ({
         avatar: item.userPic,
-        name: item.userName,
+        name: `${item.userMis}/${item.userName}`,
         creatTime: format(new Date(item.createTime), 'MM-dd hh:mm'),
         commentId: item.commentId,
         isMyComment: item.isMyComment,
@@ -91,11 +90,9 @@ export const getMyComment = (id: string) => {
       }));
     }
     return Promise.reject();
-    // return commentList;
   });
 };
 
-// commentLabel: FEATURED
 type ExcellentCommentParams = MyCommentParams;
 
 type ExcellentCommentList = MyCommentList;
@@ -117,7 +114,7 @@ export const getExcellentComment = (id: string) => {
     if (status.code === 0) {
       return data?.map((item) => ({
         avatar: item.userPic,
-        name: item.userName,
+        name: `${item.userMis}/${item.userName}`,
         creatTime: format(new Date(item.createTime), 'yyyy/MM/dd'),
         commentId: item.commentId,
         isMyComment: item.isMyComment,
@@ -126,7 +123,6 @@ export const getExcellentComment = (id: string) => {
       }));
     }
     return Promise.reject();
-    // return commentList;
   });
 };
 

@@ -13,8 +13,6 @@ export const ImgCover = forwardRef((props: Props, ref) => {
   const { src, isVideo, canPlay, videoId } = props;
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  console.log(canPlay, videoId);
-
   const srcMemo = useMemo(() => {
     return isVideo ? src : src;
   }, [isVideo, src]);

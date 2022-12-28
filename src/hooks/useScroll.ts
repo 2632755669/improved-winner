@@ -9,7 +9,6 @@ export const useScroll = (el: string | Element | null) => {
   const scrollListen = throttle(() => {
     if (!target) return;
     const { top } = target.getBoundingClientRect();
-    console.log(top);
     setScrollTop(top);
   }, 300);
 

@@ -16,12 +16,10 @@ export const Layout = (props: Props) => {
   const { avatar } = useContext(UserInfoContext);
   // 退出登录
   const handleLogout = () => {
-    console.log('退出登录');
     logout();
   };
   // 联系客服
   const service = () => {
-    console.log('跳转到大象');
     onFeedback();
   };
 

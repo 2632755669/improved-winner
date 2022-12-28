@@ -1,5 +1,4 @@
 import { get, post, HttpResponse } from './index';
-import { homeTabs, homeNavList } from '../mockData';
 import titleImg from '../assets/icon/logo_svg.svg';
 
 const imgUrl =
@@ -54,30 +53,19 @@ export const getModuleMenus = () => {
     moduleMenuCode: 'menu_strategy',
     type: 1,
   };
-  const result = homeTabs.map((item) => {
-    return {
-      key: String(item.id),
-      title: item.moduleDisplayTitle,
-    };
-  });
   return post<ModuleMenusParams, HttpResponse<ModuleMenusItem[]>>(
     '/sapi/client/v1/tmcmoduleconfigclientservice_homepagemodules',
     params,
-  ).then(
-    ({ data }) => {
-      console.log(data);
-      const resultData = homeTabs.map((item) => {
-        return {
-          key: String(item.id),
-          title: item.moduleDisplayTitle,
-        };
-      });
-      return resultData;
-    },
-    () => {
-      return result;
-    },
-  );
+  ).then(({ data, status }) => {
+    if (status?.code !== 0) return Promise.reject();
+    const resultData = data.map((item) => {
+      return {
+        key: String(item.id),
+        title: item.moduleDisplayTitle,
+      };
+    });
+    return resultData;
+  });
 };
 
 /**
@@ -190,39 +178,21 @@ export const getLastServiceList = () => {
     pageNo: 1,
     pageSize: 6,
   };
-
-  let result = homeNavList.map((item, index) => {
-    return {
-      id: String(item.id),
-      title: item.title,
-      index: index + 1,
-      likeCount: item.weight,
-      titleImg: item.secImageUrl || imgUrl,
-      tags: ['自动获取', '支持定制', '多主题'] || item.label,
-    };
-  });
-
   return get<LastServiceParams, LastServiceList>(
     '/sapi/client/v1/getoldestcontent',
     params,
-  ).then(
-    ({ data }) => {
-      console.log(data);
-      result = data?.map((item, index) => {
-        return {
-          id: item.id,
-          title: item.title,
-          index: index + 1,
-          likeCount: item.usefulCount,
-          titleImg: item?.headInfo?.[0]?.url || titleImg,
-          tags: item.label?.slice(0, 2) || [
-            '自动获取测试测试',
-            '支持定制测试测试',
-          ],
-        };
-      });
-      return result;
-    },
-    () => result,
-  );
+  ).then(({ data, status }) => {
+    if (status?.code !== 0) return Promise.reject();
+    const result = data?.map((item, index) => {
+      return {
+        id: item.id,
+        title: item.title,
+        index: index + 1,
+        likeCount: item.usefulCount,
+        titleImg: item?.headInfo?.[0]?.url || titleImg,
+        tags: item.label?.slice(0, 2),
+      };
+    });
+    return result;
+  });
 };

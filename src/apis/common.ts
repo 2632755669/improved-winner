@@ -133,13 +133,6 @@ interface VideoSource {
   auditStatus: number;
 }
 
-// interface VideoInfo {
-//   TranscodeSet: Array<{
-//     Url: string;
-//   }>;
-
-// }
-
 export const getVideoSource = (videoId: string) => {
   const params = {
     videoId,
@@ -149,7 +142,6 @@ export const getVideoSource = (videoId: string) => {
     params,
   ).then(({ data, status }) => {
     if (status?.code === 0) {
-      // let videoInfo: Partial<VideoInfo> = {};
       return data;
     }
     return videoSource;

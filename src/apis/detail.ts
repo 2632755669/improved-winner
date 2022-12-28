@@ -1,5 +1,4 @@
 import { post, HttpResponse } from './index';
-import { detailContent } from '../mockData';
 
 /**
  * 获取服务详情
@@ -50,16 +49,12 @@ export const getServiceDetail = (id: number) => {
   return post<ServiceDetailParams, HttpResponse<ServiceDetail>>(
     '/sapi/client/v1/tmcmoduleconfigclientservice_getservicedetail',
     params,
-  ).then(
-    ({ data, status }) => {
-      console.log(data);
-      if (status?.code === 0) {
-        return data;
-      }
-      return Promise.reject();
-    },
-    () => detailContent,
-  );
+  ).then(({ data, status }) => {
+    if (status?.code === 0) {
+      return data;
+    }
+    return Promise.reject();
+  });
 };
 
 /**
