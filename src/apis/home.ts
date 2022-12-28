@@ -96,6 +96,13 @@ interface MenuServiceItem {
   imageUrl: string;
   secImageUrl: string;
   moduleCode: string;
+  serviceUnitClientDto: {
+    headInfo: Array<{
+      url: string;
+      videoId: string;
+      videoPicture: string;
+    }>;
+  };
   moduleId: string;
   label: string[];
   remark: string;
@@ -139,13 +146,14 @@ export const getMenuServiceList = (id: string) => {
     ({ data }) => {
       console.log(data);
       const resultData = data.map((item) => {
+        const imgObj = item.serviceUnitClientDto?.headInfo?.[0] || {};
         return {
           id: item.id,
           moduleId: `${item.moduleId}`,
           title: item.title,
           desc: item.remark,
-          coverImg: item.imageUrl || imgUrl,
-          titleImg: item.secImageUrl || titleImg,
+          coverImg: imgObj?.url || imgObj?.videoPicture || imgUrl,
+          titleImg: imgObj?.url || imgObj?.videoPicture || titleImg,
           tags: item.label?.slice(3) || [],
         };
       });
