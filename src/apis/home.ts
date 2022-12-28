@@ -142,7 +142,7 @@ export const getMenuServiceList = (id: string) => {
         isVideo: imgObj?.type === 1,
         coverImg: imgObj?.url || imgObj?.videoPicture || imgUrl,
         titleImg: item.imageUrl || titleImg,
-        tags: item.label?.slice(3) || [],
+        tags: item.label?.slice(0, 3) || [],
       };
     });
     return resultData;
@@ -215,7 +215,7 @@ export const getLastServiceList = () => {
           index: index + 1,
           likeCount: item.usefulCount,
           titleImg: item?.headInfo?.[0]?.url || titleImg,
-          tags: item.label?.slice(2) || [
+          tags: item.label?.slice(0, 2) || [
             '自动获取测试测试',
             '支持定制测试测试',
           ],
