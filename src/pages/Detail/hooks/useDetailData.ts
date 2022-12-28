@@ -6,7 +6,8 @@ import { detailContentKeys } from '../../../constants';
 import { getModuleMenus, getMenuServiceList } from '../../../apis/home';
 
 export const getDetailConent = (data: any) => {
-  const detailList = Object.entries(data).filter(
+  if (!data) return [];
+  const detailList = Object.entries(data)?.filter(
     (item: any) => detailContentKeys.includes(item[0]) && item[1].title,
   );
   const result = detailList?.map((item: any, index: number) => {
@@ -86,7 +87,7 @@ export const useDetailData = () => {
     getServiceDetail(Number(id))
       .then((data) => {
         const contentDetail = getDetailConent(data);
-        const anchorResult = contentDetail.map((item) => {
+        const anchorResult = contentDetail?.map((item) => {
           return {
             id: item.id,
             title: item.title,
@@ -98,7 +99,7 @@ export const useDetailData = () => {
           tags: data.label,
           likeCount: data.usefulCount,
         };
-        const descSwiperResult = data.headInfo.map((item) => {
+        const descSwiperResult = data.headInfo?.map((item) => {
           return {
             imgUrl: item.url as string,
             videoCoverUrl: item.videoPicture as string,
@@ -149,7 +150,7 @@ export const useDetailData = () => {
       })
       .finally(() => setLoading(false));
     getMenuServiceList(moduleId).then((data) => {
-      setMoreServiceData(data?.slice(3));
+      setMoreServiceData(data?.slice(0, 3) as any);
     });
   };
 

@@ -51,9 +51,12 @@ export const getServiceDetail = (id: number) => {
     '/sapi/client/v1/tmcmoduleconfigclientservice_getservicedetail',
     params,
   ).then(
-    (data) => {
+    ({ data, status }) => {
       console.log(data);
-      return detailContent;
+      if (status?.code === 0) {
+        return data;
+      }
+      return Promise.reject();
     },
     () => detailContent,
   );

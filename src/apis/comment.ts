@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { post, HttpResponse } from './index';
 import { Page } from './type';
-import { commentList } from '../mockData';
+// import { commentList } from '../mockData';
 
 // 1、提交留言
 interface SubmitCommentParams {
@@ -90,8 +90,8 @@ export const getMyComment = (id: string) => {
         label: item.label,
       }));
     }
-    // return Promise.reject();
-    return commentList;
+    return Promise.reject();
+    // return commentList;
   });
 };
 
@@ -114,7 +114,7 @@ export const getExcellentComment = (id: string) => {
     '/sapi/client/v1/tmccommentreplyservice_getexcellentcomment',
     params,
   ).then(({ data, status }) => {
-    if (status.code !== 0) {
+    if (status.code === 0) {
       return data?.map((item) => ({
         avatar: item.userPic,
         name: item.userName,
@@ -125,8 +125,8 @@ export const getExcellentComment = (id: string) => {
         label: item.label,
       }));
     }
-    // return Promise.reject();
-    return commentList;
+    return Promise.reject();
+    // return commentList;
   });
 };
 

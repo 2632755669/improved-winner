@@ -66,7 +66,13 @@ export const getModuleMenus = () => {
   ).then(
     ({ data }) => {
       console.log(data);
-      return result;
+      const resultData = homeTabs.map((item) => {
+        return {
+          key: String(item.id),
+          title: item.moduleDisplayTitle,
+        };
+      });
+      return resultData;
     },
     () => {
       return result;
@@ -132,7 +138,18 @@ export const getMenuServiceList = (id: string) => {
   ).then(
     ({ data }) => {
       console.log(data);
-      return result;
+      const resultData = data.map((item) => {
+        return {
+          id: item.id,
+          moduleId: `${item.moduleId}`,
+          title: item.title,
+          desc: item.remark,
+          coverImg: item.imageUrl || imgUrl,
+          titleImg: item.secImageUrl || titleImg,
+          tags: item.label?.slice(3) || [],
+        };
+      });
+      return resultData;
     },
     () => result,
   );
@@ -152,6 +169,11 @@ interface LastServiceItem {
   title: string;
   imageUrl: string;
   secImageUrl: string;
+  headInfo: Array<{
+    url: string;
+    videoId: string;
+    videoPicture: string;
+  }>;
   moduleCode: string;
   moduleId: number;
   label: string[];
@@ -198,9 +220,11 @@ export const getLastServiceList = () => {
           title: item.title,
           index: index + 1,
           likeCount: item.usefulCount,
-          titleImg: item.secImageUrl || titleImg,
-          // tags: item.label?.slice(2) || ['自动获取测试测试', '支持定制测试测试'],
-          tags: ['自动获取测试测试', '支持定制测试测试'],
+          titleImg: item?.headInfo?.[0]?.url || titleImg,
+          tags: item.label?.slice(2) || [
+            '自动获取测试测试',
+            '支持定制测试测试',
+          ],
         };
       });
       return result;
