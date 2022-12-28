@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParam } from 'react-use';
 import classnames from 'classnames';
 
 export interface TabItem {
@@ -17,19 +18,23 @@ interface Props {
 export const Tabs = (props: Props) => {
   const { tabs, onChange } = props;
   const [activeKey, setActiveKey] = useState('');
+  const moduleId = useSearchParam('moduleId') || '';
 
   const toggle = (key: string) => {
-    onChange?.(activeKey);
+    onChange?.(key);
     setActiveKey(key);
   };
 
   useEffect(() => {
-    if (tabs?.[0]?.key) {
-      setActiveKey(tabs[0]?.key);
-      onChange?.(tabs[0]?.key);
+    let key = tabs?.[0]?.key;
+    if (!key) return;
+    if (moduleId) {
+      key = moduleId;
     }
+    setActiveKey(key);
+    onChange?.(key);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tabs]);
+  }, [tabs, moduleId]);
 
   return (
     <section id="tabs" className="flex items-center pt-7 pb-6 mt bg-dark-100">

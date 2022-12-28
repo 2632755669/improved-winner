@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { message } from '@ss/mtd-react';
 import { Anchor } from './components/Anchor';
 import { Breadcrumb } from './components/Breadcrumb';
 import { Description } from './components/Description';
@@ -17,6 +18,7 @@ import './index.less';
 export const Detail = () => {
   const [isLike, setIsLike] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
+  const [likeLoading, setLikeLoading] = useState(false);
   const { id } = useParams<{ id: string }>();
   const { comments, deleteComment, publishComment } = useComment(id);
   const {
@@ -30,16 +32,24 @@ export const Detail = () => {
   } = useDetailData();
   // 点赞和取消点赞
   const likeAction = () => {
+    if (likeLoading) return;
+    setLikeLoading(true);
     if (!isLike) {
-      likeApi(id).then(() => {
-        setIsLike(true);
-        setLikeCount((value) => value + 1);
-      });
+      likeApi(id)
+        .then(() => {
+          message.success({ message: '点赞成功' });
+          setIsLike(true);
+          setLikeCount((value) => value + 1);
+        })
+        .finally(() => setLikeLoading(false));
     } else {
-      cancelLikeApi(id).then(() => {
-        setIsLike(false);
-        setLikeCount((value) => value - 1);
-      });
+      cancelLikeApi(id)
+        .then(() => {
+          message.success({ message: '取消点赞成功' });
+          setIsLike(false);
+          setLikeCount((value) => value - 1);
+        })
+        .finally(() => setLikeLoading(false));
     }
   };
 

@@ -27,6 +27,7 @@ export const Description = (props: Props) => {
 
   // 订阅
   const [isSubscribe, setIsSubscribe] = useState(false);
+  const [subscribeLoading, setSubscribeLoading] = useState(false);
   // 点赞
   const { isLike, likeAction, likeCount } = useContext(LikeContext);
   const { comments } = useContext(CommentContext);
@@ -36,28 +37,36 @@ export const Description = (props: Props) => {
   };
   // 订阅
   const handleSubscribe = () => {
-    subscribeApi(id).then(
-      () => {
-        message.success({ message: '订阅成功' });
-        setIsSubscribe(true);
-      },
-      (err) => {
-        message.error({ message: err || '服务异常' });
-      },
-    );
+    if (subscribeLoading) return;
+    setSubscribeLoading(true);
+    subscribeApi(id)
+      .then(
+        () => {
+          message.success({ message: '订阅成功' });
+          setIsSubscribe(true);
+        },
+        (err) => {
+          message.error({ message: err || '服务异常' });
+        },
+      )
+      .finally(() => setSubscribeLoading(false));
   };
 
   // 取消订阅
   const handleCancelSubscribe = () => {
-    cancelSubscribeApi(id).then(
-      () => {
-        message.success({ message: '取消订阅成功' });
-        setIsSubscribe(false);
-      },
-      (err) => {
-        message.error({ message: err || '服务异常' });
-      },
-    );
+    if (subscribeLoading) return;
+    setSubscribeLoading(true);
+    cancelSubscribeApi(id)
+      .then(
+        () => {
+          message.success({ message: '取消订阅成功' });
+          setIsSubscribe(false);
+        },
+        (err) => {
+          message.error({ message: err || '服务异常' });
+        },
+      )
+      .finally(() => setSubscribeLoading(false));
   };
 
   // 跳到评论区
