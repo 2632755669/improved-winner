@@ -19,7 +19,7 @@ export const Breadcrumb = (props: Props) => {
   return (
     <div className="breadcrumb-container">
       {data?.map((item, index) => {
-        if (index + 1 === data?.length) {
+        if (index + 1 === data?.length && data?.length !== 1) {
           return (
             <span
               key={index}
