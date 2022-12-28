@@ -10,11 +10,10 @@ import {
 import { getMediaSource } from '../../apis/media';
 import { IVideoPlayer, useVideoPlayer } from './useVideoPlayer';
 
-const videoUrl =
-  'https://s3plus.sankuai.com/v1/mss_f5ecef526b384cbaa1117230d53b4bd6/smart/a9868fee-2267-4a86-9209-fa66ac48610b.mp4';
+// const videoUrl =
+// 'https://s3plus.sankuai.com/v1/mss_f5ecef526b384cbaa1117230d53b4bd6/smart/a9868fee-2267-4a86-9209-fa66ac48610b.mp4';
 
 interface Props {
-  src?: string;
   videoId?: string;
   poster?: string;
   autoplay?: boolean;
@@ -27,7 +26,7 @@ interface Props {
 }
 
 export const XVideo = forwardRef((props: Props, ref) => {
-  const { src = videoUrl, videoId = '' } = props;
+  const { videoId = '' } = props;
   const {
     poster,
     autoplay,
@@ -40,7 +39,6 @@ export const XVideo = forwardRef((props: Props, ref) => {
   } = props;
   const [source, setSource] = useState<any>(null);
   const [pause, setPause] = useState(true);
-  // const [source, setSource] = useState('');
   const videoRef = useRef<HTMLVideoElement>();
   const { play, dispose } = useVideoPlayer({
     ref: videoRef,
@@ -96,7 +94,6 @@ export const XVideo = forwardRef((props: Props, ref) => {
         onPlay={handlePlay}
         onPause={handlePause}
         className="w-full h-full"
-        src={src}
       >
         <p>您的浏览器不支持 video 标签</p>
       </video>
