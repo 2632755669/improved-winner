@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Icon } from '@ss/mtd-react';
+import { Icon, Tooltip } from '@ss/mtd-react';
 import { Header } from './components/Header';
 import { logout } from '../utils/login';
 import { useSerivcer } from '../hooks/useServicer';
@@ -33,13 +33,15 @@ export const Layout = (props: Props) => {
         avatarUrl={avatar}
         toolBar={
           <div className="header-toolbar">
-            <div className="header-toobar-bg">
-              <Icon
-                onClick={service}
-                className="header-toolbar-connect"
-                type="customer-o"
-              />
-            </div>
+            <Tooltip message="咨询反馈" className="header-tooltip">
+              <div className="header-toobar-bg">
+                <Icon
+                  onClick={service}
+                  className="header-toolbar-connect"
+                  type="customer-o"
+                />
+              </div>
+            </Tooltip>
           </div>
         }
       />
