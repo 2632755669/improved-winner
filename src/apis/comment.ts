@@ -78,7 +78,7 @@ export const getMyComment = (id: string) => {
       return data?.map((item) => ({
         avatar: item.userPic,
         name: item.userName,
-        creatTime: format(item.createTime, 'YYYY/MM/DD'),
+        creatTime: format(new Date(item.createTime), 'yyyy/MM/dd'),
         commentId: item.commentId,
         isMyComment: item.isMyComment,
         content: item.content,
