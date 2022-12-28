@@ -52,6 +52,7 @@ export interface MoreServiceDataItem {
   desc: string;
   coverImg: string;
   titleImg: string;
+  isVideo: boolean;
   tags: string[];
 }
 
