@@ -20,10 +20,28 @@ export const Comment = () => {
   return (
     <section id="detail-comment" className="pb-24">
       <h3 className="text-white-84 text-2xl font-bold">
-        评价({comments?.length})
+        评价({comments.me?.length + comments.excellent?.length})
       </h3>
       <section className="mt-4">
-        {comments?.map((item) => {
+        {comments?.me?.map((item) => {
+          return (
+            <CommentItem
+              onDelete={() => handleDeleteComment(item.commentId)}
+              key={item.commentId}
+              data={item}
+            />
+          );
+        })}
+      </section>
+      <div className="comment-mid-lines">
+        <span className="comment-mid-line" />
+        <span className="comment-mid-text">
+          以上留言被精选后，将对所有人可见
+        </span>
+        <span className="comment-mid-line" />
+      </div>
+      <section className="mt-4">
+        {comments?.excellent?.map((item) => {
           return (
             <CommentItem
               onDelete={() => handleDeleteComment(item.commentId)}

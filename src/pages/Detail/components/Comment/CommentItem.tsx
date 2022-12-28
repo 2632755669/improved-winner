@@ -1,5 +1,9 @@
-import { Button } from '@ss/mtd-react';
 import defaultAvatar from '../../../../assets/images/defaultAvatar.png';
+
+enum labelEnum {
+  'FEATURED' = 'FEATURED',
+  'NON_FEATURED' = 'NON_FEATURED',
+}
 
 export interface CommentItemType {
   avatar: string;
@@ -8,6 +12,7 @@ export interface CommentItemType {
   commentId: string;
   isMyComment: boolean;
   content: string;
+  label: labelEnum;
 }
 
 interface Props {
@@ -29,15 +34,18 @@ export const CommentItem = (props: Props) => {
         <div>
           <span>{data.name}</span>
           <span className="text-white-42 text-sm ml-2">{data.creatTime}</span>
+          {data.label === labelEnum.NON_FEATURED ? (
+            <span className="comment-item-label">未精选</span>
+          ) : null}
         </div>
         <p className="mt-1.5 leading-snug">{data.content}</p>
         {data.isMyComment ? (
-          <Button
-            className="mt-1.5"
+          <span
+            className="mt-1.5 text-white-42 text-sm cursor-pointer"
             onClick={() => onDelete?.()}
-            shape="text"
-            icon="delete-o"
-          />
+          >
+            删除
+          </span>
         ) : null}
       </section>
     </section>

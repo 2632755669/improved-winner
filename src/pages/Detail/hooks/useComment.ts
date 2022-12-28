@@ -1,17 +1,23 @@
 import { useEffect, useState, useCallback } from 'react';
 import { message } from '@ss/mtd-react';
 import {
-  getMyComment,
+  getAllComments,
   submitCommentApi,
   deleteCommentApi,
 } from '../../../apis/comment';
 import type { CommentItemType } from '../components/Comment/CommentItem';
 
 export const useComment = (id: string) => {
-  const [comments, setComments] = useState<CommentItemType[]>([]);
+  const [comments, setComments] = useState<{
+    me: CommentItemType[];
+    excellent: CommentItemType[];
+  }>({
+    me: [],
+    excellent: [],
+  });
 
   const getComments = useCallback(() => {
-    getMyComment(id).then(setComments);
+    getAllComments(id).then(setComments);
   }, [id]);
 
   const publishComment = useCallback(

@@ -44,12 +44,17 @@ interface MyCommentParams {
   pageSize: number;
 }
 
+enum labelEnum {
+  'FEATURED' = 'FEATURED',
+  'NON_FEATURED' = 'NON_FEATURED',
+}
+
 export interface MyCommentItem {
   commentId: string;
   content: string;
   createTime: number;
   isMyComment: boolean;
-  label: string;
+  label: labelEnum;
   userId: string;
   userName: string;
   userPic: string;
@@ -82,6 +87,7 @@ export const getMyComment = (id: string) => {
         commentId: item.commentId,
         isMyComment: item.isMyComment,
         content: item.content,
+        label: item.label,
       }));
     }
     // return Promise.reject();
@@ -95,13 +101,43 @@ type ExcellentCommentParams = MyCommentParams;
 type ExcellentCommentList = MyCommentList;
 
 // 3、查看精选留言
-export const getExcellentComment = (params: ExcellentCommentParams) => {
+export const getExcellentComment = (id: string) => {
+  const params = {
+    objectCode: id,
+    commentLabel: 'FEATURED',
+    bizType: 1,
+    auditStatus: 1,
+    pageNo: 1,
+    pageSize: 10,
+  };
   return post<ExcellentCommentParams, ExcellentCommentList>(
     '/sapi/client/v1/tmccommentreplyservice_getexcellentcomment',
     params,
-  ).then((data) => {
-    return data;
+  ).then(({ data, status }) => {
+    if (status.code !== 0) {
+      return data?.map((item) => ({
+        avatar: item.userPic,
+        name: item.userName,
+        creatTime: format(new Date(item.createTime), 'yyyy/MM/dd'),
+        commentId: item.commentId,
+        isMyComment: item.isMyComment,
+        content: item.content,
+        label: item.label,
+      }));
+    }
+    // return Promise.reject();
+    return commentList;
   });
+};
+
+// 获取所有精选和自己的留言
+export const getAllComments = async (id: string) => {
+  const myComments = await getMyComment(id);
+  const ExcellentComments = await getExcellentComment(id);
+  return {
+    me: myComments,
+    excellent: ExcellentComments,
+  };
 };
 
 // 4、删除评论
