@@ -18,13 +18,18 @@ export interface CommentItemType {
 interface Props {
   data: CommentItemType;
   onDelete?(): void;
+  className?: string;
 }
 
 export const CommentItem = (props: Props) => {
-  const { data, onDelete } = props;
+  const { data, onDelete, className } = props;
 
   return (
-    <section className="flex text-white-84 text-base py-6 border-bottom-gray comment-item-container">
+    <section
+      className={`flex text-white-84 text-base py-6 border-bottom-gray comment-item-container ${
+        className || ''
+      }`}
+    >
       <img
         src={data.avatar || defaultAvatar}
         alt="user-avatar"
