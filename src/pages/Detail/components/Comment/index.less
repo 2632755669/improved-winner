@@ -1,4 +1,6 @@
 .comment-item-container {
+  position: relative;
+
   @apply border-0;
 }
 
@@ -39,6 +41,11 @@
 }
 
 .comment-mid-lines {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: -12px;
+
   @apply w-full flex items-center text-white-84 text-base;
 
   .comment-mid-text {

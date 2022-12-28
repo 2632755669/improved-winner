@@ -1,5 +1,5 @@
-import { Modal, message } from '@ss/mtd-react';
 import { useContext } from 'react';
+import { Modal, message } from '@ss/mtd-react';
 import classnames from 'classnames';
 import { CommentItem } from './CommentItem';
 import { CommentInput } from './CommentInput';
@@ -25,29 +25,16 @@ export const Comment = () => {
       </h3>
       <section className="mt-4">
         {comments?.me?.map((item, index) => {
-          const border0 = comments?.me?.length === index + 1;
+          const disPlayTip = comments?.me?.length === index + 1;
           return (
             <CommentItem
               onDelete={() => handleDeleteComment(item.commentId)}
               key={item.commentId}
               data={item}
-              className={classnames({ 'border-0': border0 })}
+              disPlayTip={disPlayTip}
             />
           );
         })}
-      </section>
-      <div
-        className={`comment-mid-lines ${classnames({
-          hidden: !comments.me?.length,
-        })}`}
-      >
-        <span className="comment-mid-line" />
-        <span className="comment-mid-text">
-          以上留言被精选后，将对所有人可见
-        </span>
-        <span className="comment-mid-line" />
-      </div>
-      <section className="mt-4">
         {comments?.excellent?.map((item, index) => {
           const bordert0 = comments.me.length && index === 0;
           return (

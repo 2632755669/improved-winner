@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import defaultAvatar from '../../../../assets/images/defaultAvatar.png';
 
 enum labelEnum {
@@ -19,16 +20,17 @@ interface Props {
   data: CommentItemType;
   onDelete?(): void;
   className?: string;
+  disPlayTip?: boolean;
 }
 
 export const CommentItem = (props: Props) => {
-  const { data, onDelete, className } = props;
+  const { data, onDelete, className, disPlayTip } = props;
 
   return (
     <section
-      className={`flex text-white-84 text-base py-6 border-bottom-gray comment-item-container ${
-        className || ''
-      }`}
+      className={`flex text-white-84 text-base py-6 ${classnames({
+        'border-bottom-gray': !disPlayTip,
+      })} comment-item-container ${className || ''}`}
     >
       <img
         src={data.avatar || defaultAvatar}
@@ -53,6 +55,15 @@ export const CommentItem = (props: Props) => {
           </span>
         ) : null}
       </section>
+      {disPlayTip ? (
+        <div className="comment-mid-lines">
+          <span className="comment-mid-line" />
+          <span className="comment-mid-text">
+            以上留言被精选后，将对所有人可见
+          </span>
+          <span className="comment-mid-line" />
+        </div>
+      ) : null}
     </section>
   );
 };
