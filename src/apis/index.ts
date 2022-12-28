@@ -38,7 +38,9 @@ registerInterceptor('response', (status, response) => {
     ) {
       return Promise.resolve(response);
     }
-    messageShow(response?.status?.message || response?.data?.message);
+    messageShow(
+      response?.status?.message || response?.data?.message || '服务异常',
+    );
     return Promise.reject(response);
   }
 

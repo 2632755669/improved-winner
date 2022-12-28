@@ -77,7 +77,9 @@ export const Description = (props: Props) => {
   };
 
   useEffect(() => {
-    fetchSubscribe();
+    if (descData.title) {
+      fetchSubscribe();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

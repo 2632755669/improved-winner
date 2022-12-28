@@ -112,7 +112,7 @@ export const getSubscribeStatusApi = (id: string) => {
     if (status.code === 0) {
       return data === '1';
     }
-    return Promise.reject();
+    return false;
   });
 };
 
