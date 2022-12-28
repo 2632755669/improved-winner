@@ -1115,7 +1115,7 @@
     core-js-pure "^3.25.1"
     regenerator-runtime "^0.13.11"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.16.3", "@babel/runtime@^7.16.7", "@babel/runtime@^7.18.0", "@babel/runtime@^7.18.3", "@babel/runtime@^7.18.9", "@babel/runtime@^7.20.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.16.0", "@babel/runtime@^7.16.3", "@babel/runtime@^7.16.7", "@babel/runtime@^7.18.0", "@babel/runtime@^7.18.3", "@babel/runtime@^7.18.9", "@babel/runtime@^7.20.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
   version "7.20.7"
   resolved "http://r.npm.sankuai.com/@babel/runtime/download/@babel/runtime-7.20.7.tgz#fcb41a5a70550e04a7b708037c7c32f7f356d8fd"
   integrity sha1-/LQaWnBVDgSntwgDfHwy9/NW2P0=
@@ -1193,6 +1193,13 @@
     stylelint-scss "^3.14.0"
     typescript "^3.9.10"
 
+"@cap/metrics@1.0.5":
+  version "1.0.5"
+  resolved "http://r.npm.sankuai.com/@cap/metrics/download/@cap/metrics-1.0.5.tgz#69102b7720728d8c351fe87c9b6cfcfa36800430"
+  integrity sha1-aRArdyByjYw1H+h8m2z8+jaABDA=
+  dependencies:
+    deepmerge "^4.2.2"
+
 "@cap/mtv-fetch@0.1.1":
   version "0.1.1"
   resolved "http://r.npm.sankuai.com/@cap/mtv-fetch/download/@cap/mtv-fetch-0.1.1.tgz#8dc53bf6f4330aafbff80ed39edded9e92a1defe"
@@ -1201,6 +1208,23 @@
     axios "0.19.2"
     cool-path "^1.0.6"
     typescript "^4.8.3"
+
+"@cap/video-source-hls@^1.0.7":
+  version "1.0.7"
+  resolved "http://r.npm.sankuai.com/@cap/video-source-hls/download/@cap/video-source-hls-1.0.7.tgz#870787ff5ad42599084e9cde39c91bc5774b1130"
+  integrity sha1-hweH/1rUJZkITpzeOckbxXdLETA=
+  dependencies:
+    "@babel/runtime" "^7.16.0"
+    hls.js "^1.1.5"
+
+"@cap/videojs-vhs@0.1.55-beta.0":
+  version "0.1.55-beta.0"
+  resolved "http://r.npm.sankuai.com/@cap/videojs-vhs/download/@cap/videojs-vhs-0.1.55-beta.0.tgz#d11dc4ccceb6252ddb5d17e62803abb47c4220d2"
+  integrity sha1-0R3EzM62JS3bXRfmKAOrtHxCINI=
+  dependencies:
+    core-js "^3.3.2"
+    video.js "^7.17.0"
+    videojs-contrib-quality-levels "^2.0.9"
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
@@ -2436,6 +2460,38 @@
   resolved "http://r.npm.sankuai.com/@utiljs/type/download/@utiljs/type-0.5.4.tgz#9638197892b5d43a1857bbc1c6507c0dd00d18c6"
   integrity sha1-ljgZeJK11DoYV7vBxlB8DdANGMY=
 
+"@videojs/http-streaming@2.14.3":
+  version "2.14.3"
+  resolved "http://r.npm.sankuai.com/@videojs/http-streaming/download/@videojs/http-streaming-2.14.3.tgz#3277e03b576766decb4fc663e954e18bfa10d2a1"
+  integrity sha1-MnfgO1dnZt7LT8Zj6VThi/oQ0qE=
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@videojs/vhs-utils" "3.0.5"
+    aes-decrypter "3.1.3"
+    global "^4.4.0"
+    m3u8-parser "4.7.1"
+    mpd-parser "0.21.1"
+    mux.js "6.0.1"
+    video.js "^6 || ^7"
+
+"@videojs/vhs-utils@3.0.5", "@videojs/vhs-utils@^3.0.4", "@videojs/vhs-utils@^3.0.5":
+  version "3.0.5"
+  resolved "http://r.npm.sankuai.com/@videojs/vhs-utils/download/@videojs/vhs-utils-3.0.5.tgz#665ba70d78258ba1ab977364e2fe9f4d4799c46c"
+  integrity sha1-ZlunDXgli6Grl3Nk4v6fTUeZxGw=
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    global "^4.4.0"
+    url-toolkit "^2.2.1"
+
+"@videojs/xhr@2.6.0":
+  version "2.6.0"
+  resolved "http://r.npm.sankuai.com/@videojs/xhr/download/@videojs/xhr-2.6.0.tgz#cd897e0ad54faf497961bcce3fa16dc15a26bb80"
+  integrity sha1-zYl+CtVPr0l5YbzOP6FtwVomu4A=
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    global "~4.4.0"
+    is-function "^1.0.1"
+
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "http://r.npm.sankuai.com/@webassemblyjs/ast/download/@webassemblyjs/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
@@ -2581,6 +2637,11 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
+"@xmldom/xmldom@^0.7.2":
+  version "0.7.9"
+  resolved "http://r.npm.sankuai.com/@xmldom/xmldom/download/@xmldom/xmldom-0.7.9.tgz#7f9278a50e737920e21b297b8a35286e9942c056"
+  integrity sha1-f5J4pQ5zeSDiGyl7ijUobplCwFY=
+
 "@xobotyi/scrollbar-width@^1.9.5":
   version "1.9.5"
   resolved "http://r.npm.sankuai.com/@xobotyi/scrollbar-width/download/@xobotyi/scrollbar-width-1.9.5.tgz#80224a6919272f405b87913ca13b92929bdf3c4d"
@@ -2695,6 +2756,16 @@ adler-32@^1.0.0:
   version "1.3.1"
   resolved "http://r.npm.sankuai.com/adler-32/download/adler-32-1.3.1.tgz#1dbf0b36dda0012189a32b3679061932df1821e2"
   integrity sha1-Hb8LNt2gASGJoys2eQYZMt8YIeI=
+
+aes-decrypter@3.1.3:
+  version "3.1.3"
+  resolved "http://r.npm.sankuai.com/aes-decrypter/download/aes-decrypter-3.1.3.tgz#65ff5f2175324d80c41083b0e135d1464b12ac35"
+  integrity sha1-Zf9fIXUyTYDEEIOw4TXRRksSrDU=
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@videojs/vhs-utils" "^3.0.5"
+    global "^4.4.0"
+    pkcs7 "^1.0.4"
 
 agent-base@4:
   version "4.3.0"
@@ -4543,7 +4614,7 @@ core-js@^2.4.0:
   resolved "http://r.npm.sankuai.com/core-js/download/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
   integrity sha1-2TM9+nsGXjR8xWgiGdb2kIWcwuw=
 
-core-js@^3.6.5:
+core-js@^3.3.2, core-js@^3.6.5:
   version "3.26.1"
   resolved "http://r.npm.sankuai.com/core-js/download/core-js-3.26.1.tgz#7a9816dabd9ee846c1c0fe0e8fcad68f3709134e"
   integrity sha1-epgW2r2e6EbBwP4Oj8rWjzcJE04=
@@ -5267,6 +5338,11 @@ dom-serializer@^1.0.1:
     domelementtype "^2.0.1"
     domhandler "^4.2.0"
     entities "^2.0.0"
+
+dom-walk@^0.1.0:
+  version "0.1.2"
+  resolved "http://r.npm.sankuai.com/dom-walk/download/dom-walk-0.1.2.tgz#0c548bef048f4d1f2a97249002236060daa3fd84"
+  integrity sha1-DFSL7wSPTR8qlySQAiNgYNqj/YQ=
 
 dom7@^4.0.4:
   version "4.0.4"
@@ -6759,6 +6835,14 @@ global-prefix@^3.0.0:
     kind-of "^6.0.2"
     which "^1.3.1"
 
+global@^4.3.1, global@^4.3.2, global@^4.4.0, global@~4.4.0:
+  version "4.4.0"
+  resolved "http://r.npm.sankuai.com/global/download/global-4.4.0.tgz#3e7b105179006a323ed71aafca3e9c57a5cc6406"
+  integrity sha1-PnsQUXkAajI+1xqvyj6cV6XMZAY=
+  dependencies:
+    min-document "^2.19.0"
+    process "^0.11.10"
+
 globals@^11.1.0:
   version "11.12.0"
   resolved "http://r.npm.sankuai.com/globals/download/globals-11.12.0.tgz#ab8795338868a0babd8525758018c2a7eb95c42e"
@@ -7014,6 +7098,11 @@ history@^4.9.0:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
     value-equal "^1.0.1"
+
+hls.js@^1.1.5:
+  version "1.2.9"
+  resolved "http://r.npm.sankuai.com/hls.js/download/hls.js-1.2.9.tgz#2f25e42ec4c2ea8c88ab23c0f854f39062d45ac9"
+  integrity sha1-LyXkLsTC6oyIqyPA+FTzkGLUWsk=
 
 hmac-drbg@^1.0.1:
   version "1.0.1"
@@ -7388,6 +7477,11 @@ indexes-of@^1.0.1:
   resolved "http://r.npm.sankuai.com/indexes-of/download/indexes-of-1.0.1.tgz#f30f716c8e2bd346c7b67d3df3915566a7c05607"
   integrity sha1-8w9xbI4r00bHtn0985FVZqfAVgc=
 
+individual@^2.0.0:
+  version "2.0.0"
+  resolved "http://r.npm.sankuai.com/individual/download/individual-2.0.0.tgz#833b097dad23294e76117a98fb38e0d9ad61bb97"
+  integrity sha1-gzsJfa0jKU52EXqY+zjg2a1hu5c=
+
 infer-owner@^1.0.3, infer-owner@^1.0.4:
   version "1.0.4"
   resolved "http://r.npm.sankuai.com/infer-owner/download/infer-owner-1.0.4.tgz#c4cefcaa8e51051c2a40ba2ce8a3d27295af9467"
@@ -7722,6 +7816,11 @@ is-fullwidth-code-point@^4.0.0:
   version "4.0.0"
   resolved "http://r.npm.sankuai.com/is-fullwidth-code-point/download/is-fullwidth-code-point-4.0.0.tgz#fae3167c729e7463f8461ce512b080a49268aa88"
   integrity sha1-+uMWfHKedGP4RhzlErCApJJoqog=
+
+is-function@^1.0.1:
+  version "1.0.2"
+  resolved "http://r.npm.sankuai.com/is-function/download/is-function-1.0.2.tgz#4f097f30abf6efadac9833b17ca5dc03f8144e08"
+  integrity sha1-Twl/MKv2762smDOxfKXcA/gUTgg=
 
 is-generator-fn@^2.0.0:
   version "2.1.0"
@@ -8709,6 +8808,11 @@ jszip@^3.1.5:
     readable-stream "~2.3.6"
     setimmediate "^1.0.5"
 
+keycode@^2.2.0:
+  version "2.2.1"
+  resolved "http://r.npm.sankuai.com/keycode/download/keycode-2.2.1.tgz#09c23b2be0611d26117ea2501c2c391a01f39eff"
+  integrity sha1-CcI7K+BhHSYRfqJQHCw5GgHznv8=
+
 killable@^1.0.1:
   version "1.0.1"
   resolved "http://r.npm.sankuai.com/killable/download/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"
@@ -9078,6 +9182,15 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+m3u8-parser@4.7.1:
+  version "4.7.1"
+  resolved "http://r.npm.sankuai.com/m3u8-parser/download/m3u8-parser-4.7.1.tgz#d6df2c940bb19a01112a04ccc4ff44886a945305"
+  integrity sha1-1t8slAuxmgERKgTMxP9EiGqUUwU=
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@videojs/vhs-utils" "^3.0.5"
+    global "^4.4.0"
+
 magic-string@^0.25.0, magic-string@^0.25.7:
   version "0.25.9"
   resolved "http://r.npm.sankuai.com/magic-string/download/magic-string-0.25.9.tgz#de7f9faf91ef8a1c91d02c2e5314c8277dbcdd1c"
@@ -9330,6 +9443,13 @@ mimic-fn@^4.0.0:
   resolved "http://r.npm.sankuai.com/mimic-fn/download/mimic-fn-4.0.0.tgz#60a90550d5cb0b239cca65d893b1a53b29871ecc"
   integrity sha1-YKkFUNXLCyOcymXYk7GlOymHHsw=
 
+min-document@^2.19.0:
+  version "2.19.0"
+  resolved "http://r.npm.sankuai.com/min-document/download/min-document-2.19.0.tgz#7bd282e3f5842ed295bb748cdd9f1ffa2c824685"
+  integrity sha1-e9KC4/WELtKVu3SM3Z8f+iyCRoU=
+  dependencies:
+    dom-walk "^0.1.0"
+
 min-indent@^1.0.0:
   version "1.0.1"
   resolved "http://r.npm.sankuai.com/min-indent/download/min-indent-1.0.1.tgz#a63f681673b30571fbe8bc25686ae746eefa9869"
@@ -9530,6 +9650,16 @@ move-concurrently@^1.0.1:
     rimraf "^2.5.4"
     run-queue "^1.0.3"
 
+mpd-parser@0.21.1:
+  version "0.21.1"
+  resolved "http://r.npm.sankuai.com/mpd-parser/download/mpd-parser-0.21.1.tgz#4f4834074ed0a8e265d8b04a5d2d7b5045a4fa55"
+  integrity sha1-T0g0B07QqOJl2LBKXS17UEWk+lU=
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@videojs/vhs-utils" "^3.0.5"
+    "@xmldom/xmldom" "^0.7.2"
+    global "^4.4.0"
+
 ms@2.0.0:
   version "2.0.0"
   resolved "http://r.npm.sankuai.com/ms/download/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -9557,6 +9687,14 @@ multicast-dns@^6.0.1:
   dependencies:
     dns-packet "^1.3.1"
     thunky "^1.0.2"
+
+mux.js@6.0.1:
+  version "6.0.1"
+  resolved "http://r.npm.sankuai.com/mux.js/download/mux.js-6.0.1.tgz#65ce0f7a961d56c006829d024d772902d28c7755"
+  integrity sha1-Zc4PepYdVsAGgp0CTXcpAtKMd1U=
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+    global "^4.4.0"
 
 nan@^2.12.1:
   version "2.17.0"
@@ -10382,6 +10520,13 @@ pirates@^4.0.1, pirates@^4.0.5:
   version "4.0.5"
   resolved "http://r.npm.sankuai.com/pirates/download/pirates-4.0.5.tgz#feec352ea5c3268fb23a37c702ab1699f35a5f3b"
   integrity sha1-/uw1LqXDJo+yOjfHAqsWmfNaXzs=
+
+pkcs7@^1.0.4:
+  version "1.0.4"
+  resolved "http://r.npm.sankuai.com/pkcs7/download/pkcs7-1.0.4.tgz#6090b9e71160dabf69209d719cbafa538b00a1cb"
+  integrity sha1-YJC55xFg2r9pIJ1xnLr6U4sAocs=
+  dependencies:
+    "@babel/runtime" "^7.5.5"
 
 pkg-dir@^3.0.0:
   version "3.0.0"
@@ -12599,6 +12744,13 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
+rust-result@^1.0.0:
+  version "1.0.0"
+  resolved "http://r.npm.sankuai.com/rust-result/download/rust-result-1.0.0.tgz#34c75b2e6dc39fe5875e5bdec85b5e0f91536f72"
+  integrity sha1-NMdbLm3Dn+WHXlveyFteD5FTb3I=
+  dependencies:
+    individual "^2.0.0"
+
 rxjs@7.4.0:
   version "7.4.0"
   resolved "http://r.npm.sankuai.com/rxjs/download/rxjs-7.4.0.tgz#a12a44d7eebf016f5ff2441b87f28c9a51cebc68"
@@ -12622,6 +12774,13 @@ safe-buffer@5.2.1, safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.0, 
   version "5.2.1"
   resolved "http://r.npm.sankuai.com/safe-buffer/download/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
   integrity sha1-Hq+fqb2x/dTsdfWPnNtOa3gn7sY=
+
+safe-json-parse@4.0.0:
+  version "4.0.0"
+  resolved "http://r.npm.sankuai.com/safe-json-parse/download/safe-json-parse-4.0.0.tgz#7c0f578cfccd12d33a71c0e05413e2eca171eaac"
+  integrity sha1-fA9XjPzNEtM6ccDgVBPi7KFx6qw=
+  dependencies:
+    rust-result "^1.0.0"
 
 safe-regex-test@^1.0.0:
   version "1.0.0"
@@ -14519,6 +14678,11 @@ url-parse@^1.5.10, url-parse@^1.5.3:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
 
+url-toolkit@^2.2.1:
+  version "2.2.5"
+  resolved "http://r.npm.sankuai.com/url-toolkit/download/url-toolkit-2.2.5.tgz#58406b18e12c58803e14624df5e374f638b0f607"
+  integrity sha1-WEBrGOEsWIA+FGJN9eN09jiw9gc=
+
 url@^0.11.0, url@~0.11.0:
   version "0.11.0"
   resolved "http://r.npm.sankuai.com/url/download/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1"
@@ -14670,6 +14834,45 @@ vfile@^4.0.0:
     is-buffer "^2.0.0"
     unist-util-stringify-position "^2.0.0"
     vfile-message "^2.0.0"
+
+video.js@7.20.3, "video.js@^6 || ^7", "video.js@^6 || ^7 || ^8", video.js@^7.17.0:
+  version "7.20.3"
+  resolved "http://r.npm.sankuai.com/video.js/download/video.js-7.20.3.tgz#5694741346dc683255993e5069daa15d4bacb646"
+  integrity sha1-VpR0E0bcaDJVmT5QadqhXUustkY=
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@videojs/http-streaming" "2.14.3"
+    "@videojs/vhs-utils" "^3.0.4"
+    "@videojs/xhr" "2.6.0"
+    aes-decrypter "3.1.3"
+    global "^4.4.0"
+    keycode "^2.2.0"
+    m3u8-parser "4.7.1"
+    mpd-parser "0.21.1"
+    mux.js "6.0.1"
+    safe-json-parse "4.0.0"
+    videojs-font "3.2.0"
+    videojs-vtt.js "^0.15.4"
+
+videojs-contrib-quality-levels@^2.0.9:
+  version "2.2.1"
+  resolved "http://r.npm.sankuai.com/videojs-contrib-quality-levels/download/videojs-contrib-quality-levels-2.2.1.tgz#46bd7e1db25e6e45824dadf933b08f0c6ec724a1"
+  integrity sha1-Rr1+HbJebkWCTa35M7CPDG7HJKE=
+  dependencies:
+    global "^4.3.2"
+    video.js "^6 || ^7 || ^8"
+
+videojs-font@3.2.0:
+  version "3.2.0"
+  resolved "http://r.npm.sankuai.com/videojs-font/download/videojs-font-3.2.0.tgz#212c9d3f4e4ec3fa7345167d64316add35e92232"
+  integrity sha1-ISydP05Ow/pzRRZ9ZDFq3TXpIjI=
+
+videojs-vtt.js@^0.15.4:
+  version "0.15.4"
+  resolved "http://r.npm.sankuai.com/videojs-vtt.js/download/videojs-vtt.js-0.15.4.tgz#5dc5aabcd82ba40c5595469bd855ea8230ca152c"
+  integrity sha1-XcWqvNgrpAxVlUab2FXqgjDKFSw=
+  dependencies:
+    global "^4.3.1"
 
 vm-browserify@^1.0.0, vm-browserify@^1.0.1, vm-browserify@^1.1.2:
   version "1.1.2"

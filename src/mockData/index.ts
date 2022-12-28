@@ -483,39 +483,6 @@ export const homeNavList = [
   },
 ];
 
-export const detailData = [
-  {
-    title: '业务介绍',
-    desc: '许多政府领导、媒体及客户，不仅关心美团本身的发展，也关心行业的发展。你可以通过《从数字生活到数字社会——中国数字经济年度观察》一书，对外介绍生活服务行业的发展，以及美团在行业内的实践。',
-    id: 'detail-anchor-1',
-  },
-  {
-    title: '本书使用场景',
-    desc: '许多政府领导、媒体及客户，不仅关心美团本身的发展，也关心行业的发展。你可以通过《从数字生活到数字社会——中国数字经济年度观察》一书，对外介绍生活服务行业的发展，以及美团在行业内的实践。',
-    id: 'detail-anchor-2',
-  },
-  {
-    title: '如何获取本书',
-    desc: '许多政府领导、媒体及客户，不仅关心美团本身的发展，也关心行业的发展。你可以通过《从数字生活到数字社会——中国数字经济年度观察》一书，对外介绍生活服务行业的发展，以及美团在行业内的实践。',
-    id: 'detail-anchor-3',
-  },
-  {
-    title: '服务团队',
-    desc: '许多政府领导、媒体及客户，不仅关心美团本身的发展，也关心行业的发展。你可以通过《从数字生活到数字社会——中国数字经济年度观察》一书，对外介绍生活服务行业的发展，以及美团在行业内的实践。',
-    id: 'detail-anchor-4',
-  },
-  {
-    title: '常见问题',
-    desc: '许多政府领导、媒体及客户，不仅关心美团本身的发展，也关心行业的发展。你可以通过《从数字生活到数字社会——中国数字经济年度观察》一书，对外介绍生活服务行业的发展，以及美团在行业内的实践。',
-    id: 'detail-anchor-5',
-  },
-  {
-    title: '评价',
-    desc: '许多政府领导、媒体及客户，不仅关心美团本身的发展，也关心行业的发展。你可以通过《从数字生活到数字社会——中国数字经济年度观察》一书，对外介绍生活服务行业的发展，以及美团在行业内的实践。',
-    id: 'detail-anchor-6',
-  },
-];
-
 export const detailContent = {
   title: '政府媒体数据报送',
   headInfo: [
@@ -532,7 +499,7 @@ export const detailContent = {
     {
       type: 1,
       name: '',
-      videoId: '387702307630970913',
+      videoId: '387702295910707785',
       url: null,
       videoPicture:
         'http://p0.meituan.net/portalweb/5daf2007023e0d8dea6ec2071ece61e7284637.jpg',
@@ -692,3 +659,18 @@ export const commentList = [
       '很多外部合作伙伴都很关注数字经济话题。这本书用详实的案例和数据，介绍了生活服务业数字化发展的情况，也介绍了美团的实践。我们在拜访高校老师、学会时会赠送这本书，客户反馈很不错。有简装本和礼盒版，可以轻松适配各类对外交流场合～',
   },
 ];
+
+export const videoSource = {
+  tenantId: 0,
+  title: '美团礼品集合视频',
+  size: '',
+  discription: '',
+  videoId: '387702295910707785',
+  videoInfo:
+    '{"TranscodeSet":[{"Url":"https://1300502471.vod2.myqcloud.com/66337241vodtranscq1300502471/6f7e4ffc387702295910707785/v.f210.m3u8","Definition":210,"Bitrate":145170,"Height":180,"Width":320,"Size":183723,"Duration":9.685,"Container":"hls","Md5":"2b14eb80481d06abffdf6e70325b56f7","AudioStreamSet":[{"Bitrate":48348,"SamplingRate":44100,"Codec":"aac"}],"VideoStreamSet":[{"Bitrate":96822,"Height":180,"Width":320,"Codec":"h264","Fps":24}]},{"Url":"https://1300502471.vod2.myqcloud.com/66337241vodtranscq1300502471/6f7e4ffc387702295910707785/v.f220.m3u8","Definition":220,"Bitrate":295005,"Height":360,"Width":640,"Size":363980,"Duration":9.685,"Container":"hls","Md5":"70ab977e48fc63410e3b54bdbbdff9e3","AudioStreamSet":[{"Bitrate":48348,"SamplingRate":44100,"Codec":"aac"}],"VideoStreamSet":[{"Bitrate":246657,"Height":360,"Width":640,"Codec":"h264","Fps":24}]},{"Url":"https://1300502471.vod2.myqcloud.com/66337241vodtranscq1300502471/6f7e4ffc387702295910707785/v.f230.m3u8","Definition":230,"Bitrate":654600,"Height":720,"Width":1280,"Size":796592,"Duration":9.685,"Container":"hls","Md5":"e21e045936190c7d40d892423c14c842","AudioStreamSet":[{"Bitrate":48348,"SamplingRate":44100,"Codec":"aac"}],"VideoStreamSet":[{"Bitrate":606252,"Height":720,"Width":1280,"Codec":"h264","Fps":24}]}]}',
+  coverImageUrl:
+    'http://p0.meituan.net/portalweb/378b56836d8b65aa64eae1e43e6b78cf298355.jpg',
+  duration: 9,
+  videoStatus: 1,
+  auditStatus: 3,
+};

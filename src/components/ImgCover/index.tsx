@@ -29,7 +29,7 @@ export const ImgCover = forwardRef((props: Props, ref) => {
   return (
     <div className="img-cover">
       {isVideo && canPlay ? (
-        <XVideo ref={videoRef} />
+        <XVideo ref={videoRef} videoId={videoId} />
       ) : (
         <img src={srcMemo} alt="" />
       )}

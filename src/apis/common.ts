@@ -1,4 +1,5 @@
 import { get, post, HttpResponse } from './index';
+import { videoSource } from '../mockData';
 
 /**
  * 获取用户信息
@@ -110,5 +111,47 @@ export const getLikeCount = (id: string) => {
       return data;
     }
     return 0;
+  });
+};
+
+// 获取视频资源
+
+interface VideoSourceParams {
+  videoId: string;
+}
+
+interface VideoSource {
+  tenantId: string;
+  title: string;
+  size: string;
+  discription: string;
+  videoId: string;
+  videoInfo: string;
+  coverImageUrl: string;
+  duration: number;
+  videoStatus: number;
+  auditStatus: number;
+}
+
+// interface VideoInfo {
+//   TranscodeSet: Array<{
+//     Url: string;
+//   }>;
+
+// }
+
+export const getVideoSource = (videoId: string) => {
+  const params = {
+    videoId,
+  };
+  return post<VideoSourceParams, HttpResponse<VideoSource>>(
+    '/sapi/client/v1/tmcmoduleconfigclientservice_getvideo',
+    params,
+  ).then(({ data, status }) => {
+    if (status?.code === 0) {
+      // let videoInfo: Partial<VideoInfo> = {};
+      return data;
+    }
+    return videoSource;
   });
 };
