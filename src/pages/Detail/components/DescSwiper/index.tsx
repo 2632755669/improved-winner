@@ -24,6 +24,26 @@ export const DescSwiper = (props: Props) => {
   };
 
   if (!descSwiperData?.length) return null;
+
+  if (descSwiperData.length === 1) {
+    const item = descSwiperData[0];
+    const imgUrl = item.isVideo ? item.videoCoverUrl : item.imgUrl;
+    return (
+      <section className="desc-swiper-container">
+        <ImgCover
+          isVideo={item.isVideo}
+          canPlay
+          videoId={item.videoId as string}
+          src={imgUrl as string}
+          ref={(ref: HTMLVideoElement) => {
+            if (!ref) return;
+            videoRefList.current.push(ref);
+          }}
+        />
+      </section>
+    );
+  }
+
   return (
     <section className="desc-swiper-container">
       <Swiper

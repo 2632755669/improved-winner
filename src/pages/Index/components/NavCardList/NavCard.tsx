@@ -8,6 +8,7 @@ export interface NavData {
   desc: string;
   coverImg: string;
   titleImg: string;
+  isVideo: boolean;
   tags: string[];
 }
 interface Props {
@@ -23,7 +24,7 @@ export const NavCard = (props: Props) => {
     >
       <section className="w-400px cursor-pointer">
         <div className="w-full h-225px rounded-lg overflow-hidden img-border">
-          <ImgCover src={data.coverImg} />
+          <ImgCover src={data.coverImg} isVideo={data.isVideo} />
         </div>
         <div className="flex mt-3 ">
           <img

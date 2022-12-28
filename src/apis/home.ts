@@ -98,6 +98,7 @@ interface MenuServiceItem {
   moduleCode: string;
   serviceUnitClientDto: {
     headInfo: Array<{
+      type: number;
       url: string;
       videoId: string;
       videoPicture: string;
@@ -125,42 +126,27 @@ export const getMenuServiceList = (id: string) => {
     pageSize: 200,
   };
 
-  const result = homeNavList.map((item) => {
-    return {
-      id: item.id,
-      moduleId: `${item.moduleId}`,
-      title: item.title,
-      desc: item.remark,
-      coverImg: item.imageUrl || imgUrl,
-      titleImg: item.secImageUrl || titleImg,
-      tags:
-        ['自动获取测试测试', '支持定制测试测试', '多主题测试测试'] ||
-        item.label?.slice(3),
-    };
-  });
-
   return get<MenuServiceParams, MenuServiceList>(
     '/sapi/client/v1/tmcmoduleconfigclientservice_modulecontent',
     params,
-  ).then(
-    ({ data }) => {
-      console.log(data);
-      const resultData = data.map((item) => {
-        const imgObj = item.serviceUnitClientDto?.headInfo?.[0] || {};
-        return {
-          id: item.id,
-          moduleId: `${item.moduleId}`,
-          title: item.title,
-          desc: item.remark,
-          coverImg: imgObj?.url || imgObj?.videoPicture || imgUrl,
-          titleImg: item.imageUrl || titleImg,
-          tags: item.label?.slice(3) || [],
-        };
-      });
-      return resultData;
-    },
-    () => result,
-  );
+  ).then(({ data, status }) => {
+    if (status?.code !== 0) return Promise.reject();
+    const resultData = data.map((item) => {
+      const imgObj = item.serviceUnitClientDto?.headInfo?.[0] || {};
+      return {
+        id: item.id,
+        moduleId: `${item.moduleId}`,
+        title: item.title,
+        desc: item.remark,
+        videoId: imgObj?.videoId,
+        isVideo: imgObj?.type === 1,
+        coverImg: imgObj?.url || imgObj?.videoPicture || imgUrl,
+        titleImg: item.imageUrl || titleImg,
+        tags: item.label?.slice(3) || [],
+      };
+    });
+    return resultData;
+  });
 };
 
 /**
