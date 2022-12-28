@@ -84,8 +84,8 @@ export const Description = (props: Props) => {
         <div className="mt-3 flex flex-wrap">
           {descData.tags?.map((item, index) => {
             return (
-              // eslint-disable-next-line react/no-array-index-key
               <span
+                // eslint-disable-next-line react/no-array-index-key
                 key={index}
                 className="bg-dark-300 px-1 leading-6 rounded mr-2 mb-2 text-white-60"
               >
@@ -132,7 +132,9 @@ export const Description = (props: Props) => {
             onClick={handleScrollComment}
           >
             <img src={commentSvg} alt="" />
-            <span className="ml-1">{comments?.length || 0}</span>
+            <span className="ml-1">
+              {comments.me?.length + comments.excellent?.length || 0}
+            </span>
           </span>
         </div>
       </div>
