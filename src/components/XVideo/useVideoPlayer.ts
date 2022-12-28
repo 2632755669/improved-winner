@@ -104,7 +104,7 @@ export function useVideoPlayer(params: IParams) {
       const currPoster = convertPoster(poster || '');
       currPoster && player?.poster(currPoster);
       if (!source) return;
-      player?.src(source);
+      player?.appendSource(source);
 
       // if (CLIENT_TYPE.weixin === getClientTypeSync(navigator.userAgent)) {
       //   try {
