@@ -153,7 +153,7 @@ export const getMenuServiceList = (id: string) => {
           title: item.title,
           desc: item.remark,
           coverImg: imgObj?.url || imgObj?.videoPicture || imgUrl,
-          titleImg: imgObj?.url || imgObj?.videoPicture || titleImg,
+          titleImg: item.imageUrl || titleImg,
           tags: item.label?.slice(3) || [],
         };
       });
