@@ -91,7 +91,7 @@ interface MenuServiceParams {
 }
 
 interface MenuServiceItem {
-  id: string;
+  id: number;
   title: string;
   imageUrl: string;
   secImageUrl: string;
