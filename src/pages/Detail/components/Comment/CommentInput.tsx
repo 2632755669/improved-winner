@@ -8,6 +8,7 @@ export const CommentInput = () => {
   const formRef = useRef<any>({});
   const [isInputing, setIsInputing] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
+  const [disabledBtn, setDisabledBtn] = useState(true);
   const { publishComment } = useContext(CommentContext);
   const { avatar } = useContext(UserInfoContext);
 
@@ -26,6 +27,14 @@ export const CommentInput = () => {
         .finally(() => setSubmitLoading(false));
     } else {
       message.error({ message: '请填写评论内容再提交' });
+    }
+  };
+
+  const handleValueChange = (e: any) => {
+    if (e?.target?.value?.trim()) {
+      setDisabledBtn(false);
+    } else {
+      setDisabledBtn(true);
     }
   };
 
@@ -49,16 +58,18 @@ export const CommentInput = () => {
             <Form ref={formRef}>
               <Form.Item formItemKey="content">
                 <Input.TextArea
-                  maxLength={1000}
+                  maxLength={3000}
                   toFormItem
                   autosize={{ minRows: 4, maxRows: 4 }}
                   className="comment-text-area"
+                  onInput={handleValueChange}
                 />
               </Form.Item>
             </Form>
             <div className="flex w-full">
               <Button
                 loading={submitLoading}
+                disabled={disabledBtn}
                 className="comment-btn-confirm"
                 onClick={submit}
                 type="primary"
