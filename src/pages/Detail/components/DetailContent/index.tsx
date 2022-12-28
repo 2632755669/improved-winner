@@ -15,6 +15,8 @@ export const DetailContent = (props: Props) => {
   const { data } = props;
   const { isLike, likeAction, likeCount } = useContext(LikeContext);
 
+  if (!data?.length) return null;
+
   return (
     <section id="detail-content" className="detail-content-container mt-14">
       <section
