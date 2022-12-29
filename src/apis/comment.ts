@@ -82,7 +82,7 @@ export const getMyComment = (id: string) => {
       return data?.map((item) => ({
         avatar: item.userPic,
         name: `${item.userMis}/${item.userName}`,
-        creatTime: format(new Date(item.createTime), 'MM-dd hh:mm'),
+        creatTime: format(new Date(item.createTime), 'MM-dd HH:mm'),
         commentId: item.commentId,
         isMyComment: item.isMyComment,
         content: item.content,
@@ -115,7 +115,7 @@ export const getExcellentComment = (id: string) => {
       return data?.map((item) => ({
         avatar: item.userPic,
         name: `${item.userMis}/${item.userName}`,
-        creatTime: format(new Date(item.createTime), 'yyyy/MM/dd'),
+        creatTime: format(new Date(item.createTime), 'MM-dd HH:mm'),
         commentId: item.commentId,
         isMyComment: item.isMyComment,
         content: item.content,
