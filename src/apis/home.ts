@@ -85,6 +85,8 @@ interface MenuServiceItem {
   secImageUrl: string;
   moduleCode: string;
   serviceUnitClientDto: {
+    id: number;
+    label: string[];
     headInfo: Array<{
       type: number;
       url: string;
@@ -122,7 +124,7 @@ export const getMenuServiceList = (id: string) => {
     const resultData = data.map((item) => {
       const imgObj = item.serviceUnitClientDto?.headInfo?.[0] || {};
       return {
-        id: item.id,
+        id: item.serviceUnitClientDto?.id,
         moduleId: `${item.moduleId}`,
         title: item.title,
         desc: item.remark,
