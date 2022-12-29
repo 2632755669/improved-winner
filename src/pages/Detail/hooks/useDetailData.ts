@@ -103,7 +103,7 @@ export const useDetailData = (id: string) => {
             imgUrl: item.url as string,
             videoCoverUrl: item.videoPicture as string,
             isVideo: item.type === 1,
-            videoId: item.videoId as string,
+            videoId: (item.videoId || item.newVideoId) as string,
           };
         });
         if (moduleId) {
@@ -154,7 +154,7 @@ export const useDetailData = (id: string) => {
   };
 
   useEffect(() => {
-    fetchServiceDetail();
+    id && fetchServiceDetail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
