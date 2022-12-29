@@ -44,8 +44,8 @@ export interface ServiceDetail {
   isUseful: boolean;
 }
 
-export const getServiceDetail = (id: number) => {
-  const params = { serviceId: String(id) };
+export const getServiceDetail = (id: string) => {
+  const params = { serviceId: id };
   return post<ServiceDetailParams, HttpResponse<ServiceDetail>>(
     '/sapi/client/v1/tmcmoduleconfigclientservice_getservicedetail',
     params,
@@ -104,7 +104,7 @@ export const getSubscribeStatusApi = (id: string) => {
     '/sapi/client/v1/getsubscriber_status',
     params,
   ).then(({ data, status }) => {
-    if (status.code === 0) {
+    if (status?.code === 0) {
       return data === '1';
     }
     return false;

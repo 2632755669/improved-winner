@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSearchParam } from 'react-use';
+import { message } from '@ss/mtd-react';
 import { getServiceDetail } from '../../../apis/detail';
 import { detailContentKeys } from '../../../constants';
 import { getModuleMenus, getMenuServiceList } from '../../../apis/home';
@@ -60,9 +60,11 @@ export interface BreadcrumbDataItem {
   path: string;
 }
 
-export const useDetailData = (id: string) => {
-  const moduleId = useSearchParam('moduleId') || '';
-  const moduleName = useSearchParam('moduleName') || '';
+export const useDetailData = (
+  id: string,
+  moduleName: string,
+  moduleId: string,
+) => {
   const [loading, setLoading] = useState(false);
   const [anchorData, setAnchorData] = useState<AnchorDataItem[]>([]);
   const [breadcrumbData, setCrumbData] = useState<BreadcrumbDataItem[]>([
@@ -83,7 +85,7 @@ export const useDetailData = (id: string) => {
 
   const fetchServiceDetail = () => {
     setLoading(true);
-    getServiceDetail(Number(id))
+    getServiceDetail(id)
       .then((data) => {
         const contentDetail = getDetailConent(data);
         const anchorResult = contentDetail?.map((item) => {
@@ -154,7 +156,12 @@ export const useDetailData = (id: string) => {
   };
 
   useEffect(() => {
-    id && fetchServiceDetail();
+    if (id !== 'undefined' && id) {
+      fetchServiceDetail();
+    } else {
+      message.error({ message: '该服务详情不存在' });
+      setLoading(true);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
