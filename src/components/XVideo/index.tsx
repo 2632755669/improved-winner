@@ -9,6 +9,8 @@ import {
 } from 'react';
 import { getMediaSource } from '../../apis/media';
 import { IVideoPlayer, useVideoPlayer } from './useVideoPlayer';
+import '@cap/videojs-vhs/dist/vjs.css';
+import './index.less';
 
 // const videoUrl =
 // 'https://s3plus.sankuai.com/v1/mss_f5ecef526b384cbaa1117230d53b4bd6/smart/a9868fee-2267-4a86-9209-fa66ac48610b.mp4';
@@ -87,13 +89,15 @@ export const XVideo = forwardRef((props: Props, ref) => {
   }, [videoId]);
 
   return (
-    <div className="w-full h-full xvideo-container">
+    <div className="w-full h-full xvideo-container video-js">
       <video
         ref={videoRef as RefObject<HTMLVideoElement>}
         controls
         onPlay={handlePlay}
         onPause={handlePause}
-        className="w-full h-full"
+        crossOrigin="anonymous"
+        playsInline
+        className="w-full h-full xvideo-inner"
       >
         <p>您的浏览器不支持 video 标签</p>
       </video>

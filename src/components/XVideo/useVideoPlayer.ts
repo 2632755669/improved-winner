@@ -96,14 +96,14 @@ export function useVideoPlayer(params: IParams) {
   );
 
   const play = useCallback(
-    async (source: string, poster?: string, autoplay?: boolean) => {
+    async (source: string[], poster?: string, autoplay?: boolean) => {
       if (!playerRef.current) {
         await init(autoplay);
       }
       const player = playerRef.current;
       const currPoster = convertPoster(poster || '');
       currPoster && player?.poster(currPoster);
-      if (!source) return;
+      if (!source?.length) return;
       player?.appendSource(source);
 
       // if (CLIENT_TYPE.weixin === getClientTypeSync(navigator.userAgent)) {
