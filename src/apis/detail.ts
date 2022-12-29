@@ -23,6 +23,14 @@ interface HeadInfoItem {
   videoPictureName: string;
 }
 
+export interface CaseContentItem {
+  id: string;
+  content: string;
+  num: string;
+  title: string;
+  type: number;
+}
+
 export interface ServiceDetail {
   title: string;
   type: string;
@@ -33,7 +41,7 @@ export interface ServiceDetail {
   label: string[];
   cooperationAdvantage: ServiceContent;
   cooperationCase: {
-    cases: string[];
+    cases: CaseContentItem[];
     title: string;
     id: string;
   };

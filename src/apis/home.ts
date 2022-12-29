@@ -68,6 +68,32 @@ export const getModuleMenus = () => {
     return resultData;
   });
 };
+// 新获取菜单接口
+
+interface HomeMenusParams {
+  moduleMenuCode: string;
+  appType: number;
+}
+
+export const getHomeMenus = () => {
+  const params = {
+    moduleMenuCode: 'menu_strategy',
+    appType: 1,
+  };
+  return post<HomeMenusParams, HttpResponse<ModuleMenusItem[]>>(
+    '/sapi/client/v1/menuclientservice_gethomemenus',
+    params,
+  ).then(({ data, status }) => {
+    if (status?.code !== 0) return Promise.reject();
+    const resultData = data.map((item) => {
+      return {
+        key: String(item.id),
+        title: item.moduleDisplayTitle,
+      };
+    });
+    return resultData;
+  });
+};
 
 /**
  * 获取模块菜单下的服务列表

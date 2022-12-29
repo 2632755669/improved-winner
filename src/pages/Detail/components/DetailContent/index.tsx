@@ -1,6 +1,7 @@
 /* eslint-disable react/no-danger */
 import { useContext, Fragment } from 'react';
 import classnames from 'classnames';
+import { CaseList } from './CaseList';
 import { LikeContext } from '../../context/LikeContext';
 import { ContentDetailItem } from '../../hooks/useDetailData';
 import like42Svg from '../../../../assets/icon/like42.svg';
@@ -32,10 +33,14 @@ export const DetailContent = (props: Props) => {
               >
                 {item.title}
               </div>
-              <div
-                dangerouslySetInnerHTML={{ __html: item.content }}
-                className="detail-content-desc text-white-60 text-base "
-              />
+              {item?.cases?.length ? (
+                <CaseList data={item.cases} />
+              ) : (
+                <div
+                  dangerouslySetInnerHTML={{ __html: item.content }}
+                  className="detail-content-desc text-white-60 text-base "
+                />
+              )}
             </Fragment>
           );
         })}

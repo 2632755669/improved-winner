@@ -4,6 +4,7 @@ import { getServiceDetail } from '../../../apis/detail';
 import { detailContentKeys } from '../../../constants';
 import { getModuleMenus, getMenuServiceList } from '../../../apis/home';
 import { thousandthNumber } from '../../../utils';
+import type { CaseItem } from '../components/DetailContent/CaseList';
 
 export const getDetailConent = (data: any) => {
   if (!data) return [];
@@ -13,6 +14,7 @@ export const getDetailConent = (data: any) => {
   const result = detailList?.map((item: any, index: number) => {
     return {
       id: `detail-${index}`,
+      cases: item[1].cases,
       title: item[1].title as string,
       content: item[1].content as string,
     };
@@ -29,6 +31,7 @@ export interface ContentDetailItem {
   id: string;
   title: string;
   content: string;
+  cases: CaseItem[];
 }
 
 export interface DescData {
