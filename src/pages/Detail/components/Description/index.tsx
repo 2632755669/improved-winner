@@ -143,9 +143,7 @@ export const Description = (props: Props) => {
             onClick={handleScrollComment}
           >
             <img src={commentSvg} alt="" />
-            <span className="ml-1">
-              {comments.me?.length + comments.excellent?.length || 0}
-            </span>
+            <span className="ml-1">{comments.excellent?.length || 0}</span>
           </span>
         </div>
       </div>

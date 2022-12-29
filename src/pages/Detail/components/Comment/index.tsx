@@ -21,7 +21,7 @@ export const Comment = () => {
   return (
     <section id="detail-comment" className="pb-24">
       <h3 className="text-white-84 text-2xl font-bold">
-        评价({comments.me?.length + comments.excellent?.length})
+        评价({comments.excellent?.length || 0})
       </h3>
       <section className="mt-4">
         {comments?.me?.map((item, index) => {
