@@ -105,7 +105,7 @@ export const getExcellentComment = (id: string) => {
     bizType: 1,
     auditStatus: 1,
     pageNo: 1,
-    pageSize: 30,
+    pageSize: 20,
   };
   return post<ExcellentCommentParams, ExcellentCommentList>(
     '/sapi/client/v1/tmccommentreplyservice_getexcellentcomment',
