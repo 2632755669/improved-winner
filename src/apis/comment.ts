@@ -81,7 +81,7 @@ export const getMyComment = (id: string) => {
     if (status.code === 0) {
       return data?.map((item) => ({
         avatar: item.userPic,
-        name: `${item.userMis}/${item.userName}`,
+        name: `${item.userName}/${item.userMis}`,
         creatTime: format(new Date(item.createTime), 'MM-dd HH:mm'),
         commentId: item.commentId,
         isMyComment: item.isMyComment,
@@ -114,7 +114,7 @@ export const getExcellentComment = (id: string) => {
     if (status.code === 0) {
       return data?.map((item) => ({
         avatar: item.userPic,
-        name: `${item.userMis}/${item.userName}`,
+        name: `${item.userName}/${item.userMis}`,
         creatTime: format(new Date(item.createTime), 'MM-dd HH:mm'),
         commentId: item.commentId,
         isMyComment: item.isMyComment,
