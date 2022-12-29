@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { useSearchParam } from 'react-use';
 import { getServiceDetail } from '../../../apis/detail';
 import { detailContentKeys } from '../../../constants';
@@ -61,8 +60,7 @@ export interface BreadcrumbDataItem {
   path: string;
 }
 
-export const useDetailData = () => {
-  const { id } = useParams<{ id: string }>();
+export const useDetailData = (id: string) => {
   const moduleId = useSearchParam('moduleId') || '';
   const moduleName = useSearchParam('moduleName') || '';
   const [loading, setLoading] = useState(false);
@@ -158,7 +156,7 @@ export const useDetailData = () => {
   useEffect(() => {
     fetchServiceDetail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   return {
     anchorData,

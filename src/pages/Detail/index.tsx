@@ -29,7 +29,7 @@ export const Detail = () => {
     moreServiceData,
     breadcrumbData,
     loading,
-  } = useDetailData();
+  } = useDetailData(id);
   // 点赞和取消点赞
   const likeAction = () => {
     if (likeLoading) return;
