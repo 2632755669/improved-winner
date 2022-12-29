@@ -149,7 +149,7 @@ export const Description = (props: Props) => {
           </span>
         </div>
       </div>
-      <div className="description-swiper w-432px h-243px rounded-lg overflow-hidden mt-4 md:mt-0">
+      <div className="description-swiper w-432px h-243px rounded-lg overflow-hidden img-border mt-4 md:mt-0">
         <DescSwiper descSwiperData={descSwiperData} />
       </div>
     </section>
