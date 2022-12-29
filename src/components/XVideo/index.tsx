@@ -97,6 +97,7 @@ export const XVideo = forwardRef((props: Props, ref) => {
         onPause={handlePause}
         crossOrigin="anonymous"
         playsInline
+        muted
         className="w-full h-full xvideo-inner"
       >
         <p>您的浏览器不支持 video 标签</p>

@@ -7,7 +7,7 @@ export interface OnlineCardItem {
   title: string;
   titleImg: string;
   tags: string[];
-  likeCount: number;
+  likeCount: string;
 }
 
 interface Props {

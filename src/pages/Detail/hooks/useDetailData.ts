@@ -3,6 +3,7 @@ import { message } from '@ss/mtd-react';
 import { getServiceDetail } from '../../../apis/detail';
 import { detailContentKeys } from '../../../constants';
 import { getModuleMenus, getMenuServiceList } from '../../../apis/home';
+import { thousandthNumber } from '../../../utils';
 
 export const getDetailConent = (data: any) => {
   if (!data) return [];
@@ -34,7 +35,7 @@ export interface DescData {
   title: string;
   intro: string;
   tags: string[];
-  likeCount: number;
+  likeCount: string;
   isUseful?: boolean;
 }
 
@@ -98,7 +99,7 @@ export const useDetailData = (
           title: data.title,
           intro: data.bizIntroduction,
           tags: data.label,
-          likeCount: data.usefulCount,
+          likeCount: thousandthNumber(data.usefulCount),
         };
         const descSwiperResult = data.headInfo?.map((item) => {
           return {

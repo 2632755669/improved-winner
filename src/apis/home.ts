@@ -1,5 +1,6 @@
 import { get, post, HttpResponse } from './index';
 import titleImg from '../assets/icon/logo_svg.svg';
+import { thousandthNumber } from '../utils/index';
 
 const imgUrl =
   'https://p0.meituan.net/smarttestvenus/5451f997aa9c1dee543572b083a8bcbe624884.png';
@@ -153,11 +154,17 @@ interface LastServiceItem {
   title: string;
   imageUrl: string;
   secImageUrl: string;
-  headInfo: Array<{
-    url: string;
-    videoId: string;
-    videoPicture: string;
-  }>;
+  serviceUnitClientDto: {
+    label: string[];
+    usefulCount: number;
+    id: string;
+    title: string;
+    headInfo: Array<{
+      url: string;
+      videoId: string;
+      videoPicture: string;
+    }>;
+  };
   moduleCode: string;
   moduleId: number;
   label: string[];
@@ -186,13 +193,14 @@ export const getLastServiceList = () => {
   ).then(({ data, status }) => {
     if (status?.code !== 0) return Promise.reject();
     const result = data?.map((item, index) => {
+      const serviceUnitClientDto = item?.serviceUnitClientDto || {};
       return {
-        id: item.id,
-        title: item.title,
+        id: serviceUnitClientDto.id,
+        title: serviceUnitClientDto.title,
         index: index + 1,
-        likeCount: item.usefulCount,
-        titleImg: item?.headInfo?.[0]?.url || titleImg,
-        tags: item.label?.slice(0, 2),
+        likeCount: thousandthNumber(serviceUnitClientDto.usefulCount),
+        titleImg: item?.imageUrl || titleImg,
+        tags: serviceUnitClientDto.label?.slice(0, 2),
       };
     });
     return result;

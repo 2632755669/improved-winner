@@ -14,12 +14,14 @@ import { QueryStringContext } from './context/QueryStringContext';
 import { useComment } from './hooks/useComment';
 import { useDetailData } from './hooks/useDetailData';
 import { likeApi, cancelLikeApi } from '../../apis/common';
+import { thousandthNumber, thousandthToNumber } from '../../utils';
+
 import './index.less';
 
 // 详情页
 export const Detail = () => {
   const [isLike, setIsLike] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
+  const [likeCount, setLikeCount] = useState('0');
   const [likeLoading, setLikeLoading] = useState(false);
   const { id } = useParams<{ id: string }>();
   const moduleName = useSearchParam('moduleName') || '';
@@ -43,7 +45,10 @@ export const Detail = () => {
         .then(() => {
           message.success({ message: '点赞成功' });
           setIsLike(true);
-          setLikeCount((value) => value + 1);
+          setLikeCount((value) => {
+            const num = thousandthToNumber(value);
+            return thousandthNumber(num + 1);
+          });
         })
         .finally(() => setLikeLoading(false));
     } else {
@@ -51,14 +56,17 @@ export const Detail = () => {
         .then(() => {
           message.success({ message: '取消点赞成功' });
           setIsLike(false);
-          setLikeCount((value) => value - 1);
+          setLikeCount((value) => {
+            const num = thousandthToNumber(value);
+            return thousandthNumber(num - 1);
+          });
         })
         .finally(() => setLikeLoading(false));
     }
   };
 
   useEffect(() => {
-    setLikeCount(descData?.likeCount || 0);
+    setLikeCount(descData?.likeCount || '0');
     setIsLike(descData?.isUseful || false);
   }, [descData]);
 

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation } from 'swiper';
+import { Pagination, Navigation, Autoplay } from 'swiper';
 import { ImgCover } from '../../../../components/ImgCover';
 import { DescSwiperDataItem } from '../../hooks/useDetailData';
 import rightSvg from '../../../../assets/icon/right-thick.svg';
@@ -53,6 +53,10 @@ export const DescSwiper = (props: Props) => {
           prevEl: '#swiper-pre',
           nextEl: '#swiper-next',
         }}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
         loop
         onSlideChange={handlePauseVideo}
         pagination={{
@@ -74,7 +78,7 @@ export const DescSwiper = (props: Props) => {
             return customPaginationHtml;
           },
         }}
-        modules={[Pagination, Navigation]}
+        modules={[Pagination, Navigation, Autoplay]}
       >
         {descSwiperData.map((item, index) => {
           const imgUrl = item.isVideo ? item.videoCoverUrl : item.imgUrl;
