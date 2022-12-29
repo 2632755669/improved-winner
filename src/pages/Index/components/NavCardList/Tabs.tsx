@@ -37,20 +37,25 @@ export const Tabs = (props: Props) => {
   }, [tabs, moduleId]);
 
   return (
-    <section id="tabs" className="flex items-center pt-7 pb-6 mt bg-dark-100">
-      {tabs?.map((item) => {
-        const activeClass = classnames({
-          'tabs-item-active': item.key === activeKey,
-        });
-        return (
-          <span key={item.key} className={`tabs-item ${activeClass}`}>
-            <span className="tabs-item-name" onClick={() => toggle(item.key)}>
-              {item.title}
+    <section
+      id="tabs"
+      className="w-full overflow-auto bg-dark-100 tabs-container"
+    >
+      <section className="flex items-center pt-7 pb-6">
+        {tabs?.map((item) => {
+          const activeClass = classnames({
+            'tabs-item-active': item.key === activeKey,
+          });
+          return (
+            <span key={item.key} className={`tabs-item ${activeClass}`}>
+              <span className="tabs-item-name" onClick={() => toggle(item.key)}>
+                {item.title}
+              </span>
+              <span className="tabs-item-line" />
             </span>
-            <span className="tabs-item-line" />
-          </span>
-        );
-      })}
+          );
+        })}
+      </section>
     </section>
   );
 };

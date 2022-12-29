@@ -38,7 +38,7 @@ export const NavCardList = () => {
 
   return (
     <div className="mt-2">
-      <Affix offsetTop={-3} getTarget={getTarget}>
+      <Affix offsetTop={0} getTarget={getTarget}>
         <Tabs tabs={tabData} onChange={fetchNavCardList} />
       </Affix>
       <section className="w-full -ml-3 grid grid-cols-1 lg:grid-cols-2 desktop1440:grid-cols-3 gap-6">
