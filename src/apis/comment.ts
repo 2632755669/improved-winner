@@ -72,7 +72,7 @@ export const getMyComment = (id: string) => {
     bizType: 1,
     auditStatus: 1,
     pageNo: 1,
-    pageSize: 3,
+    pageSize: 30,
   };
   return post<MyCommentParams, MyCommentList>(
     '/sapi/client/v1/tmccommentreplyservice_getmycomment',
@@ -105,7 +105,7 @@ export const getExcellentComment = (id: string) => {
     bizType: 1,
     auditStatus: 1,
     pageNo: 1,
-    pageSize: 10,
+    pageSize: 30,
   };
   return post<ExcellentCommentParams, ExcellentCommentList>(
     '/sapi/client/v1/tmccommentreplyservice_getexcellentcomment',
