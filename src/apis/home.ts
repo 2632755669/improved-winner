@@ -2,9 +2,6 @@ import { get, post, HttpResponse } from './index';
 import titleImg from '../assets/icon/logo_svg.svg';
 import { thousandthNumber } from '../utils/index';
 
-const imgUrl =
-  'https://p0.meituan.net/smarttestvenus/5451f997aa9c1dee543572b083a8bcbe624884.png';
-
 /**
  * 获取模块
  */
@@ -137,6 +134,8 @@ interface MenuServiceItem {
   serviceUnitClientDto: {
     id: number;
     label: string[];
+    description: string;
+    title: string;
     headInfo: Array<{
       type: number;
       url: string;
@@ -172,17 +171,18 @@ export const getMenuServiceList = (id: string) => {
   ).then(({ data, status }) => {
     if (status?.code !== 0) return Promise.reject();
     const resultData = data.map((item) => {
-      const imgObj = item.serviceUnitClientDto?.headInfo?.[0] || {};
+      const serviceUnitClientDto = item?.serviceUnitClientDto || {};
+      const imgObj = serviceUnitClientDto?.headInfo?.[0] || {};
       return {
-        id: item.serviceUnitClientDto?.id || item.id,
+        id: serviceUnitClientDto?.id || item.id,
         moduleId: `${item.moduleId}`,
-        title: item.title,
-        desc: item.remark,
+        title: serviceUnitClientDto.title,
+        desc: serviceUnitClientDto.description,
         videoId: imgObj?.videoId,
         isVideo: imgObj?.type === 1,
-        coverImg: imgObj?.url || imgObj?.videoPicture || imgUrl,
-        titleImg: item.imageUrl || titleImg,
-        tags: item.label?.slice(0, 3) || [],
+        coverImg: imgObj?.url || imgObj?.videoPicture,
+        titleImg: item.imageUrl,
+        tags: serviceUnitClientDto.label?.slice(0, 3) || [],
       };
     });
     return resultData;
