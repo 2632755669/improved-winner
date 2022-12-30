@@ -1,6 +1,15 @@
 import { get, post, registerInterceptor } from '@cap/mtv-fetch';
 import { message } from '@ss/mtd-react';
 
+const ENV = ['staging, production'].includes(process.env.REACT_APP_ENV || '')
+  ? 'production'
+  : 'test';
+
+const loginKeyMap = {
+  production: '028999243f_ssoid',
+  test: '1a5c3e71bd_ssoid',
+};
+
 export interface HttpResponse<T = any> {
   data: T;
   status: {
@@ -24,7 +33,7 @@ const ErrMsg = '网络错误';
 registerInterceptor('request', (config) => {
   config.headers['X-Tenant'] = 'soa';
   config.headers.LoginType = 'sso';
-  config.headers.LoginKey = '1a5c3e71bd_ssoid';
+  config.headers.LoginKey = loginKeyMap[ENV];
   return config;
 });
 registerInterceptor('response', (status, response) => {
