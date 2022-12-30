@@ -15,6 +15,7 @@ import { useComment } from './hooks/useComment';
 import { useDetailData } from './hooks/useDetailData';
 import { likeApi, cancelLikeApi } from '../../apis/common';
 import { thousandthNumber, thousandthToNumber } from '../../utils';
+import { pageView } from '../../utils/lx';
 
 import './index.less';
 
@@ -69,6 +70,10 @@ export const Detail = () => {
     setLikeCount(descData?.likeCount || '0');
     setIsLike(descData?.isUseful || false);
   }, [descData]);
+
+  useEffect(() => {
+    pageView({ cid: 'c_donation_gy3g1qzc' });
+  }, []);
 
   if (loading) return null;
 

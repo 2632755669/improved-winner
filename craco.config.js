@@ -10,8 +10,7 @@ const apiHost = 'https://cap.fe.test.sankuai.com';
 const ssoConfig = {
   production: {
     clientId: '028999243f',
-    // TODO：暂时没有换上正确的secret
-    secret: 'f352ceed984048719f69fa5d814befff',
+    secret: '0ac08c040bab47699f7c45a5dc9cfc8c',
   },
   test: {
     clientId: '1a5c3e71bd',

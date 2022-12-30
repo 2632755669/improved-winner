@@ -15,6 +15,7 @@ import './index.less';
 import likeSvg from '../../../../assets/icon/like42.svg';
 import likeLightSvg from '../../../../assets/icon/like-light.svg';
 import commentSvg from '../../../../assets/icon/comment.svg';
+import { moduleClick } from '../../../../utils/lx';
 
 interface Props {
   descData: Partial<DescData>;
@@ -42,6 +43,7 @@ export const Description = (props: Props) => {
     subscribeApi(id)
       .then(
         () => {
+          moduleClick({ bid: 'b_donation_377gnj7c_mc' });
           message.success({ message: '订阅成功' });
           setIsSubscribe(true);
         },
