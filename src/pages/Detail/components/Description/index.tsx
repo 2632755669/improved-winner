@@ -12,7 +12,7 @@ import {
   cancelSubscribeApi,
 } from '../../../../apis/detail';
 import './index.less';
-import likeSvg from '../../../../assets/icon/like42.svg';
+import likeSvg from '../../../../assets/icon/like60.svg';
 import likeLightSvg from '../../../../assets/icon/like-light.svg';
 import commentSvg from '../../../../assets/icon/comment.svg';
 import { moduleClick } from '../../../../utils/lx';
