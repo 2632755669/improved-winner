@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { message } from '@ss/mtd-react';
 import { getServiceDetail } from '../../../apis/detail';
 import { detailContentKeys } from '../../../constants';
-import { getModuleMenus, getMenuServiceList } from '../../../apis/home';
+import { getMenuServiceList } from '../../../apis/home';
 import { thousandthNumber } from '../../../utils';
 import type { CaseItem } from '../components/DetailContent/CaseList';
 
@@ -112,42 +112,20 @@ export const useDetailData = (
             videoId: (item.videoId || item.newVideoId) as string,
           };
         });
-        if (moduleId) {
-          getModuleMenus().then((tabData) => {
-            const apiModuleName = tabData?.find(
-              (item) => item.key === moduleId,
-            )?.title;
-            setCrumbData([
-              {
-                title: '首页',
-                path: '/home',
-              },
-              {
-                title: apiModuleName || moduleName || '测试',
-                path: `/home?moduleId=${moduleId}`,
-              },
-              {
-                title: descResult.title,
-                path: '',
-              },
-            ]);
-          });
-        } else {
-          setCrumbData([
-            {
-              title: '首页',
-              path: '/home',
-            },
-            {
-              title: moduleName || '测试',
-              path: '/home',
-            },
-            {
-              title: descResult.title,
-              path: '',
-            },
-          ]);
-        }
+        setCrumbData([
+          {
+            title: '首页',
+            path: '/home',
+          },
+          {
+            title: moduleName || '测试',
+            path: moduleId ? `/home?moduleId=${moduleId}` : '/home',
+          },
+          {
+            title: descResult.title,
+            path: '',
+          },
+        ]);
         setAnchorData(anchorResult);
         setDetailContentData(contentDetail);
         setDescData(descResult);

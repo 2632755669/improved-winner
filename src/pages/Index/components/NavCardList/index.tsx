@@ -6,12 +6,13 @@ import { Tabs } from './Tabs';
 import type { TabItem } from './Tabs';
 import { NavCard } from './NavCard';
 import type { NavData } from './NavCard';
-import { getModuleMenus, getMenuServiceList } from '../../../../apis/home';
+import { getMenusByModule, getMenuServiceList } from '../../../../apis/home';
 import './index.less';
 
 export const NavCardList = () => {
   const [tabData, setTabData] = useState<TabItem[]>([]);
   const [navCardList, setNavCardList] = useState<NavData[]>([]);
+  const [moduleName, setModuleName] = useState('');
   const [loading, setLoading] = useState(false);
 
   const getTarget = () => {
@@ -21,13 +22,14 @@ export const NavCardList = () => {
 
   const fetchTabData = () => {
     setLoading(true);
-    getModuleMenus()
+    getMenusByModule()
       .then(setTabData)
       .finally(() => setLoading(false));
   };
 
-  const fetchNavCardList = (id: string) => {
+  const fetchNavCardList = (id: string, title: string) => {
     getMenuServiceList(id).then(setNavCardList);
+    setModuleName(title);
   };
 
   useEffect(() => {
@@ -46,7 +48,7 @@ export const NavCardList = () => {
           return (
             <Link
               key={index}
-              to={`/detail/${item.id}?moduleId=${item.moduleId}`}
+              to={`/detail/${item.id}?moduleId=${item.moduleId}&moduleName=${moduleName}`}
             >
               <NavCard data={item} />
             </Link>

@@ -1,5 +1,4 @@
 import { get, post, HttpResponse } from './index';
-import { videoSource } from '../mockData';
 
 /**
  * 获取用户信息
@@ -144,6 +143,6 @@ export const getVideoSource = (videoId: string) => {
     if (status?.code === 0) {
       return data;
     }
-    return videoSource;
+    return Promise.reject();
   });
 };

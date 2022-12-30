@@ -8,7 +8,7 @@ export interface TabItem {
 }
 
 interface Props {
-  onChange?(activeKey: string): void;
+  onChange?(activeKey: string, title: string): void;
   tabs: TabItem[];
 }
 
@@ -20,19 +20,20 @@ export const Tabs = (props: Props) => {
   const [activeKey, setActiveKey] = useState('');
   const moduleId = useSearchParam('moduleId') || '';
 
-  const toggle = (key: string) => {
-    onChange?.(key);
+  const toggle = (key: string, title: string) => {
+    onChange?.(key, title);
     setActiveKey(key);
   };
 
   useEffect(() => {
-    let key = tabs?.[0]?.key;
+    const tab = tabs?.[0] || {};
+    let { key } = tab;
     if (!key) return;
     if (moduleId) {
       key = moduleId;
     }
     setActiveKey(key);
-    onChange?.(key);
+    onChange?.(key, tab.title);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tabs, moduleId]);
 
@@ -48,7 +49,10 @@ export const Tabs = (props: Props) => {
           });
           return (
             <span key={item.key} className={`tabs-item ${activeClass}`}>
-              <span className="tabs-item-name" onClick={() => toggle(item.key)}>
+              <span
+                className="tabs-item-name"
+                onClick={() => toggle(item.key, item.title)}
+              >
                 {item.title}
               </span>
               <span className="tabs-item-line" />

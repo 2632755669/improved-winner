@@ -49,9 +49,9 @@ interface ModuleMenusItem {
   moduleDisplayTitle: string;
 }
 
-export const getModuleMenus = () => {
+export const getModuleMenus = (id?: string) => {
   const params = {
-    moduleMenuCode: 'menu_strategy',
+    moduleMenuCode: id || 'menu_strategy',
     type: 1,
   };
   return post<ModuleMenusParams, HttpResponse<ModuleMenusItem[]>>(
@@ -59,40 +59,63 @@ export const getModuleMenus = () => {
     params,
   ).then(({ data, status }) => {
     if (status?.code !== 0) return Promise.reject();
-    const resultData = data.map((item) => {
-      return {
-        key: String(item.id),
-        title: item.moduleDisplayTitle,
-      };
-    });
-    return resultData;
+    return {
+      key: String(data[0]?.id || ''),
+      title: data[0]?.moduleDisplayTitle,
+    };
   });
 };
 // 新获取菜单接口
 
 interface HomeMenusParams {
-  moduleMenuCode: string;
-  appType: number;
+  appType: string;
+}
+
+interface HomeMenuItem {
+  id: string;
+  tenant: string;
+  name: string;
+  code: string;
+  weight: number;
+  status: number;
+  deleted: number;
+  appType: string;
 }
 
 export const getHomeMenus = () => {
   const params = {
-    moduleMenuCode: 'menu_strategy',
-    appType: 1,
+    appType: 'cooperation_recruitment',
   };
-  return post<HomeMenusParams, HttpResponse<ModuleMenusItem[]>>(
+  return post<HomeMenusParams, HttpResponse<HomeMenuItem[]>>(
     '/sapi/client/v1/menuclientservice_gethomemenus',
     params,
   ).then(({ data, status }) => {
     if (status?.code !== 0) return Promise.reject();
     const resultData = data.map((item) => {
       return {
-        key: String(item.id),
-        title: item.moduleDisplayTitle,
+        code: item.code,
       };
     });
     return resultData;
   });
+};
+
+interface MenusItem {
+  key: string;
+  title: string;
+}
+
+// 根据模块获取菜单列表
+export const getMenusByModule = async () => {
+  let result: MenusItem[] = [];
+  const rquestArr: Array<Promise<MenusItem>> = [];
+  const modules = await getHomeMenus();
+  while (modules?.length > 0) {
+    rquestArr.push(getModuleMenus(modules.pop()?.code));
+  }
+
+  result = await Promise.all([...rquestArr]);
+  return result;
 };
 
 /**
