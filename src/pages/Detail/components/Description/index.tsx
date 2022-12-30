@@ -141,7 +141,7 @@ export const Description = (props: Props) => {
           </span>
           <span className="description-line" />
           <span
-            className="flex items-center hover:bg-dark-300 px-4 py-1 rounded-md text-white-60 ml-6 cursor-pointer"
+            className="flex items-center hover:bg-dark-300 px-4 py-1 rounded-md text-white-60 cursor-pointer"
             onClick={handleScrollComment}
           >
             <img src={commentSvg} alt="" />

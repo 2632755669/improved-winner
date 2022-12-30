@@ -44,6 +44,9 @@ interface ModuleMenusItem {
   id: string;
   moduleCode: string;
   moduleDisplayTitle: string;
+  mcModuleMenuDto: {
+    name: string;
+  };
 }
 
 export const getModuleMenus = (id?: string) => {
@@ -58,7 +61,7 @@ export const getModuleMenus = (id?: string) => {
     if (status?.code !== 0) return Promise.reject();
     return {
       key: String(data[0]?.id || ''),
-      title: data[0]?.moduleDisplayTitle,
+      title: data[0]?.mcModuleMenuDto?.name,
     };
   });
 };

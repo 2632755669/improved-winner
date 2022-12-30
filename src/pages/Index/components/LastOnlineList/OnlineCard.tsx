@@ -19,9 +19,9 @@ export const OnlineCard = (props: Props) => {
   const { className, data } = props;
   return (
     <div
-      className={`flex text-white-42 transition-all duration-700 cursor-pointer px-6 py-3 rounded-xl bg-dark-200.0 hover:bg-dark-200.1 w-424px h-96px ${className}`}
+      className={`flex text-white-42 transition-all duration-700 cursor-pointer p-3 rounded-xl bg-dark-200.0 hover:bg-dark-200.1 w-424px h-96px ${className}`}
     >
-      <span className="text-xl font-bold">{data.index}</span>
+      <span className="text-xl font-bold flex items-center">{data.index}</span>
       <img
         src={data.titleImg}
         alt=""
