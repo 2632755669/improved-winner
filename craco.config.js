@@ -3,7 +3,7 @@ const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
-const NODE_ENV = ['staging, production'].includes(process.env.AWP_DEPLOY_ENV) ? 'production' : 'test';
+const NODE_ENV = ['staging, production'].includes(process.env.REACT_APP_ENV) ? 'production' : 'test';
 
 const apiHost = 'https://cap.fe.test.sankuai.com';
 

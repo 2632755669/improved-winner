@@ -2,7 +2,7 @@
 /* eslint-disable camelcase */
 // eslint-disable-next-line import/no-cycle
 
-const ENV = process.env.VUE_APP_ENV;
+const ENV = process.env.REACT_APP_ENV;
 const isProd = ['staging', 'prod', 'production'].indexOf(ENV) > -1;
 
 // https://docs.sankuai.com/lx/web/extensions/
