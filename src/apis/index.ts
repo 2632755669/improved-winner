@@ -5,6 +5,8 @@ const ENV = ['staging, production'].includes(process.env.REACT_APP_ENV || '')
   ? 'production'
   : 'test';
 
+console.log(ENV, 'env');
+
 const loginKeyMap = {
   production: '028999243f_ssoid',
   test: '1a5c3e71bd_ssoid',
