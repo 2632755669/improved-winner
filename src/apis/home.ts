@@ -111,7 +111,7 @@ export const getMenusByModule = async () => {
     rquestArr.push(getModuleMenus(modules.pop()?.code));
   }
 
-  result = await Promise.all([...rquestArr]);
+  result = await Promise.all(rquestArr.reverse());
   return result;
 };
 
