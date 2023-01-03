@@ -3,7 +3,7 @@
 // eslint-disable-next-line import/no-cycle
 
 const ENV = process.env.REACT_APP_ENV;
-const isProd = ['staging', 'prod', 'production'].indexOf(ENV) > -1;
+const isProd = ['staging', 'production'].indexOf(ENV) > -1;
 
 // https://docs.sankuai.com/lx/web/extensions/
 // 自定义参数
@@ -34,7 +34,6 @@ export const pageView = function pageView({
     } else {
       // 打印出埋点数据
       console.log(`pageView:${cid}`, _valLab);
-      window.LXAnalytics('pageView', _valLab, env, cid);
     }
   } catch (error) {
     console.error(error);

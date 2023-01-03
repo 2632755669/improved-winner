@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSearchParam } from 'react-use';
 import { useParams } from 'react-router-dom';
-import { message } from '@ss/mtd-react';
 import { Anchor } from './components/Anchor';
 import { Breadcrumb } from './components/Breadcrumb';
 import { Description } from './components/Description';
@@ -13,20 +12,17 @@ import { CommentContext } from './context/CommentContext';
 import { QueryStringContext } from './context/QueryStringContext';
 import { useComment } from './hooks/useComment';
 import { useDetailData } from './hooks/useDetailData';
-import { likeApi, cancelLikeApi } from '../../apis/common';
-import { thousandthNumber, thousandthToNumber } from '../../utils';
+import { useLike } from './hooks/useLike';
 import { pageView } from '../../utils/lx';
 
 import './index.less';
 
 // 详情页
 export const Detail = () => {
-  const [isLike, setIsLike] = useState(false);
-  const [likeCount, setLikeCount] = useState('0');
-  const [likeLoading, setLikeLoading] = useState(false);
   const { id } = useParams<{ id: string }>();
   const moduleName = useSearchParam('moduleName') || '';
   const moduleId = useSearchParam('moduleId') || '';
+  const { likeCount, isLike, likeAction } = useLike(id);
   const { comments, deleteComment, publishComment } = useComment(id);
   const {
     anchorData,
@@ -37,39 +33,6 @@ export const Detail = () => {
     breadcrumbData,
     loading,
   } = useDetailData(id, moduleName, moduleId);
-  // 点赞和取消点赞
-  const likeAction = () => {
-    if (likeLoading) return;
-    setLikeLoading(true);
-    if (!isLike) {
-      likeApi(id)
-        .then(() => {
-          message.success({ message: '点赞成功' });
-          setIsLike(true);
-          setLikeCount((value) => {
-            const num = thousandthToNumber(value);
-            return thousandthNumber(num + 1);
-          });
-        })
-        .finally(() => setLikeLoading(false));
-    } else {
-      cancelLikeApi(id)
-        .then(() => {
-          message.success({ message: '取消点赞成功' });
-          setIsLike(false);
-          setLikeCount((value) => {
-            const num = thousandthToNumber(value);
-            return thousandthNumber(num - 1);
-          });
-        })
-        .finally(() => setLikeLoading(false));
-    }
-  };
-
-  useEffect(() => {
-    setLikeCount(descData?.likeCount || '0');
-    setIsLike(descData?.isUseful || false);
-  }, [descData]);
 
   useEffect(() => {
     pageView({ cid: 'c_donation_gy3g1qzc' });

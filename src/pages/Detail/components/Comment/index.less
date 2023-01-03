@@ -39,19 +39,19 @@
 }
 
 .comment-item-label {
-  @apply inline-block text-sm border border-solid border-white-42 rounded leading-6 px-1 ml-2;
+  border: 1px solid #3d3d3d;
+
+  @apply inline-block text-sm text-white-42 rounded leading-5 px-1 ml-2;
 }
 
 .comment-mid-lines {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  bottom: -12px;
-
   @apply w-full flex items-center text-white-84 text-base;
 
   .comment-mid-text {
     margin: 0 5px;
+    font-size: 12px;
+
+    @apply leading-5;
   }
 
   .comment-mid-line {

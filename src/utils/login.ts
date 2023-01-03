@@ -21,8 +21,8 @@ const logoutUrlMap = {
   [RUNTIME_ENV.TEST]: '/api/carrier/sso/logout2181',
   [RUNTIME_ENV.STAGING]: '/api/carrier/sso/logout956',
   [RUNTIME_ENV.ST]: '/api/carrier/sso/logout956',
-  [RUNTIME_ENV.PROD]: '/api/carrier/sso/logout1646',
-  [RUNTIME_ENV.PRODUCTION]: '/api/carrier/sso/logout1646',
+  [RUNTIME_ENV.PROD]: '/api/carrier/sso/logout1838',
+  [RUNTIME_ENV.PRODUCTION]: '/api/carrier/sso/logout1838',
 };
 
 Cookies.set('cap_login_type', 'SSO');

@@ -112,6 +112,25 @@ export const getLikeCount = (id: string) => {
     return 0;
   });
 };
+/**
+ * 查询点赞状态
+ */
+
+export const getLikeStatus = (id: string) => {
+  const params = {
+    objectCode: id,
+    typeCode: 'soa_common',
+  };
+  return post<LikeCountParams, LikeCount<'UNLIKE' | 'LIKE'>>(
+    '/comment/user/likeStatus',
+    params,
+  ).then(({ data, status }) => {
+    if (status === 0) {
+      return data === 'LIKE';
+    }
+    return Promise.reject();
+  });
+};
 
 // 获取视频资源
 
