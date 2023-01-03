@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useSearchParam } from 'react-use';
 import { useParams } from 'react-router-dom';
 import { Anchor } from './components/Anchor';
@@ -11,11 +11,14 @@ import { LikeContext } from './context/LikeContext';
 import { CommentContext } from './context/CommentContext';
 import { QueryStringContext } from './context/QueryStringContext';
 import { useComment } from './hooks/useComment';
+import { UserInfoContext } from '../../context/UserInfoContext';
 import { useDetailData } from './hooks/useDetailData';
 import { useLike } from './hooks/useLike';
 import { pageView } from '../../utils/lx';
-
+import { getAccessEnv } from '../../utils/getAccessEnv';
 import './index.less';
+
+const accessEnv = getAccessEnv();
 
 // 详情页
 export const Detail = () => {
@@ -24,6 +27,7 @@ export const Detail = () => {
   const moduleId = useSearchParam('moduleId') || '';
   const { likeCount, isLike, likeAction } = useLike(id);
   const { comments, deleteComment, publishComment } = useComment(id);
+  const { username, mis } = useContext(UserInfoContext);
   const {
     anchorData,
     descData,
@@ -35,8 +39,17 @@ export const Detail = () => {
   } = useDetailData(id, moduleName, moduleId);
 
   useEffect(() => {
-    pageView({ cid: 'c_donation_gy3g1qzc' });
-  }, []);
+    if (username && mis) {
+      pageView({
+        cid: 'c_donation_gy3g1qzc',
+        custom: {
+          username,
+          mis,
+          accessEnv,
+        },
+      });
+    }
+  }, [username, mis]);
 
   if (loading) return null;
 
