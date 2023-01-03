@@ -16,6 +16,9 @@ import likeSvg from '../../../../assets/icon/like60.svg';
 import likeLightSvg from '../../../../assets/icon/like-light.svg';
 import commentSvg from '../../../../assets/icon/comment.svg';
 import { moduleClick } from '../../../../utils/lx';
+import { getAccessEnv } from '../../../../utils/getAccessEnv';
+
+const accessEnv = getAccessEnv();
 
 interface Props {
   descData: Partial<DescData>;
@@ -43,7 +46,14 @@ export const Description = (props: Props) => {
     subscribeApi(id)
       .then(
         () => {
-          moduleClick({ bid: 'b_donation_377gnj7c_mc' });
+          moduleClick({
+            bid: 'b_donation_377gnj7c_mc',
+            custom: {
+              accessEnv,
+              serviceId: id,
+              serviceName: descData.title,
+            },
+          });
           message.success({ message: '订阅成功' });
           setIsSubscribe(true);
         },
