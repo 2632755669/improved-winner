@@ -41,9 +41,9 @@ export const OnlineCard = (props: Props) => {
             );
           })}
         </div>
-        <div className="flex items-center text-base">
+        <div className="flex items-center">
           <img className="w-14px h-14px" src={like42Svg} alt="" />
-          <span className="ml-1">{data.likeCount}</span>
+          <span className="ml-1 text-base leading-4">{data.likeCount}</span>
         </div>
       </div>
     </div>
