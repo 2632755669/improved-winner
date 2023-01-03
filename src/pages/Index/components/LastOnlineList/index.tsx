@@ -23,7 +23,7 @@ export const LastOnlineList = () => {
   return (
     <div className="mb-5">
       <h3 className="text-2xl text-white-84 font-bold mb-7">最近更新</h3>
-      <section className="grid grid-cols-1 lg:grid-cols-2 desktop1440:grid-cols-3 gap-6">
+      <section className="-ml-3 grid grid-cols-1 lg:grid-cols-2 desktop1440:grid-cols-3 gap-6">
         {lastServiceList?.map((item) => {
           return (
             <Link
