@@ -15,14 +15,14 @@ interface RedirectRoutesType {
 
 export const routes: RoutesType[] = [
   {
-    key: 'home',
-    path: '/home',
-    component: Index,
-  },
-  {
     key: 'detail',
     path: '/detail/:id',
     component: Detail,
+  },
+  {
+    key: 'home',
+    path: '/',
+    component: Index,
   },
 ];
 
@@ -30,6 +30,6 @@ export const redirectRoutes: RedirectRoutesType[] = [
   {
     key: '/',
     path: '/',
-    to: '/home',
+    to: '/',
   },
 ];

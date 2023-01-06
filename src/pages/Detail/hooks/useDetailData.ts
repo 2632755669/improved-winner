@@ -71,7 +71,7 @@ export const useDetailData = (
   const [breadcrumbData, setCrumbData] = useState<BreadcrumbDataItem[]>([
     {
       title: '首页',
-      path: '/home',
+      path: '/',
     },
   ]);
   const [descData, setDescData] = useState<Partial<DescData>>({});
@@ -111,11 +111,11 @@ export const useDetailData = (
         setCrumbData([
           {
             title: '首页',
-            path: '/home',
+            path: '/',
           },
           {
-            title: moduleName || '测试',
-            path: moduleId ? `/home?moduleId=${moduleId}` : '/home',
+            title: moduleName || '',
+            path: moduleId ? `?moduleId=${moduleId}` : '/',
           },
           {
             title: descResult.title,
