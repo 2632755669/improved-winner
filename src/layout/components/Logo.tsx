@@ -11,7 +11,7 @@ interface Props {
 export const Logo = (props: Props) => {
   const { url, title } = props;
   return (
-    <a href="/soa/v2/home">
+    <a href="/soa/home">
       <div className="header-logo-container">
         <img
           src={logoImagePath || url}

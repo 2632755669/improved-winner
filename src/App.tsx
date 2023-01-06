@@ -30,7 +30,7 @@ function App() {
 
   return (
     <UserInfoContext.Provider value={userInfo}>
-      <Router basename="/soa/v2">
+      <Router basename="/soa">
         <Layout>
           <Switch>
             {routes.map((item) => {
