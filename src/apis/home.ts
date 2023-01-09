@@ -1,6 +1,7 @@
 import { get, post, HttpResponse } from './index';
 import titleImg from '../assets/icon/logo_svg.svg';
 import { thousandthNumber } from '../utils/index';
+import { getImgUrl } from '../utils/imageUtils';
 
 /**
  * 获取模块
@@ -183,7 +184,7 @@ export const getMenuServiceList = (id: string) => {
         desc: serviceUnitClientDto.description,
         videoId: imgObj?.videoId,
         isVideo: imgObj?.type === 1,
-        coverImg: imgObj?.url || imgObj?.videoPicture,
+        coverImg: getImgUrl(imgObj?.url || imgObj?.videoPicture),
         titleImg: item.imageUrl,
         tags: serviceUnitClientDto.label?.slice(0, 3) || [],
       };
