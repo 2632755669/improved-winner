@@ -39,17 +39,19 @@ export const Detail = () => {
   } = useDetailData(id, moduleName, moduleId);
 
   useEffect(() => {
-    if (username && mis) {
+    if (username && mis && id && descData) {
       pageView({
         cid: 'c_donation_gy3g1qzc',
         custom: {
           username,
           mis,
           accessEnv,
+          detailId: id,
+          detailName: descData.title,
         },
       });
     }
-  }, [username, mis]);
+  }, [username, mis, id, descData]);
 
   if (loading) return null;
 

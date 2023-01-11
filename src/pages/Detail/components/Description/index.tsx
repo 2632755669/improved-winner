@@ -158,6 +158,9 @@ export const Description = (props: Props) => {
             <span className="ml-1">{comments.excellent?.length || 0}</span>
           </span>
         </div>
+        <p className="mt-4 text-white-42 leading-snug text-base">
+          订阅后，可通过[CAP服务]公众号，收到该服务的内容更新等推送
+        </p>
       </div>
       <div className="description-swiper w-432px h-243px rounded-lg overflow-hidden img-border mt-4 md:mt-0">
         <DescSwiper descSwiperData={descSwiperData} />

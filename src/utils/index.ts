@@ -14,7 +14,6 @@ export function formatNumber(num: number) {
 // 数字转千分位
 export const thousandthNumber = (num: number): string => {
   if (Number.isNaN(Number(num))) return '0';
-  console.log(num, 'num');
   const valueTemp = num.toString();
   let preNum = '';
   let afterNum = '';
