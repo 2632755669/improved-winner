@@ -48,6 +48,7 @@ export const Detail = () => {
           accessEnv,
           detailId: id,
           detailName: descData.title,
+          moduleName,
         },
       });
     }

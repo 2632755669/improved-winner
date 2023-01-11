@@ -115,7 +115,7 @@ export const useDetailData = (
           },
           {
             title: moduleName || '',
-            path: moduleId ? `?moduleId=${moduleId}` : '/',
+            path: moduleId ? `/?moduleId=${moduleId}` : '/',
           },
           {
             title: descResult.title,
