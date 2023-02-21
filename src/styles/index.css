@@ -1,51 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.family-meituan {
-  font-family: MEITUANTYPE-REGULAR;
-}
-
 * {
-  box-sizing: border-box;
-  font-weight: normal;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
 }
 
 a:hover {
-  text-decoration: none !important;
+    text-decoration: none !important;
 }
 
 @layer base {
-  [type='button'] {
-    background-color: '';
-  }
+    [type='button'] {
+        background-color: '';
+    }
 }
+
 
 /* 图片边框 */
+
 .img-border {
-  @apply border	border-solid border-white-6;
+    @apply border border-solid border-white-6;
 }
 
+
 /* TODO 修改antd 骨架屏样式 */
-:where(.css-dev-only-do-not-override-9ntgx0).ant-skeleton.ant-skeleton-active
-  .ant-skeleton-title::after,
-:where(.css-dev-only-do-not-override-9ntgx0).ant-skeleton.ant-skeleton-active
-  .ant-skeleton-paragraph
-  > li::after,
-:where(.css-dev-only-do-not-override-9ntgx0).ant-skeleton.ant-skeleton-active
-  .ant-skeleton-avatar::after,
-:where(.css-dev-only-do-not-override-9ntgx0).ant-skeleton.ant-skeleton-active
-  .ant-skeleton-button::after,
-:where(.css-dev-only-do-not-override-9ntgx0).ant-skeleton.ant-skeleton-active
-  .ant-skeleton-input::after,
-:where(.css-dev-only-do-not-override-9ntgx0).ant-skeleton.ant-skeleton-active
-  .ant-skeleton-image::after {
-  background: linear-gradient(
-    90deg,
-    #3d3d3d55 25%,
-    #3d3d3dff 37%,
-    #3d3d3d55 63%
-  );
+
+:where(.css-dev-only-do-not-override-9ntgx0).ant-skeleton.ant-skeleton-active .ant-skeleton-title::after,
+:where(.css-dev-only-do-not-override-9ntgx0).ant-skeleton.ant-skeleton-active .ant-skeleton-paragraph>li::after,
+:where(.css-dev-only-do-not-override-9ntgx0).ant-skeleton.ant-skeleton-active .ant-skeleton-avatar::after,
+:where(.css-dev-only-do-not-override-9ntgx0).ant-skeleton.ant-skeleton-active .ant-skeleton-button::after,
+:where(.css-dev-only-do-not-override-9ntgx0).ant-skeleton.ant-skeleton-active .ant-skeleton-input::after,
+:where(.css-dev-only-do-not-override-9ntgx0).ant-skeleton.ant-skeleton-active .ant-skeleton-image::after {
+    background: linear-gradient( 90deg, #3d3d3d55 25%, #3d3d3dff 37%, #3d3d3d55 63%);
 }

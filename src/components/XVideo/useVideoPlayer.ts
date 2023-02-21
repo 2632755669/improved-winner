@@ -1,6 +1,5 @@
 import { useState, useCallback, useRef, MutableRefObject } from 'react';
 import videojs from 'video.js'; // 只用到了类型声明
-// import { CLIENT_TYPE, getClientTypeSync } from '@cap/utils';
 
 import { convertPoster } from './convertPoster';
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { message } from '@ss/mtd-react';
+import { message } from 'xxxxx';
 import {
   likeApi,
   cancelLikeApi,

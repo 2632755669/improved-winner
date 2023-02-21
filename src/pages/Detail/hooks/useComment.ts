@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { message } from '@ss/mtd-react';
+import { message } from 'xxxxx';
 import {
   getAllComments,
   submitCommentApi,

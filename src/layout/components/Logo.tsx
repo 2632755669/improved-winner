@@ -1,6 +1,6 @@
 import './logo.less';
 
-// 美团logo
+
 import logoImagePath from '../../assets/icon/logo_img.jpg';
 
 interface Props {
@@ -16,9 +16,9 @@ export const Logo = (props: Props) => {
         <img
           src={logoImagePath || url}
           className="header-logo-img"
-          alt="美团logo"
+          alt="XXXlogo"
         />
-        <span className="header-logo-text">美团</span>
+        <span className="header-logo-text">XXX</span>
         <span className="header-logo-title">{title}</span>
       </div>
     </a>

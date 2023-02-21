@@ -1,4 +1,4 @@
-import { Anchor as MtdAnchor } from '@ss/mtd-react';
+import { Anchor as MtdAnchor } from 'xxxxx';
 import { AnchorDataItem } from '../../hooks/useDetailData';
 import './index.less';
 

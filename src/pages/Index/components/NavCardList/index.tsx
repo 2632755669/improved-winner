@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Affix } from '@ss/mtd-react';
+import { Affix } from 'xxxxx';
 import { Tabs } from './Tabs';
 import type { TabItem } from './Tabs';
 import { NavCard } from './NavCard';

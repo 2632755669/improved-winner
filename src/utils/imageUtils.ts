@@ -1,11 +1,11 @@
 /**
- * 判断是否是venus服务上的图片
+ * 判断是否是ven服务上的图片
  * @param src
  */
 export const isVenusPic = (src: string) => {
   if (Object.prototype.toString.call(src) === '[object String]') {
     const domains = ['(p0)', '(p1)', '(img)'];
-    const srcRegStr = `\\/\\/(${domains.join('|')}){1}\\.meituan`;
+    const srcRegStr = `\\/\\/(${domains.join('|')}){1}\\.hhhh`;
     const srcReg = new RegExp(srcRegStr);
     return srcReg.test(src) && !src.includes('@');
   }

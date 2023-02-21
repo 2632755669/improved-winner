@@ -11,30 +11,6 @@ export function formatNumber(num: number) {
   return str;
 }
 
-// 数字转千分位
-export const thousandthNumber = (num: number): string => {
-  if (Number.isNaN(Number(num))) return '0';
-  const valueTemp = num.toString();
-  let preNum = '';
-  let afterNum = '';
-  if (valueTemp?.includes?.('.')) {
-    const numArr = valueTemp.split('.');
-    [preNum, afterNum] = numArr;
-    afterNum = `.${afterNum}`;
-  } else {
-    preNum = valueTemp;
-  }
-  const reverseNum = preNum.split('').reverse();
-  const result = `${reverseNum
-    .reduce((pre, item, index) => {
-      if (!(index % 3) && index >= 3) pre.push(',');
-      pre.push(item);
-      return pre;
-    }, [] as string[])
-    .reverse()
-    .join('')}${afterNum}`;
-  return result;
-};
 
 // 千分位转数字
 export const thousandthToNumber = (num: string): number => {

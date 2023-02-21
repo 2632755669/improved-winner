@@ -10,14 +10,12 @@
 
 .breadcrumb-container {
   @apply text-white-42 text-base;
-}
-
-.breadcrumb-container a {
-  color: inherit;
-}
-
-.breadcrumb-container a:hover {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.84);
-
-  @apply text-white-84;
+  a {
+    color: inherit;
+    &:hover {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.84);
+    
+      @apply text-white-84;
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Icon, Tooltip } from '@ss/mtd-react';
+import { Icon, Tooltip } from 'xxxxx';
 import { Header } from './components/Header';
 import { logout } from '../utils/login';
 import { useSerivcer } from '../hooks/useServicer';
@@ -26,7 +26,7 @@ export const Layout = (props: Props) => {
   return (
     <div>
       <Header
-        title="CAP服务"
+        title="XXX服务"
         logout={handleLogout}
         avatarUrl={avatar}
         toolBar={

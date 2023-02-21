@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Modal, message } from '@ss/mtd-react';
+import { Modal, message } from 'xxxxx';
 import classnames from 'classnames';
 import { CommentItem } from './CommentItem';
 import { CommentInput } from './CommentInput';

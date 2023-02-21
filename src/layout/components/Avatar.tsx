@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Dropdown, Menu } from '@ss/mtd-react';
+import { Dropdown, Menu } from 'xxxxx';
 import defaultAvatar from '../../assets/images/defaultAvatar.png';
 import './avatar.less';
 
